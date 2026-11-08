@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Direction C: Workbench, Direction Board</title>
+<style>
+:root{
+  --paper:#FFFFFF; --bench:#ECEAE3; --ink:#1B1D20; --ink-soft:#33363B; --muted:#5B6066;
+  --line:#D9D7CE; --rule:#1B1D20; --accent:#C2410C; --accent-deep:#9A3412; --accent-soft:#FDEEDC;
+  --code-ground:#17181C; --code-text:#E8E6DF;
+  --display:"Space Grotesk","Arial",sans-serif; --body:"IBM Plex Sans","Arial",sans-serif; --mono:"JetBrains Mono","Courier New",monospace;
+}
+[data-theme="dark"]{
+  --paper:#16181B; --bench:#1E2126; --ink:#F2F1ED; --ink-soft:#D8D7D2; --muted:#A8ABB0;
+  --line:#33363C; --rule:#F2F1ED; --accent:#FF8A3D; --accent-deep:#FFB27A; --accent-soft:#3A2417;
+  --code-ground:#0F1013; --code-text:#E8E6DF;
+}
+*{box-sizing:border-box}
+html,body{overflow-x:clip;margin:0;padding:0}
+body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.65}
+.wrap{max-width:1240px;margin:0 auto;padding:0 64px}
+a{color:var(--accent);text-decoration:underline;text-underline-offset:2px}
+a:focus-visible,button:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+h1,h2,h3,h4{font-family:var(--display);line-height:1.1;margin:0;overflow-wrap:break-word;min-width:0}
+p{margin:0 0 16px}
+.mono{font-family:var(--mono);font-size:12px;line-height:1.55;color:var(--muted)}
+.boardbar{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:16px 0;border-bottom:1px solid var(--line);flex-wrap:wrap}
+.boardbar strong{font-family:var(--display);font-size:20px}
+.toggle{font-family:var(--body);font-weight:600;font-size:13px;background:transparent;color:var(--ink);border:1px solid var(--ink);border-radius:4px;padding:10px 16px;min-height:44px;cursor:pointer}
+.toggle:hover{background:var(--bench)}
+.nav{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:20px 0;flex-wrap:wrap}
+.nav .wordmark{font-family:var(--display);font-weight:700;font-size:20px;color:var(--ink);text-decoration:none}
+.nav .links{display:flex;gap:24px;align-items:center;flex-wrap:wrap}
+.nav .links a{color:var(--ink);text-decoration:none;font-size:13px;font-weight:600}
+.nav .links a.active{border-bottom:2px solid var(--accent);padding-bottom:2px}
+.hero{border:1px solid var(--line);margin:32px 0 16px}
+.poster{position:relative;background:#2A2D33;color:#FFFFFF;padding:48px 32px;min-height:420px;display:flex;flex-direction:column;justify-content:flex-end}
+.poster::after{content:"";position:absolute;inset:0;background:rgba(20,21,24,.45)}
+.poster>*{position:relative;z-index:1}
+.poster .tag{align-self:flex-start;background:#FFFFFF;color:#1B1D20;font-family:var(--mono);font-size:12px;padding:6px 10px;border-radius:4px;margin-bottom:24px}
+.poster h1{font-size:clamp(36px,6vw,72px);line-height:1.02;font-weight:700;max-width:12ch;margin-top:auto}
+.poster h1 span{display:block}
+.poster .role{font-size:18px;line-height:1.6;margin:16px 0 24px;max-width:56ch}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap}
+.btn{display:inline-block;font-family:var(--body);font-weight:600;font-size:15px;line-height:1.45;text-decoration:none;text-align:center;min-height:48px;padding:12px 24px;border-radius:4px;cursor:pointer;border:1px solid transparent}
+.btn-primary{background:var(--accent);color:#FFFFFF}
+[data-theme="dark"] .btn-primary{color:#16181B}
+.btn-primary:hover{background:var(--accent-deep)}
+.btn-secondary{background:transparent;color:var(--ink);border-color:var(--ink)}
+.btn-secondary:hover{background:var(--bench)}
+.btn-on-dark{background:transparent;color:#FFFFFF;border-color:#FFFFFF}
+.btn-on-dark:hover{background:rgba(255,255,255,.12)}
+.avail{font-family:var(--mono);font-size:12px;margin-top:16px;color:#E8E6DF}
+.note{background:var(--bench);border:1px solid var(--line);padding:16px 20px;margin:0 0 48px}
+.note p{margin:0}
+section{padding:48px 0}
+.rule{border-top:2px solid var(--rule);padding-top:12px;margin-bottom:24px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.rule h2{font-size:clamp(30px,4vw,40px);font-weight:700}
+.rule .station{font-family:var(--mono);font-size:12px;color:var(--muted)}
+.swatches{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.swatch{border:1px solid var(--line);border-radius:4px;overflow:hidden;min-width:0}
+.swatch .chip{height:72px}
+.swatch .meta{padding:12px;background:var(--paper)}
+.swatch .meta b{display:block;font-size:14px}
+.swatch .meta span{font-family:var(--mono);font-size:12px;color:var(--muted)}
+.type-block{border-top:1px solid var(--line);padding:20px 0}
+.type-block .sample-h1{font-size:clamp(36px,5vw,56px);font-weight:700;line-height:1.05}
+.type-block .sample-h2{font-size:clamp(30px,4vw,40px);font-weight:700;line-height:1.1}
+.type-block .sample-h3{font-size:28px;font-weight:500;line-height:1.15}
+.type-block .sample-body{font-size:18px;line-height:1.6;max-width:68ch}
+.type-block .sample-small{font-size:14px;line-height:1.55;color:var(--muted);max-width:68ch}
+.card{background:var(--bench);border:1px solid var(--line);border-radius:4px;padding:24px;display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.card .shot{background:#2A2D33;color:#FFFFFF;border-radius:4px;min-height:220px;display:flex;align-items:center;justify-content:center;text-align:center;padding:24px;font-family:var(--mono);font-size:12px;line-height:1.6}
+.card h3{font-size:28px;font-weight:500;line-height:1.15;margin:0 0 12px}
+.card .outcome{font-size:16px;margin:0 0 16px}
+.tags{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 20px}
+.tags span{font-family:var(--mono);font-size:12px;border:1px solid var(--line);background:var(--paper);border-radius:4px;padding:6px 10px}
+.card .links{display:flex;gap:20px;flex-wrap:wrap}
+.code{background:var(--code-ground);color:var(--code-text);border-radius:4px;padding:20px 20px 16px;font-family:var(--mono);font-size:14px;line-height:1.6;overflow-x:auto;white-space:pre}
+.tok-k{color:#C792EA}.tok-f{color:#82AAFF}.tok-s{color:#C3E88D}.tok-n{color:#F78C6C}.tok-v{color:#89DDFF}.tok-c{color:#697098}.tok-o{color:#E8E6DF}
+.footer{border-top:2px solid var(--rule);padding:32px 0 48px;margin-top:48px}
+.footer p{color:var(--muted);font-size:14px}
+@media (max-width:820px){
+  .wrap{padding:0 32px}
+  .swatches{grid-template-columns:repeat(2,1fr)}
+  .card{grid-template-columns:1fr}
+  .poster{padding:32px 20px;min-height:380px}
+}
+@media (max-width:480px){
+  .wrap{padding:0 20px}
+  .btn{width:100%}
+  .hero-actions{flex-direction:column}
+  .swatches{grid-template-columns:1fr 1fr}
+}
+@media (prefers-reduced-motion:reduce){
+  *{transition:none !important;animation:none !important}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="boardbar">
+    <strong>Direction C: Workbench</strong>
+    <span class="mono">Direction board, static mock, no live video</span>
+    <button class="toggle" id="themeToggle" type="button" aria-pressed="false">Switch to dark theme</button>
+  </div>
+
+  <nav class="nav" aria-label="Navigation mock">
+    <a class="wordmark" href="#">Muhammad Izaz Haider</a>
+    <div class="links">
+      <a href="#" class="active">Projects</a>
+      <a href="#">About</a>
+      <a href="#">Expertise</a>
+      <a href="#">Research</a>
+      <a href="#">Contact</a>
+    </div>
+  </nav>
+
+  <div class="hero">
+    <div class="poster">
+      <span class="tag">Poster frame, graded clip still</span>
+      <h1><span>I break web apps</span><span>to find what is weak,</span><span>then I build the fix.</span></h1>
+      <p class="role">Penetration Tester, AI x Offensive Security.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#">View projects</a>
+        <a class="btn btn-on-dark" href="#">Download CV</a>
+      </div>
+      <p class="avail">Available for internships and junior roles, Feb to Apr 2027 and Jul to Sep 2027.</p>
+    </div>
+  </div>
+
+  <div class="note">
+    <p><b>Cursor reactive layer, described, not simulated here:</b> a plain canvas 2D particle and line field sits on top of the video. Particles near the pointer drift gently toward it and connect with fine lines, then settle when the pointer leaves. Motion eases, never snaps. On touch devices the layer does not exist, and nothing is lost. The live hero carries only the primary action, View projects. The second button above is shown here so both button styles can be compared on one board.</p>
+  </div>
+
+  <section aria-label="Colour palette">
+    <div class="rule"><h2>Palette</h2><span class="station">01 / Colour</span></div>
+    <div class="swatches">
+      <div class="swatch"><div class="chip" style="background:#FFFFFF;border-bottom:1px solid #D9D7CE"></div><div class="meta"><b>Paper</b><span>#FFFFFF</span></div></div>
+      <div class="swatch"><div class="chip" style="background:#ECEAE3"></div><div class="meta"><b>Bench</b><span>#ECEAE3</span></div></div>
+      <div class="swatch"><div class="chip" style="background:#1B1D20"></div><div class="meta"><b>Ink</b><span>#1B1D20</span></div></div>
+      <div class="swatch"><div class="chip" style="background:#5B6066"></div><div class="meta"><b>Muted</b><span>#5B6066</span></div></div>
+      <div class="swatch"><div class="chip" style="background:#C2410C"></div><div class="meta"><b>Accent</b><span>#C2410C</span></div></div>
+      <div class="swatch"><div class="chip" style="background:#9A3412"></div><div class="meta"><b>Accent deep</b><span>#9A3412</span></div></div>
+      <div class="swatch"><div class="chip" style="background:#FDEEDC"></div><div class="meta"><b>Accent soft</b><span>#FDEEDC</span></div></div>
+      <div class="swatch"><div class="chip" style="background:#17181C"></div><div class="meta"><b>Code ground</b><span>#17181C</span></div></div>
+      <div class="swatch"><div class="chip" style="background:#16181B"></div><div class="meta"><b>Dark paper</b><span>#16181B</span></div></div>
+      <div class="swatch"><div class="chip" style="background:#1E2126"></div><div class="meta"><b>Dark bench</b><span>#1E2126</span></div></div>
+      <div class="swatch"><div class="chip" style="background:#F2F1ED"></div><div class="meta"><b>Dark ink</b><span>#F2F1ED</span></div></div>
+      <div class="swatch"><div class="chip" style="background:#FF8A3D"></div><div class="meta"><b>Dark accent</b><span>#FF8A3D</span></div></div>
+    </div>
+    <p class="mono" style="margin-top:16px">Light is the default. Dark is a deliberate second design, not an inversion. Toggle above to check both.</p>
+  </section>
+
+  <section aria-label="Type scale">
+    <div class="rule"><h2>Type scale</h2><span class="station">02 / Type</span></div>
+    <p class="mono">Space Grotesk, display. IBM Plex Sans, body. JetBrains Mono, code and metadata. Self hosted WOFF2 in the build.</p>
+    <div class="type-block">
+      <p class="sample-h1">PenTrix-VulnLab</p>
+      <p class="mono">H1, Space Grotesk 700, 56px</p>
+    </div>
+    <div class="type-block">
+      <p class="sample-h2">First place in Web, Junior division, CSCB 2026</p>
+      <p class="mono">H2, Space Grotesk 700, 40px</p>
+    </div>
+    <div class="type-block">
+      <p class="sample-h3">A deliberately vulnerable lab with 201 challenges across 29 modules</p>
+      <p class="mono">H3, Space Grotesk 500, 28px</p>
+    </div>
+    <div class="type-block">
+      <p class="sample-body">Muhammad Izaz Haider is a penetration tester and security tool builder who finds vulnerabilities, fixes them, and turns what he learns into tools and teaching that other people can use. At CSCB 2026 he placed first in Web, Junior division, third overall Junior, and 26th of 806 participants nationally.</p>
+      <p class="mono">Body large, IBM Plex Sans 400, 18px, line height 1.60</p>
+    </div>
+    <div class="type-block">
+      <p class="sample-small">The work speaks first. Every number on this page carries its proof beside it: 201 challenges across 29 modules in PenTrix-VulnLab, and the CSCB 2026 placement shown with the scoreboard beside it.</p>
+      <p class="mono">Body small, IBM Plex Sans 400, 14px</p>
+    </div>
+  </section>
+
+  <section aria-label="Project card">
+    <div class="rule"><h2>Project card</h2><span class="station">03 / Work</span></div>
+    <div class="card">
+      <div class="shot">Screenshot of the lab running<br>Real output, not a mock</div>
+      <div>
+        <p class="mono">Flagship, 201 challenges, 29 modules</p>
+        <h3>PenTrix-VulnLab</h3>
+        <p class="outcome">A deliberately vulnerable learning lab where students learn offensive security by exploiting real vulnerability classes in a safe, local environment.</p>
+        <div class="tags"><span>JavaScript</span><span>Express</span><span>SQLite</span></div>
+        <div class="links"><a href="#">Read the story</a><a href="#">View repo</a></div>
+      </div>
+    </div>
+  </section>
+
+  <section aria-label="Buttons and code">
+    <div class="rule"><h2>Buttons and code</h2><span class="station">04 / Components</span></div>
+    <div class="hero-actions" style="margin-bottom:32px">
+      <a class="btn btn-primary" href="#">View projects</a>
+      <a class="btn btn-secondary" href="#">Download CV</a>
+    </div>
+    <div class="code"><span class="tok-c"># Check the session, never the role</span>
+<span class="tok-k">curl</span> <span class="tok-s">-s</span> <span class="tok-v">localhost:3000/admin</span></div>
+    <p class="mono" style="margin-top:16px">Code strip, JetBrains Mono 14px, dark ground in both themes, multicolour syntax highlighting.</p>
+  </section>
+
+  <footer class="footer">
+    <p><b style="color:var(--ink)">Workbench, Direction C.</b> One accent, one bench rule, one cursor moment, one scroll sequence. Full spec: docs/04-direction-workbench.md. Contact: mizazhaiderceh@gmail.com.</p>
+  </footer>
+
+</div>
+<script>
+(function(){
+  var btn=document.getElementById('themeToggle');
+  btn.addEventListener('click',function(){
+    var root=document.documentElement;
+    var dark=root.getAttribute('data-theme')==='dark';
+    root.setAttribute('data-theme',dark?'light':'dark');
+    btn.setAttribute('aria-pressed',String(!dark));
+    btn.textContent=dark?'Switch to dark theme':'Switch to light theme';
+  });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Monograph: Direction A board</title>
+<style>
+:root{
+  --paper:#F7F3EA; --surface:#FFFEFA; --ink:#1C1A17; --body:#2A2723; --muted:#6E6A61;
+  --line:#DCD5C6; --line-strong:#B9B0A0; --accent:#7A2E25; --accent-text:#6E231C;
+  --accent-soft:#F1E3DE; --code-ground:#1E1C19; --code-body:#E8E2D5; --focus:#7A2E25;
+  --hero-ground:#1E1C19; --hero-ink:#F7F3EA; --hero-muted:#C9C2B4;
+}
+[data-theme="dark"]{
+  --paper:#191817; --surface:#221F1C; --ink:#F3EFE5; --body:#D5CFC2; --muted:#9C968B;
+  --line:#37332C; --line-strong:#57503F; --accent:#D18A74; --accent-text:#E0A58F;
+  --accent-soft:#3A211B; --code-ground:#121110; --code-body:#E8E2D5; --focus:#D18A74;
+  --hero-ground:#121110; --hero-ink:#F3EFE5; --hero-muted:#B9B2A4;
+}
+*{box-sizing:border-box}
+html,body{overflow-x:clip}
+body{margin:0;background:var(--paper);color:var(--body);
+  font-family:"Instrument Sans","Helvetica Neue",Arial,sans-serif;font-size:17px;line-height:1.65}
+h1,h2,h3{font-family:Archivo,"Helvetica Neue",Arial,sans-serif;color:var(--ink);margin:0}
+a{color:inherit}
+button{font-family:inherit;cursor:pointer}
+:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
+.wrap{max-width:1240px;margin:0 auto;padding:0 64px}
+.mono{font-family:ui-monospace,"SF Mono",Menlo,Consolas,monospace}
+.rule{border:0;border-top:1px solid var(--line);margin:0}
+.section{padding:80px 0}
+.kicker{font-family:ui-monospace,"SF Mono",Menlo,monospace;font-size:13px;color:var(--muted);margin:0 0 12px}
+.handoff{font-size:clamp(36px,4.5vw,56px);line-height:1.02;letter-spacing:-.02em;font-weight:700}
+.handoff-rule{width:64px;border-top:2px solid var(--accent);margin:24px 0 0}
+.lede{max-width:68ch;margin:24px 0 0}
+/* nav mock */
+.nav{position:sticky;top:0;background:var(--paper);border-bottom:1px solid var(--line);z-index:5}
+.nav-in{max-width:1240px;margin:0 auto;padding:0 64px;height:64px;display:flex;align-items:center;gap:32px}
+.wordmark{font-family:Archivo,"Helvetica Neue",Arial,sans-serif;font-weight:600;font-size:17px;color:var(--ink);text-decoration:none}
+.nav-links{display:flex;gap:28px;margin-left:auto;align-items:center}
+.nav-links a{font-size:15px;font-weight:500;text-decoration:none;color:var(--body)}
+.nav-links a.active{color:var(--ink);border-bottom:2px solid var(--accent);padding-bottom:2px}
+.theme-btn{background:none;border:1px solid var(--line-strong);color:var(--ink);border-radius:2px;padding:8px 14px;font-size:15px;font-weight:500}
+.btn{display:inline-block;border-radius:2px;padding:14px 28px;font-size:15px;font-weight:500;text-decoration:none;border:1px solid transparent}
+.btn-primary{background:var(--ink);color:var(--paper)}
+.btn-primary:hover{transform:translateY(-1px)}
+.btn-primary:active{transform:translateY(0)}
+.btn-secondary{background:transparent;border-color:var(--ink);color:var(--ink)}
+.btn-secondary:hover{transform:translateY(-1px)}
+.btn-secondary:active{transform:translateY(0)}
+.btn-contact{background:var(--ink);color:var(--paper);padding:10px 20px}
+.nav-links a.btn-contact{color:var(--paper)}
+/* hero mock */
+.hero{background:var(--hero-ground);color:var(--hero-ink);padding:72px 0 64px}
+.hero-grid{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:48px;align-items:start}
+.hero-cat{font-family:ui-monospace,"SF Mono",Menlo,monospace;font-size:13px;color:var(--hero-muted);margin:0 0 20px}
+.hero h1{font-size:clamp(48px,7vw,88px);line-height:.98;letter-spacing:-.03em;font-weight:700;color:var(--hero-ink)}
+.hero h1 span{display:block}
+.role{font-size:18px;font-weight:500;margin:28px 0 0;color:var(--hero-ink)}
+.hero-sentence{margin:12px 0 0;color:var(--hero-muted);max-width:52ch}
+.hero-actions{display:flex;gap:16px;margin-top:32px;flex-wrap:wrap;align-items:center}
+.hero-actions .btn-primary{background:var(--hero-ink);color:var(--hero-ground)}
+.hero-actions .btn-secondary{border-color:var(--hero-ink);color:var(--hero-ink)}
+.poster{margin-top:40px;border:1px solid #3A362F;border-radius:2px;padding:16px 20px;display:flex;gap:16px;align-items:baseline;flex-wrap:wrap}
+.poster .tag{font-family:ui-monospace,"SF Mono",Menlo,monospace;font-size:13px;color:var(--hero-ink);border:1px solid var(--hero-muted);border-radius:2px;padding:4px 10px}
+.poster p{margin:0;color:var(--hero-muted);font-size:15px}
+.poster .dots{font-family:ui-monospace,"SF Mono",Menlo,monospace;color:var(--hero-muted);font-size:13px;letter-spacing:4px}
+/* challenge panel */
+.panel{background:var(--surface);color:var(--body);border:1px solid var(--line);border-radius:2px;padding:28px}
+.panel h3{font-size:20px;font-weight:600;letter-spacing:-.01em}
+.panel .req{font-family:ui-monospace,"SF Mono",Menlo,monospace;font-size:13px;color:var(--muted);margin:10px 0 0}
+.steps{list-style:none;margin:20px 0;padding:0;display:grid;gap:10px}
+.steps li{display:flex;gap:12px;font-size:15px}
+.steps .n{font-family:ui-monospace,"SF Mono",Menlo,monospace;font-size:13px;color:var(--accent-text);padding-top:2px}
+.panel-row{display:flex;gap:10px;margin-top:20px}
+.panel-row input{flex:1;min-width:0;border:1px solid var(--line-strong);border-radius:2px;background:var(--paper);color:var(--body);padding:12px 14px;font-family:ui-monospace,"SF Mono",Menlo,monospace;font-size:14px}
+.panel-row .btn{padding:12px 20px}
+.solved{margin-top:16px;background:var(--accent-soft);border-radius:2px;padding:10px 14px;font-size:14px;color:var(--body)}
+.solved b{color:var(--accent-text)}
+.panel-note{font-size:13px;color:var(--muted);margin:16px 0 0}
+.panel-note a{color:var(--ink)}
+/* palette */
+.swatches{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;margin-top:32px}
+.swatch{border:1px solid var(--line);border-radius:2px;overflow:hidden;background:var(--surface)}
+.swatch .chip{height:88px}
+.swatch .meta{padding:12px 14px}
+.swatch .meta b{display:block;font-size:15px;color:var(--ink)}
+.swatch .meta span{font-family:ui-monospace,"SF Mono",Menlo,monospace;font-size:13px;color:var(--muted)}
+.note{font-size:15px;color:var(--muted);max-width:68ch;margin:16px 0 0}
+/* type scale */
+.type-row{border-top:1px solid var(--line);padding:28px 0;display:grid;grid-template-columns:200px minmax(0,1fr);gap:24px;align-items:baseline}
+.type-row .spec{font-family:ui-monospace,"SF Mono",Menlo,monospace;font-size:13px;color:var(--muted)}
+.t-hero{font-family:Archivo,"Helvetica Neue",Arial,sans-serif;font-weight:700;font-size:clamp(40px,6vw,72px);line-height:.98;letter-spacing:-.03em;color:var(--ink)}
+.t-handoff{font-family:Archivo,"Helvetica Neue",Arial,sans-serif;font-weight:700;font-size:clamp(32px,4vw,48px);line-height:1.02;letter-spacing:-.02em;color:var(--ink)}
+.t-title{font-family:Archivo,"Helvetica Neue",Arial,sans-serif;font-weight:700;font-size:32px;line-height:1.05;letter-spacing:-.02em;color:var(--ink)}
+.t-body{max-width:68ch}
+.t-meta{font-family:ui-monospace,"SF Mono",Menlo,monospace;font-size:13px;color:var(--muted)}
+/* project card */
+.project{border-top:1px solid var(--line);padding:32px 0;display:grid;grid-template-columns:80px minmax(0,1fr) 220px;gap:24px;align-items:start}
+.project .num{font-family:ui-monospace,"SF Mono",Menlo,monospace;font-size:13px;color:var(--accent-text);padding-top:10px}
+.project h3{font-size:32px;line-height:1.05;letter-spacing:-.02em;font-weight:700}
+.project .outcome{margin:10px 0 0;max-width:62ch}
+.project .meta{font-family:ui-monospace,"SF Mono",Menlo,monospace;font-size:13px;color:var(--muted);margin:14px 0 0}
+.project .links{font-size:15px;font-weight:500}
+.project .links a{color:var(--ink)}
+.project .flag{font-family:ui-monospace,"SF Mono",Menlo,monospace;font-size:13px;color:var(--accent-text)}
+/* buttons + code */
+.pair{display:flex;gap:16px;flex-wrap:wrap;align-items:center;margin-top:32px}
+.code{background:var(--code-ground);color:var(--code-body);border-radius:2px;padding:20px 24px;margin-top:32px;overflow-x:auto;font-family:ui-monospace,"SF Mono",Menlo,monospace;font-size:14px;line-height:1.7}
+.code .k{color:#D8A24A}.code .f{color:#9DBEB0}.code .s{color:#A8B89A}.code .n{color:#D08A5A}.code .c{color:#8A8378}.code .v{color:#E8E2D5}
+.code-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+.code-head span{font-size:13px;color:#8A8378}
+.copy{background:none;border:1px solid #57503F;color:var(--code-body);border-radius:2px;padding:6px 12px;font-size:13px}
+/* footer */
+.colophon{border-top:1px solid var(--line);padding:32px 0 48px;font-size:14px;color:var(--muted)}
+.colophon .mono{font-size:13px}
+@media (max-width:900px){
+  .wrap,.nav-in{padding:0 32px}
+  .hero-grid{grid-template-columns:minmax(0,1fr)}
+  .swatches{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .type-row{grid-template-columns:minmax(0,1fr);gap:8px}
+  .project{grid-template-columns:minmax(0,1fr);gap:12px}
+  .nav-links a{display:none}
+  .nav-links a.keep{display:inline}
+}
+@media (max-width:480px){
+  .wrap,.nav-in{padding:0 20px}
+  .section{padding:56px 0}
+  .hero{padding:48px 0}
+  .hero-actions .btn{flex:1 1 100%;text-align:center}
+  .panel{padding:20px}
+  .swatches{grid-template-columns:minmax(0,1fr)}
+  .panel-row{flex-direction:column}
+  .panel-row .btn{width:100%}
+}
+@media (prefers-reduced-motion:reduce){
+  *{transition:none !important;animation:none !important}
+}
+</style>
+</head>
+<body>
+<header class="nav">
+  <div class="nav-in">
+    <a class="wordmark" href="#">Muhammad Izaz Haider</a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="#" class="active">Projects</a>
+      <a href="#">About</a>
+      <a href="#">Expertise</a>
+      <a href="#">Research</a>
+      <a href="#" class="keep btn btn-contact">Contact</a>
+      <button class="theme-btn" id="themeToggle" type="button" aria-pressed="false">Dark</button>
+    </nav>
+  </div>
+</header>
+
+<main>
+<!-- HERO MOCK -->
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div>
+        <p class="hero-cat">Portfolio, 2026</p>
+        <h1><span>Find the flaw.</span><span>Prove it.</span><span>Build the fix.</span></h1>
+        <p class="role">Penetration Tester, AI x Offensive Security</p>
+        <p class="hero-sentence">I break web apps, then build the tools that teach others to break them safely.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#">View projects</a>
+          <a class="btn btn-secondary" href="#">Contact</a>
+        </div>
+      </div>
+      <div class="panel" aria-label="Try it: PenTrix-VulnLab challenge">
+        <h3>Try it: PenTrix-VulnLab</h3>
+        <p class="req">GET /admin</p>
+        <ol class="steps">
+          <li><span class="n">1</span><span>Read the request.</span></li>
+          <li><span class="n">2</span><span>Spot the flaw.</span></li>
+          <li><span class="n">3</span><span>Prove it.</span></li>
+        </ol>
+        <div class="panel-row">
+          <input type="text" value="/admin" aria-label="Try a path">
+          <button class="btn btn-primary" type="button">Check</button>
+        </div>
+        <p class="solved"><b>Solved.</b> Session checked, role never assumed.</p>
+        <p class="panel-note">Flags are randomly generated per install at first boot. No flag literal exists in any tracked file. <a href="#">Read the PenTrix-VulnLab case study</a></p>
+      </div>
+    </div>
+    <div class="poster">
+      <span class="tag">Poster frame</span>
+      <p>Video placeholder: an 8 to 15 second graded loop (abstract technical visualisation or close up engineering detail) sits behind this panel. The poster frame carries the hero alone.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PALETTE -->
+<section class="section">
+  <div class="wrap">
+    <p class="kicker">Colour, light theme (default)</p>
+    <h2 class="handoff">Paper, ink, one rare accent.</h2>
+    <div class="handoff-rule"></div>
+    <div class="swatches">
+      <div class="swatch"><div class="chip" style="background:#F7F3EA"></div><div class="meta"><b>Paper</b><span>#F7F3EA, page ground</span></div></div>
+      <div class="swatch"><div class="chip" style="background:#FFFEFA;border-bottom:1px solid #DCD5C6"></div><div class="meta"><b>Surface</b><span>#FFFEFA, cards, panel</span></div></div>
+      <div class="swatch"><div class="chip" style="background:#1C1A17"></div><div class="meta"><b>Ink</b><span>#1C1A17, headings, 15.68:1</span></div></div>
+      <div class="swatch"><div class="chip" style="background:#7A2E25"></div><div class="meta"><b>Accent, oxblood</b><span>#7A2E25, rare signal, 8.45:1</span></div></div>
+      <div class="swatch"><div class="chip" style="background:#2A2723"></div><div class="meta"><b>Body</b><span>#2A2723, body text, 13.42:1</span></div></div>
+      <div class="swatch"><div class="chip" style="background:#6E6A61"></div><div class="meta"><b>Muted</b><span>#6E6A61, meta, 4.87:1</span></div></div>
+      <div class="swatch"><div class="chip" style="background:#DCD5C6"></div><div class="meta"><b>Line</b><span>#DCD5C6, hairlines</span></div></div>
+      <div class="swatch"><div class="chip" style="background:#1E1C19"></div><div class="meta"><b>Code ground</b><span>#1E1C19, both themes</span></div></div>
+    </div>
+    <p class="kicker" style="margin-top:48px">Colour, dark theme (night edition, not an inversion)</p>
+    <div class="swatches">
+      <div class="swatch"><div class="chip" style="background:#191817"></div><div class="meta"><b>Ground</b><span>#191817, page ground</span></div></div>
+      <div class="swatch"><div class="chip" style="background:#221F1C"></div><div class="meta"><b>Surface</b><span>#221F1C, cards, panel</span></div></div>
+      <div class="swatch"><div class="chip" style="background:#F3EFE5"></div><div class="meta"><b>Ink</b><span>#F3EFE5, headings, 15.44:1</span></div></div>
+      <div class="swatch"><div class="chip" style="background:#D18A74"></div><div class="meta"><b>Accent, light oxblood</b><span>#D18A74, rare signal, 6.42:1</span></div></div>
+      <div class="swatch"><div class="chip" style="background:#D5CFC2"></div><div class="meta"><b>Body</b><span>#D5CFC2, body text, 11.43:1</span></div></div>
+      <div class="swatch"><div class="chip" style="background:#9C968B"></div><div class="meta"><b>Muted</b><span>#9C968B, meta, 6.04:1</span></div></div>
+      <div class="swatch"><div class="chip" style="background:#37332C"></div><div class="meta"><b>Line</b><span>#37332C, hairlines</span></div></div>
+      <div class="swatch"><div class="chip" style="background:#121110"></div><div class="meta"><b>Code ground</b><span>#121110, inset, darker</span></div></div>
+    </div>
+    <p class="note">The accent appears in exactly three places: the active nav underline, the solved state, and the rule above a handoff line. No violet, no lavender, no lime, no periwinkle, no gradient of any kind. Contrast figures are WCAG ratios computed from the hex values.</p>
+  </div>
+</section>
+
+<hr class="rule">
+
+<!-- TYPE SCALE -->
+<section class="section">
+  <div class="wrap">
+    <p class="kicker">Typography, Archivo display, Instrument Sans text, JetBrains Mono metadata</p>
+    <h2 class="handoff">Type leads. Decoration follows.</h2>
+    <div class="handoff-rule"></div>
+    <div style="margin-top:40px">
+      <div class="type-row"><span class="spec">Archivo 700, 56 to 96px, -0.03em</span><span class="t-hero">Find the flaw.</span></div>
+      <div class="type-row"><span class="spec">Archivo 700, 36 to 56px, -0.02em</span><span class="t-handoff">Selected work</span></div>
+      <div class="type-row"><span class="spec">Archivo 700, 32px, -0.02em</span><span class="t-title">PenTrix-VulnLab</span></div>
+      <div class="type-row"><span class="spec">Instrument Sans 400, 17px, 1.65</span><p class="t-body" style="margin:0">Muhammad Izaz Haider is a penetration tester and security tool builder who finds vulnerabilities, fixes them, and turns what he learns into tools and teaching that other people can use. His flagship lab, PenTrix-VulnLab, holds 201 challenges across 29 modules, and he placed first in Web, Junior division, at CSCB 2026, third overall Junior, and 26th of 806 nationally.</p></div>
+      <div class="type-row"><span class="spec">JetBrains Mono 500, 13px</span><span class="t-meta">01, PenTrix-VulnLab, 201 challenges, 29 modules, repo only</span></div>
+    </div>
+  </div>
+</section>
+
+<hr class="rule">
+
+<!-- PROJECT CARD -->
+<section class="section">
+  <div class="wrap">
+    <p class="kicker">Project index, editorial list (not a card grid)</p>
+    <h2 class="handoff">Selected work</h2>
+    <div class="handoff-rule"></div>
+    <div style="margin-top:40px">
+      <article class="project">
+        <span class="num">01</span>
+        <div>
+          <h3>PenTrix-VulnLab</h3>
+          <p class="outcome">A deliberately vulnerable lab where students learn offensive security by exploiting real vulnerability classes in a safe, local environment. 201 challenges across 29 modules.</p>
+          <p class="meta">Founder and lead developer, 2025 to present, Express and SQLite, repo only</p>
+        </div>
+        <div class="links">
+          <span class="flag">Flagship</span>
+          <p style="margin:12px 0 0"><a href="#">Read the story</a></p>
+          <p style="margin:8px 0 0"><a href="#">View on GitHub</a></p>
+        </div>
+      </article>
+    </div>
+    <p class="note">Index order follows the profile audit: PenTrix-VulnLab, PowerShell Academy, BugHunt Arsenal, APK Security Pipeline, Security-Books, then a compact archive. CSCB 2026 proof sits with its scoreboard screenshot and its caption, never as a standalone claim.</p>
+  </div>
+</section>
+
+<hr class="rule">
+
+<!-- BUTTONS AND CODE -->
+<section class="section">
+  <div class="wrap">
+    <p class="kicker">Buttons and components, one pair, 2px radius, no shadow</p>
+    <h2 class="handoff">One button pair. One card style.</h2>
+    <div class="handoff-rule"></div>
+    <div class="pair">
+      <a class="btn btn-primary" href="#">View projects</a>
+      <a class="btn btn-secondary" href="#">Contact</a>
+      <button class="theme-btn" type="button">Dark</button>
+    </div>
+    <div class="code" role="img" aria-label="Code sample: a request to the admin path, with its response status">
+      <div class="code-head"><span>challenge, request and response</span><button class="copy" type="button">Copy</button></div>
+<span class="k">GET</span> <span class="v">/admin</span> <span class="c"># the forced browsing challenge</span><br><span class="f">response</span>: <span class="n">200</span> <span class="s">OK</span><br><span class="c"># session checked, role never assumed</span><br><span class="v">flags</span>: <span class="s">generated per install at first boot</span>
+    </div>
+    <p class="note">Code is multicoloured on a dark ground in both themes: ochre keywords, sage strings, muted teal functions, clay numbers, grey comments. No purple, no pink, no neon.</p>
+  </div>
+</section>
+</main>
+
+<footer class="colophon">
+  <div class="wrap">
+    <p class="mono">Monograph, Direction A, 9 November 2026. Tokens, type, and copy from docs/04-direction-monograph.md. No Arsenal colours, no gradient, no emoji icons.</p>
+    <p style="margin:8px 0 0">Created by Muhammad Izaz Haider. Contact: mizazhaiderceh@gmail.com. Location: Sijsele-Damme, Belgium.</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var btn=document.getElementById('themeToggle');
+  function set(theme){
+    document.documentElement.setAttribute('data-theme',theme);
+    btn.textContent=(theme==='dark')?'Light':'Dark';
+    btn.setAttribute('aria-pressed',theme==='dark'?'true':'false');
+  }
+  btn.addEventListener('click',function(){
+    var cur=document.documentElement.getAttribute('data-theme');
+    set(cur==='dark'?'light':'dark');
+  });
+})();
+</script>
+</body>
+</html>

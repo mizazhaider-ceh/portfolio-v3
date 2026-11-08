@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Direction B, Field Notebook, Direction Board</title>
+<style>
+:root{
+  --paper:#F8F6F1; --paper-2:#EFECE5; --ink:#171512; --body:#262320;
+  --muted:#5F594F; --line:#D8D2C7; --signal:#24425C; --code-ground:#171512;
+  --frame:#171512;
+  --sage:#D8DFD2; --slate:#D6DEE6; --stone:#E5DCD0; --euca:#D2DAD8; --warmgrey:#DAD6CB;
+  --kw:#8FB0C7; --fn:#D8C9A3; --str:#A8C3A0; --num:#D8B48F; --var:#EDEAE3; --com:#8A8478; --op:#C9C2B4;
+}
+[data-theme="dark"]{
+  --paper:#1B1A17; --paper-2:#26241F; --ink:#EDEAE3; --body:#D6D1C7;
+  --muted:#A8A198; --line:#3A372F; --signal:#9BB9CC; --code-ground:#12110F;
+  --frame:#0E0D0B;
+  --sage:#2A2D2B; --slate:#252B31; --stone:#2E2A24; --euca:#26302C; --warmgrey:#2B2925;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{overflow-x:clip}
+body{
+  font-family:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  background:var(--frame); color:var(--body);
+  font-size:17px; line-height:1.65;
+  border:12px solid var(--frame);
+}
+.page{background:var(--paper);min-height:100vh}
+.wrap{max-width:1280px;margin:0 auto;padding:0 64px}
+.mono{font-family:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace}
+a{color:var(--signal)}
+:focus-visible{outline:2px solid var(--signal);outline-offset:2px}
+h1,h2,h3{color:var(--ink);font-weight:600;overflow-wrap:break-word;min-width:0}
+.runline{font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:12px;color:var(--muted)}
+.sec-rule{width:48px;height:3px;background:var(--ink);margin-bottom:16px}
+section{padding:64px 0;border-top:1px solid var(--line)}
+section:first-of-type{border-top:0}
+/* nav */
+.nav{position:sticky;top:0;z-index:10;background:var(--paper);border-bottom:1px solid var(--ink)}
+.nav-in{max-width:1280px;margin:0 auto;padding:0 64px;height:64px;display:flex;align-items:center;gap:32px}
+.wordmark{font-weight:600;font-size:15px;color:var(--ink);text-decoration:none;white-space:nowrap}
+.wordmark span{font-family:"IBM Plex Mono",ui-monospace,monospace;font-weight:400;font-size:12px;color:var(--muted);margin-left:8px}
+.nav-links{display:flex;gap:28px;margin-left:auto;list-style:none}
+.nav-links a{font-size:15px;font-weight:500;color:var(--ink);text-decoration:none}
+.nav-links a[aria-current="page"]{border-bottom:2px solid var(--ink);padding-bottom:2px}
+.nav-links a:hover{text-decoration:underline}
+.btn{display:inline-block;font-size:15px;font-weight:500;line-height:1;padding:14px 24px;min-height:48px;text-decoration:none;cursor:pointer;border:1px solid var(--ink);border-radius:0;background:transparent;color:var(--ink)}
+.btn-primary{background:var(--ink);color:var(--paper)}
+.btn-primary:hover{background:var(--signal);border-color:var(--signal)}
+.btn-secondary:hover{background:var(--paper-2)}
+.btn:active{transform:translateY(1px)}
+.theme-btn{font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:12px;background:transparent;border:1px solid var(--line);color:var(--muted);padding:8px 12px;cursor:pointer;border-radius:0}
+/* hero */
+.hero{display:grid;grid-template-columns:7fr 4fr;gap:32px;align-items:start;padding:64px 0 80px}
+.hero h1{font-size:clamp(44px,6vw,76px);line-height:.98;font-weight:700;letter-spacing:-.02em;margin:16px 0}
+.role{font-size:20px;font-weight:500;color:var(--body);margin-bottom:16px}
+.hero p.lead{font-size:20px;line-height:1.55;margin-bottom:16px;max-width:56ch}
+.proof{font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:13px;line-height:1.7;color:var(--body);margin-bottom:28px}
+.proof b{color:var(--ink);font-weight:500}
+.hero-actions{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:24px}
+.contact-line{font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:13px;color:var(--muted)}
+.contact-line a{margin-right:16px}
+.poster{border:1px solid var(--ink)}
+.poster-frame{aspect-ratio:4/3;background:var(--paper-2);position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.poster-frame::before{content:"";position:absolute;inset:0;background:
+  repeating-linear-gradient(0deg,transparent 0 31px,var(--line) 31px 32px)}
+.poster-frame .still{position:relative;text-align:center;padding:24px}
+.poster-frame .still .big{font-size:28px;font-weight:600;color:var(--ink);line-height:1.15}
+.poster-frame .still .sub{font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:12px;color:var(--muted);margin-top:12px}
+.poster-cap{font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:12.5px;line-height:1.6;color:var(--muted);padding:12px 0 0}
+.poster-cap b{color:var(--ink);font-weight:500}
+.pause-row{display:flex;justify-content:space-between;align-items:center;padding:10px 0 0}
+.pause-row .mono{font-size:12px;color:var(--muted)}
+/* palette */
+.swatches{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px;margin-top:32px}
+.swatch{border:1px solid var(--ink)}
+.swatch .chip{height:96px}
+.swatch .lab{padding:12px 14px;border-top:1px solid var(--ink)}
+.swatch .lab .name{font-weight:600;font-size:15px;color:var(--ink)}
+.swatch .lab .hex{font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:12.5px;color:var(--muted);margin-top:4px}
+.swatch .lab .use{font-size:13px;color:var(--muted);margin-top:4px;line-height:1.5}
+.fields{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:20px;margin-top:20px}
+.note{font-size:14px;color:var(--muted);margin-top:16px;max-width:68ch}
+/* type scale */
+.type-row{border-top:1px solid var(--line);padding:24px 0;display:grid;grid-template-columns:220px 1fr;gap:32px;align-items:baseline}
+.type-row .spec{font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:12px;color:var(--muted);line-height:1.7}
+/* project row */
+.prow{border-top:1px solid var(--ink);border-bottom:1px solid var(--ink);padding:32px 0;display:grid;grid-template-columns:80px 1fr auto;gap:32px;align-items:start;background:var(--paper)}
+.prow:hover{box-shadow:4px 4px 0 var(--ink)}
+.prow .chap{font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:12px;color:var(--muted)}
+.prow h3{font-size:28px;line-height:1.2}
+.prow .outcome{margin-top:8px;max-width:62ch}
+.prow .meta{font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:13px;line-height:1.7;color:var(--muted);margin-top:12px}
+.prow .links{font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:13px;white-space:nowrap}
+.prow .links a{display:block;margin-bottom:8px}
+.field-tab{height:8px;background:var(--sage);margin-bottom:0}
+/* code */
+.code{background:var(--code-ground);border:1px solid var(--ink);padding:20px 24px;overflow-x:auto}
+.code pre{font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:14px;line-height:1.6;color:var(--var);white-space:pre}
+.code .kw{color:var(--kw)} .code .fn{color:var(--fn)} .code .str{color:var(--str)}
+.code .num{color:var(--num)} .code .com{color:var(--com)} .code .op{color:var(--op)}
+.code-head{display:flex;justify-content:space-between;align-items:center;background:var(--code-ground);border:1px solid var(--ink);border-bottom:0;padding:10px 16px}
+.code-head .mono{font-size:12px;color:var(--com)}
+.copy-btn{font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:12px;background:transparent;border:1px solid var(--com);color:var(--var);padding:6px 10px;cursor:pointer;border-radius:0}
+/* footer */
+.footer{background:var(--frame);color:var(--paper);padding:48px 0}
+.footer .wrap{display:flex;justify-content:space-between;gap:32px;flex-wrap:wrap}
+.footer p{font-size:14px;color:var(--paper)}
+.footer .mono{font-size:12px;color:var(--paper);opacity:.75}
+@media (max-width:900px){
+  .wrap,.nav-in{padding:0 20px}
+  body{border-width:8px}
+  .hero{grid-template-columns:1fr;padding:48px 0 64px}
+  .swatches{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .fields{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .type-row{grid-template-columns:1fr;gap:8px}
+  .prow{grid-template-columns:1fr;gap:12px}
+  .prow .links a{display:inline-block;margin-right:16px}
+  .nav-links{display:none}
+  .wordmark span{display:none}
+  .nav-in .btn{display:none}
+  .nav-in{gap:16px}
+  .theme-btn{margin-left:auto}
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+<header class="nav">
+  <div class="nav-in">
+    <a class="wordmark" href="#">Muhammad Izaz Haider <span>Portfolio, 2026</span></a>
+    <ul class="nav-links">
+      <li><a href="#" aria-current="page">Projects</a></li>
+      <li><a href="#">About</a></li>
+      <li><a href="#">Expertise</a></li>
+      <li><a href="#">Research</a></li>
+    </ul>
+    <a class="btn btn-primary" href="#" style="min-height:40px;padding:10px 18px;margin-left:auto">Contact</a>
+    <button class="theme-btn" id="themeToggle" type="button" aria-pressed="false">Theme: Light</button>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <section class="hero" aria-label="Hero mock">
+    <div>
+      <p class="runline">Field notes, 2026</p>
+      <h1>Muhammad<br>Izaz Haider</h1>
+      <p class="role">Penetration Tester, AI x Offensive Security</p>
+      <p class="lead">Second-year BSc Cybersecurity student in Belgium who breaks web apps, hunts bounties, and builds the tools he wishes he had.</p>
+      <p class="proof"><b>CSCB 2026:</b> first place in Web, Junior division. Third overall Junior. 26th of 806 nationally.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#">View projects</a>
+        <a class="btn btn-secondary" href="#">Download CV</a>
+      </div>
+      <p class="contact-line"><a href="mailto:mizazhaiderceh@gmail.com">mizazhaiderceh@gmail.com</a> <a href="#">GitHub</a> <a href="#">LinkedIn</a></p>
+    </div>
+    <div>
+      <div class="poster">
+        <div class="poster-frame" role="img" aria-label="Poster frame placeholder for the hero still, a slow abstract technical visualisation graded to the palette">
+          <div class="still">
+            <p class="big">Poster frame</p>
+            <p class="sub">Graded still, 8 to 15 second loop<br>Motion plays on desktop only</p>
+          </div>
+        </div>
+      </div>
+      <p class="poster-cap"><b>Fig. 00.</b> What is shown: the hero poster frame, the still that carries the hero alone. What happened: the headline, role, and actions paint with this frame before any video loads.</p>
+      <div class="pause-row">
+        <span class="mono">Video: paused, muted, loop</span>
+        <button class="theme-btn" type="button">Pause motion</button>
+      </div>
+    </div>
+  </section>
+
+  <section aria-label="Colour palette">
+    <p class="runline">01, Colour</p>
+    <div class="sec-rule"></div>
+    <h2>Palette, light default with a deliberate dark theme</h2>
+    <p style="margin-top:12px;max-width:68ch">Monochromatic base: ink, paper, and grey, plus one deep ink blue signal. No gradients, no violet, no lavender, no lime. Toggle the theme button in the navigation to see the dark design.</p>
+    <div class="swatches">
+      <div class="swatch"><div class="chip" style="background:#F8F6F1"></div><div class="lab"><p class="name">Paper</p><p class="hex">#F8F6F1</p><p class="use">Page ground, light. Body text on it 14.47:1.</p></div></div>
+      <div class="swatch"><div class="chip" style="background:#171512"></div><div class="lab"><p class="name">Ink</p><p class="hex">#171512</p><p class="use">Headings, frame, rules. On paper 16.87:1.</p></div></div>
+      <div class="swatch"><div class="chip" style="background:#5F594F"></div><div class="lab"><p class="name">Muted</p><p class="hex">#5F594F</p><p class="use">Labels and captions. On paper 6.42:1.</p></div></div>
+      <div class="swatch"><div class="chip" style="background:#24425C"></div><div class="lab"><p class="name">Signal</p><p class="hex">#24425C</p><p class="use">Links and focus. On paper 9.68:1.</p></div></div>
+      <div class="swatch"><div class="chip" style="background:#1B1A17"></div><div class="lab"><p class="name">Paper, dark</p><p class="hex">#1B1A17</p><p class="use">Page ground, dark. Ink text on it 14.48:1.</p></div></div>
+      <div class="swatch"><div class="chip" style="background:#EDEAE3"></div><div class="lab"><p class="name">Ink, dark</p><p class="hex">#EDEAE3</p><p class="use">Headings, dark. On dark paper 14.48:1.</p></div></div>
+      <div class="swatch"><div class="chip" style="background:#A8A198"></div><div class="lab"><p class="name">Muted, dark</p><p class="hex">#A8A198</p><p class="use">Labels, dark. On dark paper 6.81:1.</p></div></div>
+      <div class="swatch"><div class="chip" style="background:#9BB9CC"></div><div class="lab"><p class="name">Signal, dark</p><p class="hex">#9BB9CC</p><p class="use">Links, dark. On dark paper 8.46:1.</p></div></div>
+    </div>
+    <h3 style="margin-top:48px">Per project muted colour fields</h3>
+    <p class="note">One flat field per featured project, used only behind that project's chapter opening and on its index card top edge. Archive projects get no field.</p>
+    <div class="fields">
+      <div class="swatch"><div class="chip" style="background:var(--sage);height:72px"></div><div class="lab"><p class="name">PenTrix-VulnLab</p><p class="hex">#D8DFD2 sage</p><p class="use">Ink on field 13.37:1.</p></div></div>
+      <div class="swatch"><div class="chip" style="background:var(--slate);height:72px"></div><div class="lab"><p class="name">PowerShell Academy</p><p class="hex">#D6DEE6 slate</p><p class="use">Ink on field 13.41:1.</p></div></div>
+      <div class="swatch"><div class="chip" style="background:var(--stone);height:72px"></div><div class="lab"><p class="name">BugHunt Arsenal</p><p class="hex">#E5DCD0 stone</p><p class="use">Ink on field 13.43:1.</p></div></div>
+      <div class="swatch"><div class="chip" style="background:var(--euca);height:72px"></div><div class="lab"><p class="name">APK Security Pipeline</p><p class="hex">#D2DAD8 eucalyptus</p><p class="use">Ink on field 12.81:1.</p></div></div>
+      <div class="swatch"><div class="chip" style="background:var(--warmgrey);height:72px"></div><div class="lab"><p class="name">AgentArsenal</p><p class="hex">#DAD6CB warm grey</p><p class="use">Ink on field 12.55:1.</p></div></div>
+    </div>
+  </section>
+
+  <section aria-label="Type scale">
+    <p class="runline">02, Typography</p>
+    <div class="sec-rule"></div>
+    <h2>Type scale, IBM Plex Sans and IBM Plex Mono</h2>
+    <p style="margin-top:12px;max-width:68ch">One grotesk for display and body, one mono face for metadata, labels, and code. Both self hosted, both open licensed.</p>
+    <div style="margin-top:24px">
+      <div class="type-row"><p class="spec">Hero, 76px / 0.98<br>Plex Sans 700</p><p style="font-size:clamp(40px,5vw,64px);line-height:1;font-weight:700;color:var(--ink);letter-spacing:-.02em">Muhammad Izaz Haider</p></div>
+      <div class="type-row"><p class="spec">Case study outcome, 60px / 1.02<br>Plex Sans 700</p><p style="font-size:clamp(32px,4vw,48px);line-height:1.05;font-weight:700;color:var(--ink)">201 challenges across 29 modules, built as a teaching lab.</p></div>
+      <div class="type-row"><p class="spec">H2, 32px / 1.15<br>Plex Sans 600</p><h3 style="font-size:32px;line-height:1.15">PenTrix-VulnLab, the flagship</h3></div>
+      <div class="type-row"><p class="spec">Body, 17px / 1.65<br>Plex Sans 400</p><p style="max-width:68ch">PenTrix-VulnLab is a deliberately vulnerable learning application. Students learn offensive security by exploiting real vulnerability classes in a safe, local environment, then they learn the fix.</p></div>
+      <div class="type-row"><p class="spec">Mono label, 12px / 1.5<br>Plex Mono 500</p><p class="mono" style="font-size:12px;color:var(--muted)">Chapter 01, PenTrix-VulnLab, repo only</p></div>
+      <div class="type-row"><p class="spec">Figure caption, 12.5px / 1.6<br>Plex Mono 400</p><p class="mono" style="font-size:12.5px;color:var(--muted)"><b style="color:var(--ink);font-weight:500">Fig. 01.</b> What is shown: the lab running locally. What happened: the challenge list loaded with all 29 modules visible.</p></div>
+    </div>
+  </section>
+
+  <section aria-label="Project index mock">
+    <p class="runline">03, Project index</p>
+    <div class="sec-rule"></div>
+    <h2>One project row</h2>
+    <p style="margin-top:12px;max-width:68ch">Featured projects are full width rows in audit order, separated by hairlines. Hover shows a 4px solid ink offset shadow on desktop only.</p>
+    <div style="margin-top:32px">
+      <div class="field-tab" aria-hidden="true"></div>
+      <article class="prow">
+        <p class="chap">Chapter 01</p>
+        <div>
+          <h3>PenTrix-VulnLab</h3>
+          <p class="outcome">A deliberately vulnerable learning lab with 201 challenges across 29 modules, built as a teaching vehicle for web penetration testing.</p>
+          <p class="meta">Role: founder, lead developer<br>Stack: Express, SQLite<br>Status: repo only, never a live deployment</p>
+        </div>
+        <div class="links"><a href="#">Read the story</a><a href="#">Repo</a></div>
+      </article>
+    </div>
+  </section>
+
+  <section aria-label="Buttons and code">
+    <p class="runline">04, Buttons and code</p>
+    <div class="sec-rule"></div>
+    <h2>One button pair, one code strip</h2>
+    <p style="margin-top:12px;max-width:68ch">Primary is solid ink. Secondary is a 1px ink outline. Both are square, both press on click, both show a 2px signal focus ring.</p>
+    <div class="hero-actions" style="margin-top:32px">
+      <a class="btn btn-primary" href="#">View projects</a>
+      <a class="btn btn-secondary" href="#">Download CV</a>
+    </div>
+    <div class="code-head"><span class="mono">flag check, sample output</span><button class="copy-btn" type="button">Copy</button></div>
+    <div class="code"><pre><span class="com"># flags are generated per install</span>
+<span class="kw">const</span> <span class="var">flag</span> <span class="op">=</span> <span class="fn">makeFlag</span><span class="op">(</span><span class="str">"browse"</span><span class="op">);</span>
+<span class="kw">if</span> <span class="op">(</span><span class="var">solved</span><span class="op">)</span> <span class="op">{</span>
+  <span class="fn">log</span><span class="op">(</span><span class="str">"solved"</span><span class="op">,</span> <span class="var">flag</span><span class="op">.</span><span class="var">id</span><span class="op">);</span>
+<span class="op">}</span> <span class="com">// count: 1 of 201</span></pre></div>
+    <p class="note">Code ground is ink in both themes. Keywords are steel blue, strings are muted sage, numbers are muted clay, comments are grey. No purple, no pink, no neon.</p>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <p>Created by Muhammad Izaz Haider</p>
+    <p class="mono">Sijsele-Damme, Belgium, mizazhaiderceh@gmail.com</p>
+  </div>
+</footer>
+
+</div>
+<script>
+(function(){
+  var btn=document.getElementById("themeToggle");
+  if(!btn) return;
+  btn.addEventListener("click",function(){
+    var html=document.documentElement;
+    var next=html.getAttribute("data-theme")==="dark"?"light":"dark";
+    html.setAttribute("data-theme",next);
+    btn.textContent="Theme: "+(next==="dark"?"Dark":"Light");
+    btn.setAttribute("aria-pressed",next==="dark"?"true":"false");
+  });
+})();
+</script>
+</body>
+</html>
