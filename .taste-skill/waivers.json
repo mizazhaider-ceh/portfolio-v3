@@ -1,0 +1,27 @@
+[
+  {
+    "check": "violet-lavender",
+    "target": "Arsenal brand colours (periwinkle #5A45D6, lilac #EEE8FF, marker #C7B8F5) on every page",
+    "reason": "User explicit choice in the v2 brief: FULL MAX BEST Arsenal theme, NOT Rational Theme. Flat brand colours only, no gradients or glows."
+  },
+  {
+    "check": "font-list",
+    "target": "Sora headings and Inter body",
+    "reason": "Arsenal brand type. The landing-page-design font rule is waived with this reason stated; Orbitron and Fira Code for body are still not used."
+  },
+  {
+    "check": "hero-gradient-text",
+    "target": "Flat ink hero heading with a lavender marker span and lime underline",
+    "reason": "Arsenal forbids gradient text. Flat marker plus lime underline is the Arsenal spec Section 4 treatment."
+  },
+  {
+    "check": "eyebrow-tracked-capitals",
+    "target": "Arsenal lilac pill kicker, uppercase with 0.06em tracking, once per page",
+    "reason": "The kicker is the Arsenal spec's own component, not a section eyebrow. Section labels stay sentence case and untracked."
+  },
+  {
+    "check": "scroll-reveal",
+    "target": "Tagline reveal (B11): words activate one at a time on scroll",
+    "reason": "Landing-page-design B11 mandatory tagline reveal. Colour only, via IntersectionObserver, full colour under reduced motion."
+  }
+]

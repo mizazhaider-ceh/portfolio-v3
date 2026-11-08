@@ -1,0 +1,40 @@
+ROUTE /privacy theme=light width=390
+TITLE: Privacy | Muhammad Izaz Haider
+H1: Privacy
+OVERFLOW: 0px
+CONSOLE ERRORS: []
+BAD IMGS: []
+
+Skip to content
+IH
+Izaz Haider
+Light
+Dark
+
+LEGAL
+
+Privacy
+
+This site collects no data.
+
+This site sets no analytics cookies and stores nothing about its visitors. The theme choice (light or dark) is saved in your own browser only, so the site remembers it on your next visit.
+
+Messages sent through the contact form are handled by Formspree and delivered to Muhammad Izaz Haider by email. Nothing else is sent anywhere.
+
+Copyright 2026 Muhammad Izaz Haider
+
+Created by Muhammad Izaz Haider
+
+CSCB and YesWeHack images are my own screenshots. This site collects no data. Messages sent through the contact form are handled by Formspree.
+
+Home
+About
+Projects
+Experience
+Skills
+Certifications
+Proof
+Contact
+Privacy
+Terms
+Back to top

@@ -1,0 +1,70 @@
+ROUTE /projects/bughunt-arsenal theme=light width=390
+TITLE: BugHunt Arsenal | Muhammad Izaz Haider
+H1: BugHunt Arsenal
+OVERFLOW: 0px
+CONSOLE ERRORS: []
+BAD IMGS: []
+
+Skip to content
+IH
+Izaz Haider
+Light
+Dark
+
+PROJECT, TOOLING
+
+BugHunt Arsenal
+
+Free browser based web pentesting and security research platform: 800+ payloads across 21 categories, 150+ tools, 60+ CTF tools, 50+ free labs, 14+ modules. No install, no sign up.
+
+Back to projects
+
+TYPE
+Browser app
+STATUS
+Live, free, no paywalls
+PAYLOADS
+800+ across 21 categories
+LINK
+Live site
+
+BugHunt Arsenal is the tool a hunter opens every day: payloads, a Chain Builder, a Metadata Analyzer, an Encoder and Decoder, an HTTP Request Builder, and the OWASP Top 10 methodology, all in the browser.
+
+Payload browser
+
+Pick a category to see example payloads. Nothing here is executed.
+
+Cross site scripting
+SQL injection
+Server side request forgery
+Path traversal
+Command injection
+XML external entity
+<script>alert(1)</script>
+Copy
+<img src=x onerror=alert(1)>
+Copy
+"><svg onload=alert(1)>
+Copy
+Links
+
+Visit the live site
+Back to projects
+
+Copyright 2026 Muhammad Izaz Haider
+
+Created by Muhammad Izaz Haider
+
+CSCB and YesWeHack images are my own screenshots. This site collects no data. Messages sent through the contact form are handled by Formspree.
+
+Home
+About
+Projects
+Experience
+Skills
+Certifications
+Proof
+Contact
+Privacy
+Terms
+Back to top

@@ -1,0 +1,72 @@
+ROUTE /projects/powershell-academy theme=light width=390
+TITLE: PowerShell Academy | Muhammad Izaz Haider
+H1: PowerShell Academy
+OVERFLOW: 0px
+CONSOLE ERRORS: []
+BAD IMGS: []
+
+Skip to content
+IH
+Izaz Haider
+Light
+Dark
+
+PROJECT, TEACHING
+
+PowerShell Academy
+
+Free PowerShell learning with no account: 18 chapters, 61 lessons, 102 commands, and 48 glossary terms across 6 stages, from foundations to security projects.
+
+Back to projects
+
+STACK
+TypeScript, Next.js, Vercel
+STATUS
+Live, free, no account
+CONTENT
+18 chapters, 61 lessons, 102 commands
+LINK
+Live site
+
+PowerShell Academy teaches PowerShell the way it is actually learned: one verb-noun command at a time, with the help read before the command is run. Created by Muhammad Izaz Haider.
+
+The six stages
+
+Pick a stage to see its chapters and lessons.
+
+Foundations
+PowerShell Basics
+Core Skills
+Admin Power
+Security Power
+Projects
+
+Foundations
+
+1 chapter, 5 lessons
+
+Why PowerShell, and how to read a command.
+
+Links
+
+Visit the live site
+View the repo
+Back to projects
+
+Copyright 2026 Muhammad Izaz Haider
+
+Created by Muhammad Izaz Haider
+
+CSCB and YesWeHack images are my own screenshots. This site collects no data. Messages sent through the contact form are handled by Formspree.
+
+Home
+About
+Projects
+Experience
+Skills
+Certifications
+Proof
+Contact
+Privacy
+Terms
+Back to top

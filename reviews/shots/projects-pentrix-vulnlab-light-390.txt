@@ -1,0 +1,96 @@
+ROUTE /projects/pentrix-vulnlab theme=light width=390
+TITLE: PenTrix-VulnLab | Muhammad Izaz Haider
+H1: PenTrix-VulnLab
+OVERFLOW: 0px
+CONSOLE ERRORS: []
+BAD IMGS: []
+
+Skip to content
+IH
+Izaz Haider
+Light
+Dark
+
+PROJECT, THE PENTRIX FLAGSHIP
+
+PenTrix-VulnLab
+
+Deliberately vulnerable web app for learning web penetration testing: 201 challenges across 29 modules, 3 kill chain scenarios, and 3 career paths with verifiable certificates.
+
+Back to projects
+
+STACK
+Express, SQLite
+STATUS
+Open source, repo only
+CHALLENGES
+201 across 29 modules
+LINK
+GitHub
+
+PenTrix-VulnLab is the flagship of The PenTrix: a lab where a student learns web penetration testing by breaking a real app, one challenge at a time. Each module groups challenges by vulnerability class, each kill chain scenario strings them into a full attack path, and each career path ends with a verifiable certificate.
+
+HOW FLAGS WORK
+
+Flags are randomly generated per install at first boot on the student's machine. No flag literal exists in any tracked file. Only genuine exploits earn flags.
+
+The challenge, solved step by step
+
+Pick a step. The fourth step shows the fix, which is what makes this a teaching page, not a walkthrough.
+
+PenTrix-VulnLab, challenge 07
+
+Order 1042 belongs to another user. Change one value and read it.
+
+Solved
+Read the request
+Spot the flaw
+Prove it
+Fix it
+GET /api/orders/1042 HTTP/1.1
+Host: lab.pentrix.local
+
+Order 1042 is requested. Nothing in the request says who is asking.
+
+SQL injection
+Injection
+Cross site scripting
+Injection
+Insecure direct object reference
+Access control
+
+201 challenges, 29 modules, 3 kill chain scenarios
+
+Architecture
+
+The student's browser, the Express app, and the SQLite database. Deliberately vulnerable by design, and only on the student's own machine.
+
+PenTrix-VulnLab architecture: browser, Express app, SQLite database, 29 challenge modules, 3 kill chain scenarios, and 3 career paths with verifiable certificates. Open the diagram in a new tab
+What this project proves
+201 challenges across 29 modules, grouped by vulnerability class
+3 kill chain scenarios that string single flaws into a full attack path
+3 career paths with verifiable certificates
+Built with Express and SQLite, and used to teach the method, not just the result
+
+View on GitHub
+Back to projects
+
+PenTrix-VulnLab must not be deployed publicly. The repository is the only link.
+
+Copyright 2026 Muhammad Izaz Haider
+
+Created by Muhammad Izaz Haider
+
+CSCB and YesWeHack images are my own screenshots. This site collects no data. Messages sent through the contact form are handled by Formspree.
+
+Home
+About
+Projects
+Experience
+Skills
+Certifications
+Proof
+Contact
+Privacy
+Terms
+Back to top

@@ -1,0 +1,285 @@
+ROUTE /projects theme=light width=1440
+TITLE: Projects | Muhammad Izaz Haider
+H1: Security projects
+OVERFLOW: 0px
+CONSOLE ERRORS: []
+BAD IMGS: []
+
+Skip to content
+IH
+Muhammad Izaz Haider
+Home
+About
+Projects
+Experience
+Skills
+Certifications
+Proof
+Contact
+Light
+Dark
+Get in touch
+
+PROJECTS
+
+Security projects
+
+The work that shows the skill. Flagship first, then the rest. Every project ships with a real artefact.
+
+All
+Offensive security
+AI security
+DevSecOps
+Education
+Tools
+Featured
+PenTrix-VulnLab
+Flagship
+GET /api/orders/1042 HTTP/1.1
+Host: lab.pentrix.local
+
+Deliberately vulnerable web app for learning web penetration testing: 201 challenges across 29 modules, 3 kill chain scenarios, and 3 career paths with verifiable certificates.
+
+Express
+SQLite
+Web pentesting
+Read the story
+View on GitHub
+PowerShell Academy
+Get-Command *-Process
+# verb-noun: find the cmdlet, then read its help
+
+Free PowerShell learning with no account: 18 chapters, 61 lessons, 102 commands, and 48 glossary terms across 6 stages, from foundations to security projects.
+
+TypeScript
+Next.js
+Vercel
+Read the story
+Visit live site
+BugHunt Arsenal
+<script>alert(1)</script>
+# one of 800+ payloads, 21 categories
+
+Free browser based web pentesting and security research platform: 800+ payloads across 21 categories, 150+ tools, 60+ CTF tools, 50+ free labs, 14+ modules. No install, no sign up.
+
+Web pentesting
+Payloads
+Browser app
+Read the story
+Visit live site
+Ai-Terminal-X
+"list the largest files"
+# plain language in, a command out
+
+AI powered Linux terminal assistant: plain language to executable commands through Google Gemini, with safe execution checks.
+
+Python
+Gemini AI
+CLI
+Read the story
+View on GitHub
+APK Security Pipeline
+# static rules, Frida traces
+# HTML and JSON reports
+
+One command security checks an Android app and explains every step: static manifest and code rules, Frida dynamic traces, scoring, HTML and JSON reports.
+
+Python
+Frida
+Android
+Read the story
+View on GitHub
+AgentArsenal
+# 353 skills, 29 domains
+# one-command install
+
+Unified skills repository: 353 skills across 29 domains, per skill versioning, automated testing, quality scoring, and a one command installer.
+
+Skills
+Automation
+CLI
+Read the story
+View on GitHub
+More work
+VulnNotes
+# Flask API, Frida scripts
+# Mobile Security course project
+
+Deliberately vulnerable notes app, built as a Mobile Security course project worth 70% of the module. Group project with Muhammad Muzammil Khan; Izaz leads the build.
+
+Flask
+Frida
+Course project
+
+Course project, no public repo
+
+Security-Books
+# 160+ books, guides, resources
+# the cybersecurity library
+
+The cybersecurity library: 160+ curated books, guides, and resources. His most starred repo.
+
+Curated
+Books
+Resources
+View on GitHub
+Intel-Scan
+# DNS, WHOIS, subdomain enumeration
+# CLI and web GUI
+
+OSINT framework with a CLI and a web GUI: DNS, WHOIS, and subdomain enumeration.
+
+OSINT
+Python
+Web GUI
+View on GitHub
+X-Recon
+# AI recon toolkit
+# web dashboard, live terminal
+
+AI powered reconnaissance toolkit with a web dashboard and a real time terminal.
+
+Recon
+AI
+Dashboard
+View on GitHub
+Prime-PenTrix
+# hybrid retrieval, LLM streaming
+# spaced repetition quizzes
+
+AI cybersecurity learning platform: hybrid retrieval, multi provider LLM streaming, spaced repetition quizzes, and 24+ tools.
+
+Next.js
+FastAPI
+RAG
+View on GitHub
+Sub-Hunter
+# takeover detection, VHost discovery
+# JS parsing, cloud detection
+
+Subdomain enumeration: takeover detection, VHost discovery, JS parsing, and cloud detection.
+
+Recon
+Subdomains
+Python
+View on GitHub
+PortBlitz
+# async port scan, CVE correlation
+# 500+ concurrent connections
+
+Async port scanner with CVE correlation and an interactive terminal UI, 500+ concurrent connections.
+
+Port scanning
+CVE
+TUI
+View on GitHub
+90DaysOfCyberSecurity
+# 90 days, 1-2 hours a day
+# zero to job-ready fundamentals
+
+A 90-day, hands-on cybersecurity study plan: from zero to job-ready fundamentals, 1-2 hours a day, every tool free.
+
+Study plan
+Roadmap
+Beginners
+View on GitHub
+The PenTrix 30 Days
+# 30 days of practical pentesting
+# tutorials, tools, write ups
+
+A comprehensive cybersecurity initiative teaching practical pentesting, day by day.
+
+Pentesting
+Training
+The PenTrix
+View on GitHub
+pentrix-platform
+# 192 verified resources
+# sequenced roadmaps
+
+The PenTrix learning platform (v1): 192 verified cybersecurity resources, sequenced roadmaps.
+
+Next.js
+TypeScript
+Learning
+View on GitHub
+Ai-CMD-X
+"open the calculator"
+# plain English in, a command out
+
+Plain English to real Windows commands.
+
+Python
+Windows
+AI
+View on GitHub
+icarus-x
+# recon, exploitation, post-exploitation
+# one unified interface
+
+Modular AI-powered penetration testing framework: recon, exploitation, and post-exploitation in one interface.
+
+Python
+Pentesting
+AI
+View on GitHub
+KeyGen-X
+# secure key generation
+# cross-platform
+
+Secure key generation and validation, cross-platform (C++).
+
+C++
+Python
+Crypto
+View on GitHub
+active-automation
+# Bash-powered Nmap automation
+# active recon
+
+Bash-powered Nmap automation for active recon, customizable scans.
+
+Bash
+Nmap
+Recon
+View on GitHub
+passive-automation
+# Bash-powered Nmap automation
+# passive recon
+
+Bash-powered Nmap automation for passive recon, v3.1. His first Bash scripting project.
+
+Bash
+Nmap
+Recon
+View on GitHub
+Sentinel-Copilot-S2
+# hybrid retrieval, 46 modular files
+# 24+ SecOps tools
+
+AI SecOps copilot built from scratch: hybrid retrieval, 46 modular files, and 24+ tools.
+
+SecOps
+AI
+RAG
+View on GitHub
+
+View all projects on GitHub
+
+Copyright 2026 Muhammad Izaz Haider
+
+Created by Muhammad Izaz Haider
+
+CSCB and YesWeHack images are my own screenshots. This site collects no data. Messages sent through the contact form are handled by Formspree.
+
+Home
+About
+Projects
+Experience
+Skills
+Certifications
+Proof
+Contact
+Privacy
+Terms
+Back to top

@@ -1,0 +1,105 @@
+HERO 1280x800 /: h1Bottom=468, btnBottom=64 of 800 -> VISIBLE
+HERO 1280x800 /projects/pentrix-vulnlab: h1Bottom=251, btnBottom=64 of 800 -> VISIBLE
+OK light 1440x900 / | h1="Muhammad Izaz Haider" | overflow=0 | consoleErrors=0 | badImgs= | iframes=
+OK light 1024x900 / | h1="Muhammad Izaz Haider" | overflow=0 | consoleErrors=0 | badImgs= | iframes=
+FAIL light 768x844 / | h1="Muhammad Izaz Haider" | overflow=0 | consoleErrors=0 | badImgs=/images/profile.png | iframes=
+FAIL light 390x844 / | h1="Muhammad Izaz Haider" | overflow=0 | consoleErrors=0 | badImgs=/images/profile.png | iframes=
+OK light 1440x900 /about | h1="I break things for a living" | overflow=0 | consoleErrors=0 | badImgs= | iframes=
+OK light 1024x900 /about | h1="I break things for a living" | overflow=0 | consoleErrors=0 | badImgs= | iframes=
+OK light 768x844 /about | h1="I break things for a living" | overflow=0 | consoleErrors=0 | badImgs= | iframes=
+OK light 390x844 /about | h1="I break things for a living" | overflow=0 | consoleErrors=0 | badImgs= | iframes=
+OK light 1440x900 /projects | h1="Security projects" | overflow=0 | consoleErrors=0 | badImgs= | iframes=
+OK light 1024x900 /projects | h1="Security projects" | overflow=0 | consoleErrors=0 | badImgs= | iframes=
+OK light 768x844 /projects | h1="Security projects" | overflow=0 | consoleErrors=0 | badImgs= | iframes=
+OK light 390x844 /projects | h1="Security projects" | overflow=0 | consoleErrors=0 | badImgs= | iframes=
+OK light 1440x900 /projects/pentrix-vulnlab | h1="PenTrix-VulnLab" | overflow=0 | consoleErrors=0 | badImgs= | iframes=/diagrams/pentrix-architecture.html:True
+OK light 1024x900 /projects/pentrix-vulnlab | h1="PenTrix-VulnLab" | overflow=0 | consoleErrors=0 | badImgs= | iframes=/diagrams/pentrix-architecture.html:True
+OK light 768x844 /projects/pentrix-vulnlab | h1="PenTrix-VulnLab" | overflow=0 | consoleErrors=0 | badImgs= | iframes=/diagrams/pentrix-architecture.html:True
+OK light 390x844 /projects/pentrix-vulnlab | h1="PenTrix-VulnLab" | overflow=0 | consoleErrors=0 | badImgs= | iframes=/diagrams/pentrix-architecture.html:True
+OK light 1440x900 /projects/powershell-academy | h1="PowerShell Academy" | overflow=0 | consoleErrors=0 | badImgs= | iframes=
+OK light 1024x900 /projects/powershell-academy | h1="PowerShell Academy" | overflow=0 | consoleErrors=0 | badImgs= | iframes=
+OK light 768x844 /projects/powershell-academy | h1="PowerShell Academy" | overflow=0 | consoleErrors=0 | badImgs= | iframes=
+OK light 390x844 /projects/powershell-academy | h1="PowerShell Academy" | overflow=0 | consoleErrors=0 | badImgs= | iframes=
+OK light 1440x900 /projects/bughunt-arsenal | h1="BugHunt Arsenal" | overflow=0 | consoleErrors=0 | badImgs= | iframes=
+OK light 1024x900 /projects/bughunt-arsenal | h1="BugHunt Arsenal" | overflow=0 | consoleErrors=0 | badImgs= | iframes=
+OK light 768x844 /projects/bughunt-arsenal | h1="BugHunt Arsenal" | overflow=0 | consoleErrors=0 | badImgs= | iframes=
+OK light 390x844 /projects/bughunt-arsenal | h1="BugHunt Arsenal" | overflow=0 | consoleErrors=0 | badImgs= | iframes=
+FAIL light 1440x900 /projects/apk-security-pipeline | h1="APK Security Pipeline" | overflow=0 | consoleErrors=0 | badImgs=/images/apk-report-preview.png | iframes=/diagrams/apk-pipeline.html:True
+FAIL light 1024x900 /projects/apk-security-pipeline | h1="APK Security Pipeline" | overflow=0 | consoleErrors=0 | badImgs=/images/apk-report-preview.png | iframes=/diagrams/apk-pipeline.html:True
+FAIL light 768x844 /projects/apk-security-pipeline | h1="APK Security Pipeline" | overflow=0 | consoleErrors=0 | badImgs=/images/apk-report-preview.png | iframes=/diagrams/apk-pipeline.html:True
+FAIL light 390x844 /projects/apk-security-pipeline | h1="APK Security Pipeline" | overflow=0 | consoleErrors=0 | badImgs=/images/apk-report-preview.png | iframes=/diagrams/apk-pipeline.html:True
+OK light 1440x900 /projects/agentarsenal | h1="AgentArsenal" | overflow=0 | consoleErrors=0 | badImgs= | iframes=/diagrams/skills-tree.html:True
+OK light 1024x900 /projects/agentarsenal | h1="AgentArsenal" | overflow=0 | consoleErrors=0 | badImgs= | iframes=/diagrams/skills-tree.html:True
+OK light 768x844 /projects/agentarsenal | h1="AgentArsenal" | overflow=0 | consoleErrors=0 | badImgs= | iframes=/diagrams/skills-tree.html:True
+OK light 390x844 /projects/agentarsenal | h1="AgentArsenal" | overflow=0 | consoleErrors=0 | badImgs= | iframes=/diagrams/skills-tree.html:True
+OK light 1440x900 /projects/ai-terminal-x | h1="Ai-Terminal-X" | overflow=0 | consoleErrors=0 | badImgs= | iframes=
+OK light 1024x900 /projects/ai-terminal-x | h1="Ai-Terminal-X" | overflow=0 | consoleErrors=0 | badImgs= | iframes=
+OK light 768x844 /projects/ai-terminal-x | h1="Ai-Terminal-X" | overflow=0 | consoleErrors=0 | badImgs= | iframes=
+OK light 390x844 /projects/ai-terminal-x | h1="Ai-Terminal-X" | overflow=0 | consoleErrors=0 | badImgs= | iframes=
+OK light 1440x900 /experience | h1="Security experience" | overflow=0 | consoleErrors=0 | badImgs= | iframes=
+OK light 1024x900 /experience | h1="Security experience" | overflow=0 | consoleErrors=0 | badImgs= | iframes=
+OK light 768x844 /experience | h1="Security experience" | overflow=0 | consoleErrors=0 | badImgs= | iframes=
+OK light 390x844 /experience | h1="Security experience" | overflow=0 | consoleErrors=0 | badImgs= | iframes=
+OK light 1440x900 /skills | h1="Security skills" | overflow=0 | consoleErrors=0 | badImgs= | iframes=/diagrams/skills-tree.html:True
+OK light 1024x900 /skills | h1="Security skills" | overflow=0 | consoleErrors=0 | badImgs= | iframes=/diagrams/skills-tree.html:True
+OK light 768x844 /skills | h1="Security skills" | overflow=0 | consoleErrors=0 | badImgs= | iframes=/diagrams/skills-tree.html:True
+OK light 390x844 /skills | h1="Security skills" | overflow=0 | consoleErrors=0 | badImgs= | iframes=/diagrams/skills-tree.html:True
+OK light 1440x900 /certifications | h1="Security certifications" | overflow=0 | consoleErrors=0 | badImgs= | iframes=
+OK light 1024x900 /certifications | h1="Security certifications" | overflow=0 | consoleErrors=0 | badImgs= | iframes=
+OK light 768x844 /certifications | h1="Security certifications" | overflow=0 | consoleErrors=0 | badImgs= | iframes=
+OK light 390x844 /certifications | h1="Security certifications" | overflow=0 | consoleErrors=0 | badImgs= | iframes=
+FAIL light 1440x900 /proof | h1="Talk is cheap. Here is the proof." | overflow=0 | consoleErrors=0 | badImgs=/images/cscb-rankings.png,/images/cscb-junior-top3.png,/images/yeswehack-swag.png,/images/yeswehack-email.png | iframes=
+FAIL light 1024x900 /proof | h1="Talk is cheap. Here is the proof." | overflow=0 | consoleErrors=0 | badImgs=/images/cscb-rankings.png,/images/cscb-junior-top3.png,/images/yeswehack-swag.png,/images/yeswehack-email.png | iframes=
+FAIL light 768x844 /proof | h1="Talk is cheap. Here is the proof." | overflow=0 | consoleErrors=0 | badImgs=/images/cscb-rankings.png,/images/cscb-junior-top3.png,/images/yeswehack-swag.png,/images/yeswehack-email.png | iframes=
+FAIL light 390x844 /proof | h1="Talk is cheap. Here is the proof." | overflow=0 | consoleErrors=0 | badImgs=/images/cscb-rankings.png,/images/cscb-junior-top3.png,/images/yeswehack-swag.png,/images/yeswehack-email.png | iframes=
+OK light 1440x900 /contact | h1="Get in touch" | overflow=0 | consoleErrors=0 | badImgs= | iframes=
+OK light 1024x900 /contact | h1="Get in touch" | overflow=0 | consoleErrors=0 | badImgs= | iframes=
+OK light 768x844 /contact | h1="Get in touch" | overflow=0 | consoleErrors=0 | badImgs= | iframes=
+OK light 390x844 /contact | h1="Get in touch" | overflow=0 | consoleErrors=0 | badImgs= | iframes=
+OK light 1440x900 /no-such-page | h1="This page does not exist" | overflow=0 | consoleErrors=0 | badImgs= | iframes=
+OK light 1024x900 /no-such-page | h1="This page does not exist" | overflow=0 | consoleErrors=0 | badImgs= | iframes=
+OK light 768x844 /no-such-page | h1="This page does not exist" | overflow=0 | consoleErrors=0 | badImgs= | iframes=
+OK light 390x844 /no-such-page | h1="This page does not exist" | overflow=0 | consoleErrors=0 | badImgs= | iframes=
+OK light 1440x900 /privacy | h1="Privacy" | overflow=0 | consoleErrors=0 | badImgs= | iframes=
+OK light 1024x900 /privacy | h1="Privacy" | overflow=0 | consoleErrors=0 | badImgs= | iframes=
+OK light 768x844 /privacy | h1="Privacy" | overflow=0 | consoleErrors=0 | badImgs= | iframes=
+OK light 390x844 /privacy | h1="Privacy" | overflow=0 | consoleErrors=0 | badImgs= | iframes=
+OK light 1440x900 /terms | h1="Terms" | overflow=0 | consoleErrors=0 | badImgs= | iframes=
+OK light 1024x900 /terms | h1="Terms" | overflow=0 | consoleErrors=0 | badImgs= | iframes=
+OK light 768x844 /terms | h1="Terms" | overflow=0 | consoleErrors=0 | badImgs= | iframes=
+OK light 390x844 /terms | h1="Terms" | overflow=0 | consoleErrors=0 | badImgs= | iframes=
+OK dark 1440x900 / | h1="Muhammad Izaz Haider" | overflow=0 | consoleErrors=0 | badImgs= | iframes=
+FAIL dark 390x844 / | h1="Muhammad Izaz Haider" | overflow=0 | consoleErrors=0 | badImgs=/images/profile.png | iframes=
+OK dark 1440x900 /about | h1="I break things for a living" | overflow=0 | consoleErrors=0 | badImgs= | iframes=
+OK dark 390x844 /about | h1="I break things for a living" | overflow=0 | consoleErrors=0 | badImgs= | iframes=
+OK dark 1440x900 /projects | h1="Security projects" | overflow=0 | consoleErrors=0 | badImgs= | iframes=
+OK dark 390x844 /projects | h1="Security projects" | overflow=0 | consoleErrors=0 | badImgs= | iframes=
+OK dark 1440x900 /projects/pentrix-vulnlab | h1="PenTrix-VulnLab" | overflow=0 | consoleErrors=0 | badImgs= | iframes=/diagrams/pentrix-architecture.html:True
+OK dark 390x844 /projects/pentrix-vulnlab | h1="PenTrix-VulnLab" | overflow=0 | consoleErrors=0 | badImgs= | iframes=/diagrams/pentrix-architecture.html:True
+OK dark 1440x900 /projects/powershell-academy | h1="PowerShell Academy" | overflow=0 | consoleErrors=0 | badImgs= | iframes=
+OK dark 390x844 /projects/powershell-academy | h1="PowerShell Academy" | overflow=0 | consoleErrors=0 | badImgs= | iframes=
+OK dark 1440x900 /projects/bughunt-arsenal | h1="BugHunt Arsenal" | overflow=0 | consoleErrors=0 | badImgs= | iframes=
+OK dark 390x844 /projects/bughunt-arsenal | h1="BugHunt Arsenal" | overflow=0 | consoleErrors=0 | badImgs= | iframes=
+FAIL dark 1440x900 /projects/apk-security-pipeline | h1="APK Security Pipeline" | overflow=0 | consoleErrors=0 | badImgs=/images/apk-report-preview.png | iframes=/diagrams/apk-pipeline.html:True
+FAIL dark 390x844 /projects/apk-security-pipeline | h1="APK Security Pipeline" | overflow=0 | consoleErrors=0 | badImgs=/images/apk-report-preview.png | iframes=/diagrams/apk-pipeline.html:True
+OK dark 1440x900 /projects/agentarsenal | h1="AgentArsenal" | overflow=0 | consoleErrors=0 | badImgs= | iframes=/diagrams/skills-tree.html:True
+OK dark 390x844 /projects/agentarsenal | h1="AgentArsenal" | overflow=0 | consoleErrors=0 | badImgs= | iframes=/diagrams/skills-tree.html:True
+OK dark 1440x900 /projects/ai-terminal-x | h1="Ai-Terminal-X" | overflow=0 | consoleErrors=0 | badImgs= | iframes=
+OK dark 390x844 /projects/ai-terminal-x | h1="Ai-Terminal-X" | overflow=0 | consoleErrors=0 | badImgs= | iframes=
+OK dark 1440x900 /experience | h1="Security experience" | overflow=0 | consoleErrors=0 | badImgs= | iframes=
+OK dark 390x844 /experience | h1="Security experience" | overflow=0 | consoleErrors=0 | badImgs= | iframes=
+OK dark 1440x900 /skills | h1="Security skills" | overflow=0 | consoleErrors=0 | badImgs= | iframes=/diagrams/skills-tree.html:True
+OK dark 390x844 /skills | h1="Security skills" | overflow=0 | consoleErrors=0 | badImgs= | iframes=/diagrams/skills-tree.html:True
+OK dark 1440x900 /certifications | h1="Security certifications" | overflow=0 | consoleErrors=0 | badImgs= | iframes=
+OK dark 390x844 /certifications | h1="Security certifications" | overflow=0 | consoleErrors=0 | badImgs= | iframes=
+FAIL dark 1440x900 /proof | h1="Talk is cheap. Here is the proof." | overflow=0 | consoleErrors=0 | badImgs=/images/cscb-rankings.png,/images/cscb-junior-top3.png,/images/yeswehack-swag.png,/images/yeswehack-email.png | iframes=
+FAIL dark 390x844 /proof | h1="Talk is cheap. Here is the proof." | overflow=0 | consoleErrors=0 | badImgs=/images/cscb-rankings.png,/images/cscb-junior-top3.png,/images/yeswehack-swag.png,/images/yeswehack-email.png | iframes=
+OK dark 1440x900 /contact | h1="Get in touch" | overflow=0 | consoleErrors=0 | badImgs= | iframes=
+OK dark 390x844 /contact | h1="Get in touch" | overflow=0 | consoleErrors=0 | badImgs= | iframes=
+OK dark 1440x900 /no-such-page | h1="This page does not exist" | overflow=0 | consoleErrors=0 | badImgs= | iframes=
+OK dark 390x844 /no-such-page | h1="This page does not exist" | overflow=0 | consoleErrors=0 | badImgs= | iframes=
+OK dark 1440x900 /privacy | h1="Privacy" | overflow=0 | consoleErrors=0 | badImgs= | iframes=
+OK dark 390x844 /privacy | h1="Privacy" | overflow=0 | consoleErrors=0 | badImgs= | iframes=
+OK dark 1440x900 /terms | h1="Terms" | overflow=0 | consoleErrors=0 | badImgs= | iframes=
+OK dark 390x844 /terms | h1="Terms" | overflow=0 | consoleErrors=0 | badImgs= | iframes=
+THEME-SWITCH: after click=dark, after nav to /projects=dark, stored=dark

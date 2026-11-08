@@ -1,0 +1,49 @@
+ROUTE /terms theme=light width=1440
+TITLE: Terms | Muhammad Izaz Haider
+H1: Terms
+OVERFLOW: 0px
+CONSOLE ERRORS: ['Failed to load resource: the server responded with a status of 404 (Not Found)']
+BAD IMGS: []
+
+Skip to content
+IH
+Muhammad Izaz Haider
+Home
+About
+Projects
+Experience
+Skills
+Certifications
+Proof
+Contact
+Light
+Dark
+Get in touch
+
+LEGAL
+
+Terms
+
+The content of this portfolio is the work of Muhammad Izaz Haider.
+
+All projects, screenshots, and writing on this site are the work of Muhammad Izaz Haider, unless a page says otherwise. The CSCB and YesWeHack screenshots are his own.
+
+PenTrix-VulnLab is a deliberately vulnerable lab for learning. It is linked as a repository only and must not be deployed publicly.
+
+Copyright 2026 Muhammad Izaz Haider
+
+Created by Muhammad Izaz Haider
+
+CSCB and YesWeHack images are my own screenshots. This site collects no data. Messages sent through the contact form are handled by Formspree.
+
+Home
+About
+Projects
+Experience
+Skills
+Certifications
+Proof
+Contact
+Privacy
+Terms
+Back to top

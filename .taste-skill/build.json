@@ -1,0 +1,11 @@
+{
+ "page": null,
+ "url": "http://localhost:4173/",
+ "root": null,
+ "kind": "service",
+ "category": "cybersecurity student portfolio",
+ "primary": "Get in touch",
+ "rounds": 3,
+ "start": "2026-11-08T07:50:28.382Z",
+ "by": "gate.mjs --start"
+}

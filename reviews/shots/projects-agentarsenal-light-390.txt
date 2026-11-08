@@ -1,0 +1,92 @@
+ROUTE /projects/agentarsenal theme=light width=390
+TITLE: AgentArsenal | Muhammad Izaz Haider
+H1: AgentArsenal
+OVERFLOW: 0px
+CONSOLE ERRORS: []
+BAD IMGS: []
+
+Skip to content
+IH
+Izaz Haider
+Light
+Dark
+
+PROJECT, AI SECURITY
+
+AgentArsenal
+
+Unified skills repository: 353 skills across 29 domains, per skill versioning, automated testing, quality scoring, and a one command installer.
+
+Back to projects
+
+SKILLS
+353 across 29 domains
+ALSO INSIDE
+290 sub-skills, 36 agents, 25 brains
+QUALITY
+14-check CI harness, 0 to 100 scorer
+LINK
+GitHub
+
+AgentArsenal is a skills system, not a list: every skill is versioned, tested automatically, and scored for quality, and the whole repository installs with one command.
+
+The skills tree
+
+One person, three branches, every leaf tied to evidence. The same tree as the Skills page.
+
+Technical identity, skills and career tree: offensive security, defensive security, and AI security and automation, each leaf tied to evidence. Open the diagram in a new tab
+Browse the 29 domains
+
+Type to filter the domain list. No network call, just the list.
+
+Filter domains
+ad
+ai-security
+api
+auth
+automotive
+binary
+blockchain
+bugbounty
+c2
+cloud
+crypto
+ctf
+defensive
+engineering
+forensics
+hardware
+ics-scada
+incident
+linux
+malware
+memory
+mobile
+network
+osint
+privacy
+privesc
+recon
+soc
+web
+
+View on GitHub
+Back to projects
+
+Copyright 2026 Muhammad Izaz Haider
+
+Created by Muhammad Izaz Haider
+
+CSCB and YesWeHack images are my own screenshots. This site collects no data. Messages sent through the contact form are handled by Formspree.
+
+Home
+About
+Projects
+Experience
+Skills
+Certifications
+Proof
+Contact
+Privacy
+Terms
+Back to top

@@ -1,0 +1,79 @@
+ROUTE /projects/apk-security-pipeline theme=light width=1440
+TITLE: APK Security Pipeline | Muhammad Izaz Haider
+H1: APK Security Pipeline
+OVERFLOW: 0px
+CONSOLE ERRORS: ['Failed to load resource: the server responded with a status of 404 (Not Found)']
+BAD IMGS: []
+
+Skip to content
+IH
+Muhammad Izaz Haider
+Home
+About
+Projects
+Experience
+Skills
+Certifications
+Proof
+Contact
+Light
+Dark
+Get in touch
+
+PROJECT, DEVSECOPS
+
+APK Security Pipeline
+
+One command security checks an Android app and explains every step: static manifest and code rules, Frida dynamic traces, scoring, HTML and JSON reports.
+
+Back to projects
+
+STACK
+Pure Python, v2.1.0
+PYTHON
+3.10+, zero dependencies
+TESTS
+64 passing
+LINK
+GitHub
+
+One command, explained end to end. The pipeline reads an Android app, checks it statically, watches it run with Frida, scores what it finds, and writes the result as HTML for people and JSON for tools.
+
+The pipeline
+
+One command in, HTML and JSON reports out.
+
+APK Security Pipeline workflow: static manifest rules, strings and code rules, Frida dynamic traces, scoring, report generation, and baseline and CI modes. Open the diagram in a new tab
+Stage	What it checks	What it produces
+Static manifest rules	Permissions, exported components, and manifest settings.	Findings with severity
+Strings and code rules	Hardcoded secrets, unsafe crypto, and risky API use.	Findings with severity
+Frida dynamic traces	What the app actually does while it runs.	Runtime evidence
+Scoring	Every finding weighs into one score out of 100.	A grade from A to F
+Reports	The same result as HTML for people and JSON for tools.	HTML and JSON reports
+Baseline and CI	Compare against a known good run, or fail the build on new findings.	Baseline diff, CI exit code
+Sample results
+
+The same pipeline, two samples. A clean sample scores 100 out of 100, grade A, with 0 findings. A vulnerable sample scores 0 out of 100, grade F, with 24 findings.
+
+Real report preview: the vulnerable sample, 0 out of 100, grade F.
+
+View on GitHub
+Back to projects
+
+Copyright 2026 Muhammad Izaz Haider
+
+Created by Muhammad Izaz Haider
+
+CSCB and YesWeHack images are my own screenshots. This site collects no data. Messages sent through the contact form are handled by Formspree.
+
+Home
+About
+Projects
+Experience
+Skills
+Certifications
+Proof
+Contact
+Privacy
+Terms
+Back to top

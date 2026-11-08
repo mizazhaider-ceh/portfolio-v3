@@ -1,0 +1,85 @@
+ROUTE /skills theme=light width=1440
+TITLE: Skills | Muhammad Izaz Haider
+H1: Security skills
+OVERFLOW: 0px
+CONSOLE ERRORS: ['Failed to load resource: the server responded with a status of 404 (Not Found)']
+BAD IMGS: []
+
+Skip to content
+IH
+Muhammad Izaz Haider
+Home
+About
+Projects
+Experience
+Skills
+Certifications
+Proof
+Contact
+Light
+Dark
+Get in touch
+
+SKILLS
+
+Security skills
+
+No percentages. Each skill carries the evidence for it.
+
+One person, three branches
+
+Every leaf in the tree is tied to a project, a finding, or a rank. Click a node in the diagram to focus it.
+
+Technical identity, skills and career tree: offensive security, defensive security, and AI security and automation, each leaf tied to evidence. Open the diagram in a new tab
+Offensive security
+Skill	Used in
+Penetration testing	CSCB #1 Web Junior; PenTrix-VulnLab
+Web application security	YesWeHack bounty hunting since Feb 2026
+Burp Suite	Daily in bounty hunting and PenTrix-VulnLab
+OWASP ZAP	Certified; used in web testing
+Vulnerability assessment	13 vulnerabilities delivered at Damno
+API security	JWT work; VulnNotes IDOR
+Mobile security	Static analysis, Frida dynamic analysis, reverse engineering
+Digital forensics	Course labs; ext filesystem recovery
+Defensive security
+Skill	Used in
+Linux	Daily driver; server security labs
+Windows Server security	Active Directory labs on Server 2025
+Secure code review	CBAM codebase at Damno
+CI/CD security	GitLab pipelines at Damno
+Malware analysis	Course work in progress
+Network security	Nmap and recon tooling
+Cryptography	Certified; applied in findings
+AI security and automation
+Skill	Used in
+Python	Ai-Terminal-X, X-Recon, APK Security Pipeline
+LLM integration and RAG	Prime-PenTrix, Sentinel-Copilot-S2
+Prompt engineering	Ai-Terminal-X
+Bash scripting	Active and passive automation
+JavaScript	BugHunt Arsenal, Prime-PenTrix
+SQL	SQLite in PenTrix-VulnLab
+Git and GitHub	80 public repos
+PowerShell	PowerShell Academy; WSS Lab 2
+Frida	APK Security Pipeline dynamic traces; Mobile Security labs
+C and C++	KeyGen-X
+Testing and QA	APK pipeline, 64 tests; AgentArsenal CI harness
+
+How I work: Problem solving, Team leadership, Communication, Critical thinking, Adaptability, Time management.
+
+Copyright 2026 Muhammad Izaz Haider
+
+Created by Muhammad Izaz Haider
+
+CSCB and YesWeHack images are my own screenshots. This site collects no data. Messages sent through the contact form are handled by Formspree.
+
+Home
+About
+Projects
+Experience
+Skills
+Certifications
+Proof
+Contact
+Privacy
+Terms
+Back to top

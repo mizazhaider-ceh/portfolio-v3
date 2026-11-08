@@ -1,0 +1,59 @@
+ROUTE /contact theme=light width=390
+TITLE: Contact | Muhammad Izaz Haider
+H1: Get in touch
+OVERFLOW: 0px
+CONSOLE ERRORS: []
+BAD IMGS: []
+
+Skip to content
+IH
+Izaz Haider
+Light
+Dark
+
+CONTACT
+
+Get in touch
+
+Hiring for an offensive security internship, a junior role, or a research place? I would like to hear from you.
+
+mizazhaiderceh@gmail.com
+github.com/mizazhaider-ceh
+linkedin.com/in/muhammad-izaz-haider-091639314
+
+Available for internships and junior roles: Feb to Apr 2027 and Jul to Sep 2027. On site in Kortrijk, Ghent, Brussels, or Diegem, or remote from Belgium.
+
+Download my CV (Europass PDF, 328 KB)
+
+Name
+Email
+Message
+Send message
+Questions
+
+The things recruiters and collaborators ask first.
+
+What kind of work are you looking for?
+When are you available?
+Do you do bug bounty?
+What is The PenTrix?
+Can I see your CV?
+How do I reach you?
+
+Copyright 2026 Muhammad Izaz Haider
+
+Created by Muhammad Izaz Haider
+
+CSCB and YesWeHack images are my own screenshots. This site collects no data. Messages sent through the contact form are handled by Formspree.
+
+Home
+About
+Projects
+Experience
+Skills
+Certifications
+Proof
+Contact
+Privacy
+Terms
+Back to top

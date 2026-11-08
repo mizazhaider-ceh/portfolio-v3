@@ -1,0 +1,126 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [3 0 R 6 0 R] /Count 2 >>
+endobj
+3 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 4 0 R /F2 5 0 R >> >> /Contents 7 0 R >>
+endobj
+4 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+5 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold >>
+endobj
+6 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 4 0 R /F2 5 0 R >> >> /Contents 8 0 R >>
+endobj
+7 0 obj
+<< /Length 3230 >>
+stream
+BT /F2 20 Tf 56 792 Td (Muhammad Izaz Haider) Tj ET
+BT /F1 11 Tf 56 772 Td (Penetration Tester, AI x Offensive Security) Tj ET
+BT /F1 9.5 Tf 56 754 Td (mizazhaiderceh@gmail.com  |  mizazhaider-ceh.dev  |  github.com/mizazhaider-ceh) Tj ET
+BT /F1 9.5 Tf 56 740 Td (linkedin.com/in/muhammad-izaz-haider-091639314  |  Sijsele-Damme, Belgium) Tj ET
+BT /F2 12 Tf 56 716 Td (About) Tj ET
+BT /F1 10 Tf 56 700 Td (Second-year BSc Cybersecurity student at Howest University of Applied) Tj ET
+BT /F1 10 Tf 56 686 Td (Sciences in Belgium, with a first year completed at 60 out of 60 credits) Tj ET
+BT /F1 10 Tf 56 672 Td (at the first attempt. I learn security by building and breaking: I built) Tj ET
+BT /F1 10 Tf 56 658 Td (PenTrix-VulnLab, an open source vulnerable web application with 201) Tj ET
+BT /F1 10 Tf 56 644 Td (challenges across 29 modules, and I hunt vulnerabilities on YesWeHack,) Tj ET
+BT /F1 10 Tf 56 630 Td (where I earned quarterly recognition for responsible disclosure. In the) Tj ET
+BT /F1 10 Tf 56 616 Td (Cyber Security Challenge Belgium 2026 I ranked first in Web in the Junior) Tj ET
+BT /F1 10 Tf 56 602 Td (Division, third overall among juniors, and 26th out of 806 participants) Tj ET
+BT /F1 10 Tf 56 588 Td (nationally. Available for offensive security internships and junior roles:) Tj ET
+BT /F1 10 Tf 56 574 Td (Feb to Apr 2027 and Jul to Sep 2027, on site in Kortrijk, Ghent, Brussels,) Tj ET
+BT /F1 10 Tf 56 560 Td (or Diegem, or remote from Belgium.) Tj ET
+BT /F2 12 Tf 56 536 Td (Work experience) Tj ET
+BT /F2 10 Tf 56 518 Td (Bug Bounty Hunter - YesWeHack, remote, part time) Tj ET
+BT /F1 9.5 Tf 56 504 Td (Feb 2026 to Present) Tj ET
+BT /F1 10 Tf 56 490 Td (- Responsible disclosure on live programmes, by category only:) Tj ET
+BT /F1 10 Tf 56 476 Td (  authentication, authorization, injection, business logic, information) Tj ET
+BT /F1 10 Tf 56 462 Td (  disclosure, cryptography, file upload, and rate limiting.) Tj ET
+BT /F1 10 Tf 56 448 Td (- 35 reports submitted to date, 3 rewarded, by my own count, with) Tj ET
+BT /F1 10 Tf 56 434 Td (  quarterly recognition for performance.) Tj ET
+BT /F2 10 Tf 56 410 Td (Junior DevSecOps and AI Security Engineer, Damno Solutions) Tj ET
+BT /F1 9.5 Tf 56 396 Td (Nov 2025 to Jun 2026, remote, part time, 20 hours per week) Tj ET
+BT /F1 10 Tf 56 382 Td (- Delivered 13 vulnerabilities against a brief of 3 or more.) Tj ET
+BT /F1 10 Tf 56 368 Td (- Fixed 2 critical vulnerabilities: a remote code execution flaw and a) Tj ET
+BT /F1 10 Tf 56 354 Td (  SQL injection flaw.) Tj ET
+BT /F1 10 Tf 56 340 Td (- Built GitLab CI/CD security pipelines, reviewed the CBAM codebase, and) Tj ET
+BT /F1 10 Tf 56 326 Td (  wrote more than 1,800 lines of security documentation.) Tj ET
+BT /F2 10 Tf 56 302 Td (Founder and Offensive Security Researcher - The PenTrix) Tj ET
+BT /F1 9.5 Tf 56 288 Td (Self founded) Tj ET
+BT /F1 10 Tf 56 274 Td (- Built for the next generation of security researchers: PenTrix-VulnLab,) Tj ET
+BT /F1 10 Tf 56 260 Td (  30 Days of Practical Pentesting, the PenTrix platform, and Security-Books.) Tj ET
+BT /F1 10 Tf 56 246 Td (- Every project ships with a write up that explains the method, not just) Tj ET
+BT /F1 10 Tf 56 232 Td (  the result.) Tj ET
+endstream
+endobj
+8 0 obj
+<< /Length 3895 >>
+stream
+BT /F2 12 Tf 56 792 Td (Education) Tj ET
+BT /F2 10 Tf 56 774 Td (BSc Cybersecurity - Howest University of Applied Sciences, Bruges) Tj ET
+BT /F1 9.5 Tf 56 760 Td (Sep 2025 to Jun 2028, 180 ECTS) Tj ET
+BT /F1 10 Tf 56 746 Td (- First year: 60 out of 60 credits, first attempt, no retakes.) Tj ET
+BT /F2 10 Tf 56 722 Td (ICS, Intermediate in Computer Science - Dawn Science College, Barnala) Tj ET
+BT /F1 9.5 Tf 56 708 Td (2022 to 2024, Grade A+) Tj ET
+BT /F2 10 Tf 56 684 Td (Matriculation, Computer Science - Govt. High School for Boys, Hazara Mughlan) Tj ET
+BT /F1 9.5 Tf 56 670 Td (2020 to 2022) Tj ET
+BT /F2 12 Tf 56 646 Td (Projects) Tj ET
+BT /F1 10 Tf 56 628 Td (PenTrix-VulnLab - Deliberately vulnerable web app for learning web) Tj ET
+BT /F1 10 Tf 56 614 Td (  penetration testing: 201 challenges across 29 modules, 3 kill chain) Tj ET
+BT /F1 10 Tf 56 600 Td (  scenarios, and 3 career paths with verifiable certificates.) Tj ET
+BT /F1 10 Tf 56 586 Td (PowerShell Academy - Free PowerShell learning with no account: 18 chapters,) Tj ET
+BT /F1 10 Tf 56 572 Td (  61 lessons, 102 commands, and 48 glossary terms across 6 stages.) Tj ET
+BT /F1 10 Tf 56 558 Td (BugHunt Arsenal - Free browser based web pentesting and security research) Tj ET
+BT /F1 10 Tf 56 544 Td (  platform: 800+ payloads across 21 categories, 150+ tools, 60+ CTF tools,) Tj ET
+BT /F1 10 Tf 56 530 Td (  50+ free labs, 14+ modules.) Tj ET
+BT /F1 10 Tf 56 516 Td (Ai-Terminal-X - AI powered Linux terminal assistant: plain language to) Tj ET
+BT /F1 10 Tf 56 502 Td (  executable commands through Google Gemini, with safe execution checks.) Tj ET
+BT /F1 10 Tf 56 488 Td (APK Security Pipeline - Pure Python, v2.1.0: one command security checks) Tj ET
+BT /F1 10 Tf 56 474 Td (  an Android app, with static rules, Frida dynamic traces, scoring, and) Tj ET
+BT /F1 10 Tf 56 460 Td (  HTML and JSON reports. 64 tests passing.) Tj ET
+BT /F1 10 Tf 56 446 Td (AgentArsenal - Unified skills repository: 353 skills across 29 domains,) Tj ET
+BT /F1 10 Tf 56 432 Td (  per skill versioning, automated testing, quality scoring, and a) Tj ET
+BT /F1 10 Tf 56 418 Td (  one command installer.) Tj ET
+BT /F2 12 Tf 56 394 Td (Certifications) Tj ET
+BT /F2 9.5 Tf 56 378 Td (Certified Network Security Practitioner \(CNSP\), with Merit) Tj /F1 9.5 Tf ( - The SecOps Group) Tj ET
+BT /F2 9.5 Tf 56 364 Td (Certified Ethical Hacking v12 \(CEH\), course certificate) Tj /F1 9.5 Tf ( - LearnKartS) Tj ET
+BT /F2 9.5 Tf 56 350 Td (CompTIA PenTest+ Specialization, course) Tj /F1 9.5 Tf ( - Packt) Tj ET
+BT /F2 9.5 Tf 56 336 Td (AI Agents and Agentic AI) Tj /F1 9.5 Tf ( - Vanderbilt University) Tj ET
+BT /F2 9.5 Tf 56 322 Td (Application Security for Developers and DevOps Professionals) Tj /F1 9.5 Tf ( - IBM) Tj ET
+BT /F2 9.5 Tf 56 308 Td (Web Application Security Testing with OWASP ZAP) Tj /F1 9.5 Tf ( - Coursera) Tj ET
+BT /F2 9.5 Tf 56 294 Td (Linux 101) Tj /F1 9.5 Tf ( - TCM Security) Tj ET
+BT /F2 9.5 Tf 56 280 Td (Web App Security Testing with Google Hacking) Tj /F1 9.5 Tf ( - CodeRed) Tj ET
+BT /F2 9.5 Tf 56 266 Td (Google AI Essentials) Tj /F1 9.5 Tf ( - Google) Tj ET
+BT /F2 9.5 Tf 56 252 Td (Advanced Python Scripting) Tj /F1 9.5 Tf ( - Issuer unknown) Tj ET
+BT /F1 9.5 Tf 56 238 Td (In progress, not held yet: eJPT and eWPT through INE Security. Courses studied, exams coming.) Tj ET
+BT /F2 12 Tf 56 214 Td (Honours and awards) Tj ET
+BT /F1 10 Tf 56 198 Td (- Cyber Security Challenge Belgium 2026: 1st in Web \(Junior Division\), 3rd) Tj ET
+BT /F1 10 Tf 56 184 Td (  overall \(Junior Division\), 26th out of 806 participants nationally, 26 flags) Tj ET
+BT /F1 10 Tf 56 170 Td (  solved. Represented Howest.) Tj ET
+BT /F1 10 Tf 56 156 Td (- YesWeHack quarterly recognition for bug bounty performance.) Tj ET
+BT /F2 12 Tf 56 132 Td (Languages) Tj ET
+BT /F1 10 Tf 56 116 Td (Mother tongues: Urdu, Punjabi. English: C1. Dutch: A1.) Tj ET
+endstream
+endobj
+xref
+0 9
+0000000000 65535 f 
+0000000009 00000 n 
+0000000058 00000 n 
+0000000121 00000 n 
+0000000257 00000 n 
+0000000327 00000 n 
+0000000402 00000 n 
+0000000538 00000 n 
+0000003820 00000 n 
+trailer
+<< /Size 9 /Root 1 0 R >>
+startxref
+7767
+%%EOF

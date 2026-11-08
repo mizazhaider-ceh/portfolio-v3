@@ -1,0 +1,85 @@
+ROUTE /projects/ai-terminal-x theme=light width=1440
+TITLE: Ai-Terminal-X | Muhammad Izaz Haider
+H1: Ai-Terminal-X
+OVERFLOW: 0px
+CONSOLE ERRORS: ['Failed to load resource: the server responded with a status of 404 (Not Found)']
+BAD IMGS: []
+
+Skip to content
+IH
+Muhammad Izaz Haider
+Home
+About
+Projects
+Experience
+Skills
+Certifications
+Proof
+Contact
+Light
+Dark
+Get in touch
+
+PROJECT, AI SECURITY
+
+Ai-Terminal-X
+
+AI powered Linux terminal assistant: plain language to executable commands through Google Gemini, with safe execution checks. His most starred tool.
+
+Back to projects
+
+STACK
+Python, Gemini AI, CLI
+BUILT FOR
+Linux, especially Kali
+STARS
+38, his most starred tool
+LINK
+GitHub
+
+Plain language in, a safe command out. Ai-Terminal-X turns a sentence into a real Linux command, explains it, and asks before it runs anything.
+
+Try a prompt
+
+Pick a plain language prompt from the project README. Nothing here is executed.
+
+Show my public IP address
+List all files in the current directory
+Check disk usage
+
+You ask
+
+“Show my public IP address”
+
+It answers
+
+curl ifconfig.me
+
+One plain sentence, one real command.
+
+SAFE EXECUTION
+
+Before running any command, Ai-Terminal-X runs a multi-layer risk check, then prompts for confirmation when needed. Nothing runs without permission.
+
+Links
+
+View on GitHub
+Back to projects
+
+Copyright 2026 Muhammad Izaz Haider
+
+Created by Muhammad Izaz Haider
+
+CSCB and YesWeHack images are my own screenshots. This site collects no data. Messages sent through the contact form are handled by Formspree.
+
+Home
+About
+Projects
+Experience
+Skills
+Certifications
+Proof
+Contact
+Privacy
+Terms
+Back to top

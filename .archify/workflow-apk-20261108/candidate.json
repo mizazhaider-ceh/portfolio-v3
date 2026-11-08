@@ -1,0 +1,190 @@
+{
+  "schema_version": 2,
+  "diagram_type": "workflow",
+  "meta": {
+    "title": "APK Security Pipeline workflow",
+    "locale": "en",
+    "output": "public/diagrams/apk-pipeline.html",
+    "quality_profile": "showcase"
+  },
+  "lanes": [
+    {
+      "id": "input",
+      "label": "Input"
+    },
+    {
+      "id": "static",
+      "label": "Static analysis"
+    },
+    {
+      "id": "dynamic",
+      "label": "Dynamic analysis"
+    },
+    {
+      "id": "scoring",
+      "label": "Scoring"
+    },
+    {
+      "id": "reports",
+      "label": "Reports and CI"
+    }
+  ],
+  "phases": [
+    {
+      "id": "intake",
+      "label": "Intake",
+      "fromCol": 0,
+      "toCol": 0
+    },
+    {
+      "id": "staticph",
+      "label": "Static checks",
+      "fromCol": 1,
+      "toCol": 2
+    },
+    {
+      "id": "dynamicph",
+      "label": "Dynamic traces",
+      "fromCol": 3,
+      "toCol": 3
+    },
+    {
+      "id": "scoreph",
+      "label": "Score and report",
+      "fromCol": 4,
+      "toCol": 5,
+      "variant": "emphasis"
+    }
+  ],
+  "mainPath": [
+    "apk",
+    "manifest",
+    "strings",
+    "frida",
+    "score",
+    "report"
+  ],
+  "nodes": [
+    {
+      "id": "apk",
+      "lane": "input",
+      "col": 0,
+      "type": "external",
+      "label": "One command",
+      "sublabel": "APK file in",
+      "width": 140
+    },
+    {
+      "id": "manifest",
+      "lane": "static",
+      "col": 1,
+      "type": "backend",
+      "label": "Static manifest rules",
+      "sublabel": "permissions, components",
+      "width": 150
+    },
+    {
+      "id": "strings",
+      "lane": "static",
+      "col": 2,
+      "type": "backend",
+      "label": "Strings and code rules",
+      "sublabel": "secrets, unsafe crypto",
+      "width": 150
+    },
+    {
+      "id": "frida",
+      "lane": "dynamic",
+      "col": 3,
+      "type": "backend",
+      "label": "Frida dynamic traces",
+      "sublabel": "what the app does live",
+      "width": 150
+    },
+    {
+      "id": "score",
+      "lane": "scoring",
+      "col": 4,
+      "type": "backend",
+      "label": "Scoring",
+      "sublabel": "Score 0 to 100, grade A to F",
+      "width": 150
+    },
+    {
+      "id": "report",
+      "lane": "reports",
+      "col": 5,
+      "type": "frontend",
+      "label": "Reports",
+      "sublabel": "HTML and JSON",
+      "width": 140
+    },
+    {
+      "id": "baseline",
+      "lane": "reports",
+      "col": 4,
+      "type": "database",
+      "label": "Baseline and CI",
+      "sublabel": "compare, or fail the build",
+      "width": 140
+    }
+  ],
+  "edges": [
+    {
+      "id": "e1",
+      "from": "apk",
+      "to": "manifest",
+      "variant": "emphasis"
+    },
+    {
+      "id": "e2",
+      "from": "manifest",
+      "to": "strings",
+      "variant": "default"
+    },
+    {
+      "id": "e3",
+      "from": "strings",
+      "to": "frida",
+      "variant": "default"
+    },
+    {
+      "id": "e4",
+      "from": "frida",
+      "to": "score",
+      "variant": "emphasis"
+    },
+    {
+      "id": "e5",
+      "from": "score",
+      "to": "report",
+      "variant": "emphasis"
+    },
+    {
+      "id": "e6",
+      "from": "score",
+      "to": "baseline",
+      "label": "compare",
+      "variant": "dashed"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "cyan",
+      "title": "What it checks",
+      "items": [
+        "Static manifest, strings, and code rules",
+        "Frida dynamic traces while the app runs"
+      ]
+    },
+    {
+      "dot": "emerald",
+      "title": "What you get",
+      "items": [
+        "One score out of 100, grade A to F",
+        "HTML report for people, JSON for tools",
+        "Baseline diff and CI modes"
+      ]
+    }
+  ]
+}

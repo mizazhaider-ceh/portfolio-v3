@@ -1,0 +1,87 @@
+ROUTE /certifications theme=light width=1440
+TITLE: Certifications | Muhammad Izaz Haider
+H1: Security certifications
+OVERFLOW: 0px
+CONSOLE ERRORS: ['Failed to load resource: the server responded with a status of 404 (Not Found)']
+BAD IMGS: []
+
+Skip to content
+IH
+Muhammad Izaz Haider
+Home
+About
+Projects
+Experience
+Skills
+Certifications
+Proof
+Contact
+Light
+Dark
+Get in touch
+
+CERTIFICATIONS
+
+Security certifications
+
+Named certifications only. Nothing counted, nothing estimated.
+
+CNSP with Merit
+
+The SecOps Group
+
+Certified Ethical Hacking v12 (CEH)
+
+LearnKartS
+
+CompTIA PenTest+ Specialization
+
+Packt
+
+AI Agents and Agentic AI
+
+Vanderbilt University
+
+Application Security for Developers and DevOps Professionals
+
+IBM
+
+Web Application Security Testing with OWASP ZAP
+
+Coursera
+
+Linux 101
+
+TCM Security
+
+Web App Security Testing with Google Hacking
+
+CodeRed
+
+Google AI Essentials
+
+Google
+
+Advanced Python Scripting
+
+IN PROGRESS
+
+eJPT and eWPT through INE Security. Courses studied, exams coming. Not held yet.
+
+Copyright 2026 Muhammad Izaz Haider
+
+Created by Muhammad Izaz Haider
+
+CSCB and YesWeHack images are my own screenshots. This site collects no data. Messages sent through the contact form are handled by Formspree.
+
+Home
+About
+Projects
+Experience
+Skills
+Certifications
+Proof
+Contact
+Privacy
+Terms
+Back to top

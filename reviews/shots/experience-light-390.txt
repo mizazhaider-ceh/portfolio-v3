@@ -1,0 +1,60 @@
+ROUTE /experience theme=light width=390
+TITLE: Experience | Muhammad Izaz Haider
+H1: Security experience
+OVERFLOW: 0px
+CONSOLE ERRORS: []
+BAD IMGS: []
+
+Skip to content
+IH
+Izaz Haider
+Light
+Dark
+
+EXPERIENCE
+
+Security experience
+
+Professional journey in cybersecurity, DevSecOps, and AI driven security. Evidence in every bullet.
+
+Bug Bounty Hunter
+YesWeHack · Remote, part time
+Feb 2026 to Present
+Responsible disclosure on live programmes, by category only: authentication, authorization, injection, business logic, information disclosure, cryptography, file upload, and rate limiting.
+35 reports submitted, 3 rewarded, with quarterly recognition for performance.
+Founder and Offensive Security Researcher
+The PenTrix · Tutorials, tools, and roadmaps
+Self founded
+Built for the next generation of security researchers: PenTrix-VulnLab, 30 Days of Practical Pentesting, the pentrix platform, and Security-Books.
+Every project ships with a write up that explains the method, not just the result.
+Junior DevSecOps and AI Security Engineer
+Damno Solutions · Remote, part time, 20h/week
+Nov 2025 to Jun 2026
+Delivered 13 vulnerabilities against a brief of 3+, and fixed 2 critical ones: remote code execution and SQL injection.
+Built GitLab CI/CD security pipelines, reviewed the CBAM codebase, and wrote 1800+ lines of security documentation.
+What each role taught
+YesWeHack: responsible disclosure on live programmes, by category only.
+The PenTrix: teaching is the fastest way to learn a vulnerability properly.
+Damno Solutions: security inside a real delivery pipeline, against a real brief.
+
+Available Feb to Apr 2027 and Jul to Sep 2027.
+
+Get in touch
+
+Copyright 2026 Muhammad Izaz Haider
+
+Created by Muhammad Izaz Haider
+
+CSCB and YesWeHack images are my own screenshots. This site collects no data. Messages sent through the contact form are handled by Formspree.
+
+Home
+About
+Projects
+Experience
+Skills
+Certifications
+Proof
+Contact
+Privacy
+Terms
+Back to top

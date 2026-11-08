@@ -1,0 +1,164 @@
+ROUTE / theme=light width=390
+TITLE: Muhammad Izaz Haider, Penetration Tester, AI x Offensive Security
+H1: Muhammad Izaz Haider
+OVERFLOW: 0px
+CONSOLE ERRORS: []
+BAD IMGS: []
+
+Skip to content
+IH
+Izaz Haider
+Light
+Dark
+
+BSC CYBERSECURITY, HOWEST, BELGIUM
+
+Muhammad Izaz Haider
+
+Second year BSc Cybersecurity student at Howest who breaks web apps, hunts bounties on YesWeHack, and builds the tools he wishes he had.
+
+CSCB 2026: #1 Web Junior, #3 overall Junior, #26 of 806
+
+Get in touch
+See my work
+
+Available for internships and junior roles: Feb–Apr 2027 and Jul–Sep 2027
+
+status: available for internships, feb apr 2027, jul sep 2027
+
+PenTrix-VulnLab, challenge 07
+
+Order 1042 belongs to another user. Change one value and read it.
+
+Solved
+Read the request
+Spot the flaw
+Prove it
+GET /api/orders/1042 HTTP/1.1
+Host: lab.pentrix.local
+
+Order 1042 is requested. Nothing in the request says who is asking.
+
+SQL injection
+Injection
+Cross site scripting
+Injection
+Insecure direct object reference
+Access control
+
+201 challenges, 29 modules, 3 kill chain scenarios
+
+Understand it. Break it. Build it. Secure it.
+
+About
+
+I break things for a living, and I build the tools that find the break.
+
+I started in security young, breaking things to learn how they work. That habit became a craft: web penetration testing, bug bounty hunting on YesWeHack, and building the tools I wish I had.
+
+I study BSc Cybersecurity at Howest in Belgium. My first year closed at 60 out of 60 credits on the first attempt, and I placed #1 Web Junior at CSCB 2026. I founded The PenTrix to teach what I learn, through tutorials, tools, and write ups.
+
+Degree
+BSc Cybersecurity, Howest
+Year
+Second year, graduating Jun 2028
+Location
+Sijsele-Damme, Belgium
+First year
+60/60 credits, first attempt
+Bug bounty
+YesWeHack, since Feb 2026
+Founder
+The PenTrix
+
+More about me
+
+Featured projects
+
+The work that shows the skill. Flagship first.
+
+PenTrix-VulnLab
+Flagship
+GET /api/orders/1042 HTTP/1.1
+Host: lab.pentrix.local
+
+Deliberately vulnerable web app for learning web penetration testing: 201 challenges across 29 modules, 3 kill chain scenarios, and 3 career paths with verifiable certificates.
+
+Express
+SQLite
+Web pentesting
+Read the story
+View on GitHub
+PowerShell Academy
+Get-Command *-Process
+# verb-noun: find the cmdlet, then read its help
+
+Free PowerShell learning with no account: 18 chapters, 61 lessons, 102 commands, and 48 glossary terms across 6 stages, from foundations to security projects.
+
+TypeScript
+Next.js
+Vercel
+Read the story
+Visit live site
+BugHunt Arsenal
+<script>alert(1)</script>
+# one of 800+ payloads, 21 categories
+
+Free browser based web pentesting and security research platform: 800+ payloads across 21 categories, 150+ tools, 60+ CTF tools, 50+ free labs, 14+ modules. No install, no sign up.
+
+Web pentesting
+Payloads
+Browser app
+Read the story
+Visit live site
+
+All projects
+
+Talk is cheap. Here is the proof.
+
+Real scoreboards and real recognition, not claims.
+
+#1 in Web
+
+CSCB 2026 Junior
+
+First place in the Web category, representing Howest.
+
+#3 Junior · #26/806
+
+CSCB 2026 National CTF
+
+Third overall Junior, 26 flags solved, nationally.
+
+Recognized Hunter
+
+YesWeHack · MIHX01
+
+Quarterly recognition for bug bounty performance.
+
+Get in touch
+
+Hiring for an offensive security internship, a junior role, or a research place? I would like to hear from you.
+
+Get in touch
+See my work
+
+Available for internships and junior roles: Feb–Apr 2027 and Jul–Sep 2027
+
+Copyright 2026 Muhammad Izaz Haider
+
+Created by Muhammad Izaz Haider
+
+CSCB and YesWeHack images are my own screenshots. This site collects no data. Messages sent through the contact form are handled by Formspree.
+
+Home
+About
+Projects
+Experience
+Skills
+Certifications
+Proof
+Contact
+Privacy
+Terms
+Back to top

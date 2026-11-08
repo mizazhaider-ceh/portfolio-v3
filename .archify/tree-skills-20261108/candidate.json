@@ -1,0 +1,199 @@
+{
+  "schema_version": 1,
+  "diagram_type": "tree",
+  "meta": {
+    "title": "Technical identity, skills and career tree",
+    "locale": "en",
+    "subtitle": "One person, three branches. Every leaf is tied to a project, a finding, or a rank.",
+    "output": "public/diagrams/skills-tree.html",
+    "quality_profile": "showcase"
+  },
+  "layout": {
+    "direction": "right",
+    "nodeW": 190,
+    "nodeMaxW": 240,
+    "gapX": 40,
+    "gapY": 24
+  },
+  "nodes": [
+    {
+      "id": "root",
+      "label": "Muhammad Izaz Haider",
+      "sublabel": "BSc Cybersecurity, Howest"
+    },
+    {
+      "id": "offensive",
+      "label": "Offensive security",
+      "parent": "root",
+      "sublabel": "Find the flaw"
+    },
+    {
+      "id": "pentest",
+      "label": "Penetration testing",
+      "parent": "offensive",
+      "sublabel": "CSCB #1 Web Junior"
+    },
+    {
+      "id": "webapp",
+      "label": "Web application security",
+      "parent": "offensive",
+      "sublabel": "YesWeHack since Feb 2026"
+    },
+    {
+      "id": "burp",
+      "label": "Burp Suite",
+      "parent": "offensive",
+      "sublabel": "Daily in bounty hunting"
+    },
+    {
+      "id": "zap",
+      "label": "OWASP ZAP",
+      "parent": "offensive",
+      "sublabel": "Certified, used in web testing"
+    },
+    {
+      "id": "vulnassess",
+      "label": "Vulnerability assessment",
+      "parent": "offensive",
+      "sublabel": "13 findings at Damno"
+    },
+    {
+      "id": "apisec",
+      "label": "API security",
+      "parent": "offensive",
+      "sublabel": "JWT work, VulnNotes IDOR"
+    },
+    {
+      "id": "mobile",
+      "label": "Mobile security",
+      "parent": "offensive",
+      "sublabel": "Frida dynamic analysis"
+    },
+    {
+      "id": "forensics",
+      "label": "Digital forensics",
+      "parent": "offensive",
+      "sublabel": "Ext filesystem recovery"
+    },
+    {
+      "id": "defensive",
+      "label": "Defensive security",
+      "parent": "root",
+      "sublabel": "Fix the flaw"
+    },
+    {
+      "id": "linux",
+      "label": "Linux",
+      "parent": "defensive",
+      "sublabel": "Daily driver, server labs"
+    },
+    {
+      "id": "windows",
+      "label": "Windows Server security",
+      "parent": "defensive",
+      "sublabel": "AD labs on Server 2025"
+    },
+    {
+      "id": "codereview",
+      "label": "Secure code review",
+      "parent": "defensive",
+      "sublabel": "CBAM codebase at Damno"
+    },
+    {
+      "id": "cicd",
+      "label": "CI/CD security",
+      "parent": "defensive",
+      "sublabel": "GitLab pipelines at Damno"
+    },
+    {
+      "id": "malware",
+      "label": "Malware analysis",
+      "parent": "defensive",
+      "sublabel": "Course work in progress"
+    },
+    {
+      "id": "network",
+      "label": "Network security",
+      "parent": "defensive",
+      "sublabel": "Nmap and recon tooling"
+    },
+    {
+      "id": "crypto",
+      "label": "Cryptography",
+      "parent": "defensive",
+      "sublabel": "Certified, applied in findings"
+    },
+    {
+      "id": "ai",
+      "label": "AI security and automation",
+      "parent": "root",
+      "sublabel": "Scale the work"
+    },
+    {
+      "id": "python",
+      "label": "Python",
+      "parent": "ai",
+      "sublabel": "Ai-Terminal-X, APK Pipeline"
+    },
+    {
+      "id": "rag",
+      "label": "LLM integration and RAG",
+      "parent": "ai",
+      "sublabel": "Prime-PenTrix, Sentinel-Copilot"
+    },
+    {
+      "id": "prompt",
+      "label": "Prompt engineering",
+      "parent": "ai",
+      "sublabel": "Ai-Terminal-X"
+    },
+    {
+      "id": "bash",
+      "label": "Bash scripting",
+      "parent": "ai",
+      "sublabel": "Active and passive automation"
+    },
+    {
+      "id": "js",
+      "label": "JavaScript",
+      "parent": "ai",
+      "sublabel": "BugHunt Arsenal, Prime-PenTrix"
+    },
+    {
+      "id": "sql",
+      "label": "SQL",
+      "parent": "ai",
+      "sublabel": "SQLite in PenTrix-VulnLab"
+    },
+    {
+      "id": "git",
+      "label": "Git and GitHub",
+      "parent": "ai",
+      "sublabel": "80 public repos"
+    },
+    {
+      "id": "powershell",
+      "label": "PowerShell",
+      "parent": "ai",
+      "sublabel": "PowerShell Academy"
+    },
+    {
+      "id": "frida",
+      "label": "Frida",
+      "parent": "ai",
+      "sublabel": "APK dynamic traces, Mobile Security labs"
+    },
+    {
+      "id": "cpp",
+      "label": "C and C++",
+      "parent": "ai",
+      "sublabel": "KeyGen-X"
+    },
+    {
+      "id": "qa",
+      "label": "Testing and QA",
+      "parent": "ai",
+      "sublabel": "APK 64 tests, AgentArsenal CI"
+    }
+  ]
+}
