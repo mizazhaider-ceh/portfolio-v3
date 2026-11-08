@@ -1,4 +1,4 @@
-# SVGL Logos — brand and technology logos for the V3 rebuild
+# SVGL Logos: brand and technology logos for the V3 rebuild
 
 Added 2026-11-09 by izaz. No phase was restarted for it. This note is the
 record for Phase 6 (asset production) and Phase 7 (engineering).
