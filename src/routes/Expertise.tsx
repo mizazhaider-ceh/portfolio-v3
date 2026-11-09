@@ -1,3 +1,4 @@
+import { Fragment } from "react";
 import { Link } from "react-router";
 import {
   CERTIFICATIONS,
@@ -8,6 +9,8 @@ import {
 } from "../data";
 import { usePageMeta } from "../hooks";
 import PageHero from "../components/PageHero";
+import DiagramFigure from "../components/DiagramFigure";
+import SkillsTree from "../components/diagrams/SkillsTree";
 
 export default function Expertise() {
   usePageMeta(
@@ -23,24 +26,43 @@ export default function Expertise() {
         sentence="No percentages. Each group carries the evidence for it, and a link to the project or role that proves it."
       />
 
-      {EXPERTISE_GROUPS.map((group) => (
-        <section key={group.id} aria-label={group.name} id={group.id}>
-          <div className="wrap">
-            <h2 className="title-large">{group.name}</h2>
-            {group.status && <p className="mono-meta mt-3">{group.status}</p>}
-            <p className="body-large mt-4">{group.coverage}</p>
-            <p className="mono-meta mt-6">Tools used: {group.tools.join(", ")}</p>
-            <p className="body-copy mt-4">
-              Proved by{" "}
-              {group.provedBy.map((proof, i) => (
-                <span key={proof.to}>
-                  {i > 0 && ", "}
-                  <Link to={proof.to}>{proof.label}</Link>
-                </span>
-              ))}
-            </p>
-          </div>
-        </section>
+      {EXPERTISE_GROUPS.map((group, i) => (
+        <Fragment key={group.id}>
+          <section aria-label={group.name} id={group.id}>
+            <div className="wrap">
+              <h2 className="title-large">{group.name}</h2>
+              {group.status && <p className="mono-meta mt-3">{group.status}</p>}
+              <p className="body-large mt-4">{group.coverage}</p>
+              <p className="mono-meta mt-6">Tools used: {group.tools.join(", ")}</p>
+              <p className="body-copy mt-4">
+                Proved by{" "}
+                {group.provedBy.map((proof, j) => (
+                  <span key={proof.to}>
+                    {j > 0 && ", "}
+                    <Link to={proof.to}>{proof.label}</Link>
+                  </span>
+                ))}
+              </p>
+            </div>
+          </section>
+          {i === 0 && (
+            <section aria-label="Skills tree diagram">
+              <div className="wrap">
+                <DiagramFigure
+                  title="Skills and career tree"
+                  caption="What is shown: the skills and career tree, root to three branches, offensive security, defensive security, and AI security and automation, 29 leaves in total. What happened: the tree was rebuilt as a hand-built inline SVG in Monograph tokens, with the content fixes recorded in the diagram source."
+                >
+                  <SkillsTree />
+                </DiagramFigure>
+                <p className="body-small mt-4" style={{ color: "var(--muted)" }}>
+                  Text equivalent: the nine Expertise group descriptions on this page list
+                  every branch and leaf of the tree with its evidence, starting with web
+                  application penetration testing above.
+                </p>
+              </div>
+            </section>
+          )}
+        </Fragment>
       ))}
 
       <section aria-label="Certifications" id="certifications">

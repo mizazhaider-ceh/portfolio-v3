@@ -1,279 +1,9 @@
-import { useEffect, useState } from "react";
-import type { ReactNode } from "react";
-import { Link } from "react-router";
-import { ArrowLeft, ArrowUpRight } from "@phosphor-icons/react";
+import { ArrowUpRight } from "@phosphor-icons/react";
+import CaseStudy, { CountList, Plate, Section, nextOutcome } from "../../components/CaseStudy";
 import { usePageMeta } from "../../hooks";
-import PageHero from "../../components/PageHero";
 import CodeStrip from "../../components/CodeStrip";
 import Tabs from "../../components/Tabs";
-import { BUGHUNT_CATEGORIES, FEATURED_PROJECTS, type ProjectCount } from "../../data";
-
-const SECTIONS = [
-  { id: "problem", label: "Problem" },
-  { id: "my-role", label: "My role" },
-  { id: "decisions", label: "Decisions" },
-  { id: "how-it-was-built", label: "How it was built" },
-  { id: "evidence", label: "Evidence" },
-  { id: "what-i-would-improve", label: "What I would improve" },
-  { id: "links", label: "Links" },
-] as const;
-
-function useScrollProgress() {
-  const [pct, setPct] = useState(0);
-  useEffect(() => {
-    const onScroll = () => {
-      const el = document.documentElement;
-      const max = el.scrollHeight - el.clientHeight;
-      setPct(max > 0 ? Math.min(100, Math.max(0, (el.scrollTop / max) * 100)) : 0);
-    };
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("resize", onScroll);
-    return () => {
-      window.removeEventListener("scroll", onScroll);
-      window.removeEventListener("resize", onScroll);
-    };
-  }, []);
-  return pct;
-}
-
-function ScrollProgress() {
-  const pct = useScrollProgress();
-  return (
-    <div
-      aria-hidden="true"
-      className="fixed left-0 top-0 z-[70] h-[2px]"
-      style={{ width: `${pct}%`, background: "var(--accent)" }}
-    />
-  );
-}
-
-function useActiveSection() {
-  const [active, setActive] = useState<string>("problem");
-  useEffect(() => {
-    const onScroll = () => {
-      let current = "problem";
-      for (const s of SECTIONS) {
-        const el = document.getElementById(s.id);
-        if (el && el.getBoundingClientRect().top <= 120) current = s.id;
-      }
-      setActive(current);
-    };
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-  return active;
-}
-
-function CaseIndex({ active }: { active: string }) {
-  const go = (id: string) => () => {
-    const el = document.getElementById(id);
-    if (el) el.focus({ preventScroll: true });
-  };
-  return (
-    <>
-      <nav aria-label="In this case study" className="hidden lg:block">
-        <div className="sticky top-24">
-          <p className="mono-meta" style={{ color: "var(--muted)" }}>
-            In this case study
-          </p>
-          <ul className="mt-4 space-y-1">
-            {SECTIONS.map((s) => (
-              <li key={s.id}>
-                <a
-                  href={`#${s.id}`}
-                  onClick={go(s.id)}
-                  className="mono-meta inline-flex min-h-11 items-center"
-                  style={{
-                    color: active === s.id ? "var(--ink)" : "var(--muted)",
-                    borderBottom:
-                      active === s.id ? "2px solid var(--accent)" : "2px solid transparent",
-                  }}
-                >
-                  {s.label}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </nav>
-      <nav aria-label="In this case study" className="mb-10 lg:hidden">
-        <p className="mono-meta" style={{ color: "var(--muted)" }}>
-          In this case study
-        </p>
-        <ul className="mt-3 flex flex-wrap gap-x-5 gap-y-2">
-          {SECTIONS.map((s) => (
-            <li key={s.id}>
-              <a
-                href={`#${s.id}`}
-                onClick={go(s.id)}
-                className="mono-meta inline-flex min-h-11 items-center"
-                style={{
-                  color: active === s.id ? "var(--ink)" : "var(--muted)",
-                  textDecoration: active === s.id ? "underline" : "none",
-                  textUnderlineOffset: 4,
-                }}
-              >
-                {s.label}
-              </a>
-            </li>
-          ))}
-        </ul>
-      </nav>
-    </>
-  );
-}
-
-function Section({ id, title, children }: { id: string; title: string; children: ReactNode }) {
-  return (
-    <section id={id} aria-label={title} tabIndex={-1} className="scroll-mt-24 outline-none">
-      <h2 className="title-small">{title}</h2>
-      <div className="mt-4 space-y-5">{children}</div>
-    </section>
-  );
-}
-
-function Plate({
-  shown,
-  happened,
-  children,
-}: {
-  shown: string;
-  happened: string;
-  children: ReactNode;
-}) {
-  return (
-    <figure>
-      <div className="flex flex-col gap-4 lg:flex-row lg:items-start">
-        <p className="figure-note order-first lg:order-2 lg:w-60 lg:shrink-0 lg:pt-2">
-          <strong style={{ color: "var(--ink)" }}>What is shown: </strong>
-          {shown}{" "}
-          <strong style={{ color: "var(--ink)" }}>What happened: </strong>
-          {happened}
-        </p>
-        <div className="plate order-2 lg:order-1 lg:min-w-0 lg:flex-1">{children}</div>
-      </div>
-    </figure>
-  );
-}
-
-function HeroFacts({ facts }: { facts: string[] }) {
-  return (
-    <>
-      <p>
-        <Link
-          to="/projects"
-          className="mono-meta inline-flex min-h-11 items-center gap-1"
-          style={{ color: "var(--ink)" }}
-        >
-          <ArrowLeft size={16} weight="regular" aria-hidden="true" /> Back to projects
-        </Link>
-      </p>
-      <p
-        className="mono-meta mt-4 flex flex-wrap items-center gap-x-3 gap-y-2 border-y py-3"
-        style={{ borderColor: "var(--line)", color: "var(--muted)" }}
-      >
-        {facts.map((f, i) => (
-          <span key={f} className="inline-flex items-center gap-3">
-            {i > 0 && <span aria-hidden="true">|</span>}
-            <span>{f}</span>
-          </span>
-        ))}
-      </p>
-    </>
-  );
-}
-
-function CountList({ counts }: { counts: ProjectCount[] }) {
-  return (
-    <ul>
-      {counts.map((c) => (
-        <li
-          key={c.value}
-          className="border-t py-4 first:border-t-0 first:pt-0"
-          style={{ borderColor: "var(--line)" }}
-        >
-          <p className="label" style={{ color: "var(--ink)" }}>
-            {c.value}
-          </p>
-          <p className="body-small mt-1" style={{ color: "var(--muted)" }}>
-            {c.what}
-          </p>
-          <p className="mono-meta mt-1" style={{ color: "var(--muted)" }}>
-            Source: {c.source}
-          </p>
-        </li>
-      ))}
-    </ul>
-  );
-}
-
-function NextProject({
-  number,
-  name,
-  outcome,
-  to,
-  back = false,
-}: {
-  number?: string;
-  name: string;
-  outcome: string;
-  to: string;
-  back?: boolean;
-}) {
-  return (
-    <div className="mt-12 border-t pt-8" style={{ borderColor: "var(--line)" }}>
-      <Link to={to} className="block min-h-[88px]" style={{ textDecoration: "none" }}>
-        <p className="mono-meta" style={{ color: "var(--muted)" }}>
-          {back ? "Back to all projects" : `${number}, Next project`}
-        </p>
-        <p className="title-small mt-2">{name}</p>
-        <p className="body-small mt-1" style={{ color: "var(--muted)" }}>
-          {outcome}
-        </p>
-      </Link>
-    </div>
-  );
-}
-
-function usePageTheme() {
-  const [theme, setTheme] = useState<"light" | "dark">(() =>
-    document.documentElement.getAttribute("data-theme") === "dark" ? "dark" : "light",
-  );
-  useEffect(() => {
-    const read = () =>
-      setTheme(document.documentElement.getAttribute("data-theme") === "dark" ? "dark" : "light");
-    read();
-    const observer = new MutationObserver(read);
-    observer.observe(document.documentElement, {
-      attributes: true,
-      attributeFilter: ["data-theme"],
-    });
-    return () => observer.disconnect();
-  }, []);
-  return theme;
-}
-
-function Mark({ light, dark, label }: { light: string; dark: string; label: string }) {
-  const theme = usePageTheme();
-  return (
-    <span className="inline-flex items-center gap-2">
-      <img
-        src={theme === "dark" ? dark : light}
-        alt=""
-        aria-hidden="true"
-        width={20}
-        height={20}
-      />
-      <span>{label}</span>
-    </span>
-  );
-}
-
-function nextOutcome(name: string) {
-  return FEATURED_PROJECTS.find((p) => p.name === name)?.outcome ?? "";
-}
+import { BUGHUNT_CATEGORIES, FEATURED_PROJECTS } from "../../data";
 
 export default function BugHuntArsenal() {
   usePageMeta(
@@ -281,19 +11,15 @@ export default function BugHuntArsenal() {
     "Free browser based web pentesting and security research platform: 800+ payloads across 21 categories, 150+ tools, 60+ CTF tools, 50+ free labs, 14+ modules.",
     "/projects/bughunt-arsenal",
   );
-  const active = useActiveSection();
   const project = FEATURED_PROJECTS.find((p) => p.name === "BugHunt Arsenal")!;
   return (
-    <>
-      <ScrollProgress />
-      <PageHero marker="03, Case study" title="BugHunt Arsenal" sentence={project.outcome}>
-        <HeroFacts facts={["Role: Sole builder", "Stack: Browser app", "Status: Live"]} />
-      </PageHero>
-      <div className="wrap pb-24">
-        <div className="lg:grid lg:grid-cols-[180px_minmax(0,1fr)] lg:gap-12">
-          <CaseIndex active={active} />
-          <div className="min-w-0">
-            <div className="space-y-12">
+    <CaseStudy
+        marker="03, Case study"
+        title="BugHunt Arsenal"
+        outcome={project.outcome}
+        facts={["Status: Live"]}
+        next={{number: "04", name: "APK Security Pipeline", outcome: nextOutcome("APK Security Pipeline"), to: "/projects/apk-security-pipeline"}}
+      >
               <Section id="problem" title="Problem">
                 <p className="body-copy">
                   Security researchers lose hours to fragmented tooling. The same payloads are
@@ -377,17 +103,6 @@ export default function BugHuntArsenal() {
                   center, a chain builder, a metadata analyzer, an encoder and decoder, and the
                   OWASP Top 10 methodology, in one place.
                 </p>
-                <p
-                  className="mono-meta flex flex-wrap items-center gap-x-4 gap-y-2"
-                  style={{ color: "var(--muted)" }}
-                >
-                  <span style={{ color: "var(--ink)" }}>Stack:</span>
-                  <Mark
-                    light="/logos/javascript.svg"
-                    dark="/logos/javascript.svg"
-                    label="JavaScript"
-                  />
-                </p>
                 <Plate
                   shown="one payload category at a time, three example payloads per category, as text to copy."
                   happened="the payloads are shown as text only, nothing here is executed."
@@ -452,14 +167,14 @@ export default function BugHuntArsenal() {
                   counts as the headline.
                 </p>
                 <p className="body-copy">
-                  <strong>A repo link for the open-source wording.</strong> Next would be a repo
-                  link for the open-source wording on the live site, so the claim is backed by the
-                  code it points to.
+                  <strong>A clearer statement of what is free.</strong> Next would be a clearer
+                  statement of what is free, in plain words, replacing any percentage with a
+                  verifiable sentence.
                 </p>
                 <p className="body-copy">
-                  <strong>Payload search by target and impact.</strong> Next would be a payload
-                  search that filters by target and impact, so a hunter finds the right probe
-                  without opening every category.
+                  <strong>A check that every payload matches the live site.</strong> Next would
+                  be a check that every payload in the browser matches the live site, so the
+                  portfolio sample and the live product do not drift.
                 </p>
               </Section>
 
@@ -474,16 +189,6 @@ export default function BugHuntArsenal() {
                   No repo link: no repo is confirmed for BugHunt Arsenal.
                 </p>
               </Section>
-            </div>
-            <NextProject
-              number="04"
-              name="APK Security Pipeline"
-              outcome={nextOutcome("APK Security Pipeline")}
-              to="/projects/apk-security-pipeline"
-            />
-          </div>
-        </div>
-      </div>
-    </>
+    </CaseStudy>
   );
 }

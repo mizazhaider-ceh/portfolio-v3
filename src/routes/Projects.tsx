@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Link } from "react-router";
 import { ArrowUpRight } from "@phosphor-icons/react";
 import {
@@ -12,40 +12,7 @@ import {
 import { usePageMeta } from "../hooks";
 import PageHero from "../components/PageHero";
 import { ProjectCard } from "../components/ProjectCard";
-
-function usePageTheme() {
-  const [theme, setTheme] = useState<"light" | "dark">(() =>
-    document.documentElement.getAttribute("data-theme") === "dark" ? "dark" : "light",
-  );
-  useEffect(() => {
-    const read = () =>
-      setTheme(document.documentElement.getAttribute("data-theme") === "dark" ? "dark" : "light");
-    read();
-    const observer = new MutationObserver(read);
-    observer.observe(document.documentElement, {
-      attributes: true,
-      attributeFilter: ["data-theme"],
-    });
-    return () => observer.disconnect();
-  }, []);
-  return theme;
-}
-
-function Mark({ light, dark, label }: { light: string; dark: string; label: string }) {
-  const theme = usePageTheme();
-  return (
-    <span className="inline-flex items-center gap-2">
-      <img
-        src={theme === "dark" ? dark : light}
-        alt=""
-        aria-hidden="true"
-        width={20}
-        height={20}
-      />
-      <span>{label}</span>
-    </span>
-  );
-}
+import { Mark } from "../components/CaseStudy";
 
 function ArchiveRow({ project }: { project: Project }) {
   const number = String(project.catalogue).padStart(2, "0");

@@ -181,7 +181,7 @@ export const FEATURED_PROJECTS: Project[] = [
     status: "Live",
     filters: ["Software Engineering", "Research", "Open Source"],
     verification:
-      "Verified as a live product. Sole builder status to verify against the repo before publishing. The 102 commands figure is Supported by project documentation, re-verified on the live commands page 9 November 2026 (page reads \"Showing 102 of 102 commands\").",
+      "Verified as a live product. Sole builder verified against the repo contributors endpoint 9 November 2026 (exactly one contributor: mizazhaider-ceh, 8 contributions). The 102 commands figure is Supported by project documentation, re-verified on the live commands page 9 November 2026 (page reads \"Showing 102 of 102 commands\").",
     counts: [
       {
         value: "18 chapters",
@@ -225,7 +225,7 @@ export const FEATURED_PROJECTS: Project[] = [
     status: "Live",
     filters: ["Cybersecurity"],
     verification:
-      "Verified as a live product. Headline figures only. Sole builder status and stack to verify against the repo before publishing. No repo link until a repo is confirmed.",
+      "Verified as a live product. Headline figures only. No repo exists for BugHunt Arsenal: the full public repo list (82 repos) was checked 9 November 2026 and holds no BugHunt repo, and the live site links no repo, so sole builder status and stack cannot be verified against a repo and stay unverified. No repo link and no open-source claim until a repo is confirmed.",
     counts: [
       {
         value: "800+ payloads",
@@ -274,12 +274,12 @@ export const FEATURED_PROJECTS: Project[] = [
     status: "Repo",
     filters: ["Cybersecurity", "Software Engineering", "Automation"],
     verification:
-      "Supported by project documentation. Sole builder status to verify against the repo before publishing.",
+      "Supported by project documentation. Sole builder verified against the repo contributors endpoint 9 November 2026 (exactly one contributor: mizazhaider-ceh, 6 contributions).",
     counts: [
       {
         value: "64 tests passing at v2.1.0",
         what: "Tests passing at the recorded version",
-        source: "Repo README, prior pass, re-check at build time",
+        source: "Repo README, re-checked 9 November 2026 (live README badge reads version v2.1.0 and tests 64 passing)",
       },
       {
         value: "4 Frida scripts",
@@ -364,12 +364,12 @@ export const MORE_PROJECTS: Project[] = [
       {
         value: "353 skills across 29 domains",
         what: "Skills across domains",
-        source: "Workspace manifest, generated 27 October 2026, prior pass, not GitHub API verified",
+        source: "Workspace manifest, generated 27 October 2026, re-checked 9 November 2026, not GitHub API verified",
       },
       {
         value: "290 sub-skills, 36 agents",
         what: "Sub-skills and agents",
-        source: "Workspace manifest, generated 27 October 2026, prior pass, not GitHub API verified",
+        source: "Workspace manifest, generated 27 October 2026, re-checked 9 November 2026, not GitHub API verified",
       },
     ],
   },
@@ -388,7 +388,7 @@ export const MORE_PROJECTS: Project[] = [
     status: "Course project",
     filters: ["Software Engineering", "Cybersecurity"],
     verification:
-      "Supported by project documentation, prior pass. No public repo, re-confirmed by absence from the live repo list.",
+      "Supported by project documentation. Re-read 9 November 2026, gate 15: build guide and project guide re-read, team split and course-project label confirmed, no public repo (GitHub search for vulnnotes returned 0 results). No correction needed.",
     collaboration:
       "Izaz leads the build. Muhammad Muzammil Khan owns the Flask API including IDOR and the Frida scripts. Demo is individual.",
   },
@@ -416,7 +416,8 @@ export const MORE_PROJECTS: Project[] = [
   },
   {
     name: "Ai-CMD-X",
-    outcome: "Plain English to real Windows commands.",
+    outcome:
+      "Plain English to real Windows commands, with safe review before anything runs.",
     tags: ["Python", "Windows", "AI"],
     link: "https://github.com/mizazhaider-ceh/Ai-CMD-X",
     linkLabel: "View on GitHub",
@@ -425,14 +426,14 @@ export const MORE_PROJECTS: Project[] = [
     role: "Builder",
     year: 2026,
     status: "Repo",
-    filters: [],
+    filters: ["AI Security", "Software Engineering"],
     verification:
-      "Supported by project documentation. No verified filter assignment yet, so it shows under All only.",
+      "Verified 9 November 2026, gate 13: repo exists, README read. Python CLI using Google Gemini AI, Quick Mode and Interactive Mode with safe preview before executing. No LICENSE file, so no Open Source filter.",
   },
   {
     name: "Icarus-X",
     outcome:
-      "Modular AI-powered penetration testing framework: recon, exploitation, and post-exploitation in one interface.",
+      "Modular AI-powered penetration testing framework: 13+ tools for recon, exploitation, and post-exploitation in one CLI.",
     tags: ["Python", "Pentesting", "AI"],
     link: "https://github.com/mizazhaider-ceh/Icarus-X",
     linkLabel: "View on GitHub",
@@ -441,9 +442,9 @@ export const MORE_PROJECTS: Project[] = [
     role: "Builder",
     year: 2026,
     status: "Repo",
-    filters: [],
+    filters: ["Cybersecurity", "AI Security", "Software Engineering", "Open Source"],
     verification:
-      "Supported by project documentation. Name casing follows the live API, Icarus-X. No verified filter assignment yet, so it shows under All only.",
+      "Verified 9 November 2026, gate 13: repo exists, README read. Python 3.11+ async framework, 13+ tools, Cerebras AI analysis, MIT LICENSE file confirmed by raw fetch. Name casing follows the live API, Icarus-X.",
   },
   {
     name: "Intel-Scan",
@@ -457,14 +458,14 @@ export const MORE_PROJECTS: Project[] = [
     role: "Builder",
     year: 2026,
     status: "Repo",
-    filters: [],
+    filters: ["Cybersecurity", "Software Engineering"],
     verification:
-      "Supported by project documentation. No verified filter assignment yet, so it shows under All only.",
+      "Verified 9 November 2026, gate 13: repo exists, README read. Python, dual CLI and Gradio web GUI, DNS, WHOIS, multithreaded subdomain scanning, multi-format reports. No LICENSE file, so no Open Source filter; no AI in the README, so no AI Security filter.",
   },
   {
     name: "X-Recon",
     outcome:
-      "AI powered reconnaissance toolkit with a web dashboard and a real time terminal.",
+      "AI-powered reconnaissance toolkit with a web dashboard and a real-time terminal.",
     tags: ["Recon", "AI", "Dashboard"],
     link: "https://github.com/mizazhaider-ceh/X-Recon",
     linkLabel: "View on GitHub",
@@ -473,13 +474,14 @@ export const MORE_PROJECTS: Project[] = [
     role: "Builder",
     year: 2026,
     status: "Repo",
-    filters: [],
+    filters: ["Cybersecurity", "AI Security", "Software Engineering"],
     verification:
-      "Supported by project documentation. No verified filter assignment yet, so it shows under All only.",
+      "Verified 9 November 2026, gate 13: repo exists, README read. Python and FastAPI, async port and subdomain scanning, Cerebras Llama analysis, real-time WebSocket terminal. No LICENSE file, so no Open Source filter.",
   },
   {
     name: "Active Automation",
-    outcome: "Bash-powered Nmap automation for active recon, customizable scans.",
+    outcome:
+      "Bash scripts automating active recon with Nmap, from basic to advanced scans.",
     tags: ["Bash", "Nmap", "Recon"],
     link: "https://github.com/mizazhaider-ceh/active-automation",
     linkLabel: "View on GitHub",
@@ -488,25 +490,25 @@ export const MORE_PROJECTS: Project[] = [
     role: "Builder",
     year: 2026,
     status: "Repo",
-    filters: [],
+    filters: ["Cybersecurity", "Automation", "Open Source"],
     verification:
-      "Supported by project documentation. No verified filter assignment yet, so it shows under All only.",
+      "Verified 9 November 2026, gate 13: repo exists, README read. Bash and Nmap, v3.1, 32+ features, 1400+ lines. MIT license confirmed by the GitHub API.",
   },
   {
     name: "Passive Automation",
     outcome:
-      "Bash-powered Nmap automation for passive recon, v3.1. His first Bash scripting project.",
-    tags: ["Bash", "Nmap", "Recon"],
+      "Bash script automating passive recon with OSINT tools, gathering target information without alerting the target. His first Bash scripting project.",
+    tags: ["Bash", "OSINT", "Recon"],
     link: "https://github.com/mizazhaider-ceh/passive-automation",
     linkLabel: "View on GitHub",
-    strip: "# Bash-powered Nmap automation\n# passive recon",
+    strip: "# Bash-powered passive recon\n# OSINT tools, no active scanning",
     catalogue: 15,
     role: "Builder",
     year: 2026,
     status: "Repo",
-    filters: [],
+    filters: ["Cybersecurity", "Automation", "Open Source"],
     verification:
-      "Supported by project documentation. No verified filter assignment yet, so it shows under All only.",
+      "Verified 9 November 2026, gate 13: repo exists, README read. Bash v3.1, passive OSINT tools (whois, DNS, subdomains, harvesting), no active scanning. Corrected 9 November 2026: the earlier outcome named Nmap, which the README does not use for passive recon. MIT license confirmed by the GitHub API.",
   },
   {
     name: "Prime-PenTrix",
@@ -520,9 +522,9 @@ export const MORE_PROJECTS: Project[] = [
     role: "Builder",
     year: 2026,
     status: "Repo",
-    filters: [],
+    filters: ["Cybersecurity", "AI Security", "Software Engineering", "Research"],
     verification:
-      "Supported by project documentation. No verified filter assignment yet, so it shows under All only.",
+      "Verified 9 November 2026, gate 13: repo exists, README read. Next.js 16, TypeScript, FastAPI, Docker, hybrid RAG (pgvector plus BM25), multi-provider LLM streaming, spaced-repetition quizzes, 24+ tools. No LICENSE file despite an MIT badge, so no Open Source filter.",
     counts: [
       {
         value: "24+ tools",
@@ -534,36 +536,36 @@ export const MORE_PROJECTS: Project[] = [
   {
     name: "Scapy-based tools",
     outcome:
-      "Scapy-based network tools. One-line problem and repo link to confirm in Phase 7.",
+      "Investigation candidate. No matching repo found under this name in the 9 November 2026 review.",
     tags: ["Scapy"],
     link: "",
     linkLabel: "",
-    strip: "# one-line problem and repo link to confirm\n# per-repo review in Phase 7",
-    note: "Repo link to confirm in Phase 7",
+    strip: "# no matching repo found under this name\n# per-repo review, 9 November 2026",
+    note: "No matching repo found in the 9 November 2026 review",
     catalogue: 17,
     role: "To confirm",
     year: 2026,
     status: "Repo",
     filters: [],
     verification:
-      "Unverified. Investigation candidate only. Do not present as more than a name until a per-repo review confirms a one-line problem and a working repo link.",
+      "Unverified. No repo named Scapy-based tools, or matching Scapy, found in the 9 November 2026 review: GitHub search for scapy under mizazhaider-ceh returned 0 results and the full public repo list (82 repos) holds no Scapy repo. Name only until a repo and a one-line problem are confirmed.",
   },
   {
     name: "LINA",
     outcome:
-      "Investigation candidate. One-line problem and repo link to confirm in Phase 7.",
+      "Investigation candidate. No matching repo found under this name in the 9 November 2026 review.",
     tags: [],
     link: "",
     linkLabel: "",
-    strip: "# one-line problem and repo link to confirm\n# per-repo review in Phase 7",
-    note: "Repo link to confirm in Phase 7",
+    strip: "# no matching repo found under this name\n# per-repo review, 9 November 2026",
+    note: "No matching repo found in the 9 November 2026 review",
     catalogue: 18,
     role: "To confirm",
     year: 2026,
     status: "Repo",
     filters: [],
     verification:
-      "Unverified. Investigation candidate only. Do not present as more than a name until a per-repo review confirms a one-line problem and a working repo link.",
+      "Unverified. No repo named LINA found in the 9 November 2026 review: GitHub search for LINA under mizazhaider-ceh returned 0 results and the full public repo list (82 repos) holds no LINA repo. Name only until a repo and a one-line problem are confirmed.",
   },
 ];
 

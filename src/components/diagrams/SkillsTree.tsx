@@ -34,7 +34,7 @@ type TreeNode = {
 };
 
 const NODES: TreeNode[] = [
-  { x: 37, y: 1045, w: 214, h: 59, title: ["Muhammad Izaz Haider"], sub: ["BSc Cybersecurity"], large: true, count: "29" },
+  { x: 37, y: 1045, w: 214, h: 59, title: ["Muhammad Izaz Haider"], sub: ["BSc Cybersecurity"], large: true, count: "29" }, // Root subtitle: degree line only, no institution name.
   { x: 291, y: 360, w: 190, h: 59, title: ["Offensive security"], sub: ["Find the flaw"], count: "8" },
   { x: 516, y: 64, w: 234, h: 59, title: ["Penetration testing"], sub: ["CSCB #1 Web Junior"] },
   { x: 516, y: 147, w: 234, h: 59, title: ["Web application security"], sub: ["YesWeHack since Feb 2026"] },
@@ -49,7 +49,7 @@ const NODES: TreeNode[] = [
   { x: 516, y: 811, w: 234, h: 59, title: ["Windows Server security"], sub: ["AD labs on Server 2025"] },
   { x: 516, y: 894, w: 234, h: 59, title: ["Secure code review"], sub: ["CBAM codebase at Damno"] },
   { x: 516, y: 977, w: 234, h: 59, title: ["CI/CD security"], sub: ["GitLab pipelines at Damno"] },
-  { x: 516, y: 1060, w: 234, h: 59, title: ["Malware analysis"], sub: ["Course work in progress"] },
+  { x: 516, y: 1060, w: 234, h: 59, title: ["Malware analysis"], sub: ["Course work in progress"] }, // Kept, visibly labelled coursework in progress, never presented as an Expertise group.
   { x: 516, y: 1143, w: 234, h: 59, title: ["Network security"], sub: ["Nmap and recon tooling"] },
   { x: 516, y: 1226, w: 234, h: 59, title: ["Cryptography"], sub: ["Certified, applied in findings"] },
   { x: 291, y: 1721, w: 190, h: 76, title: ["AI security and", "automation"], sub: ["Scale the work"], count: "11" },
@@ -59,7 +59,7 @@ const NODES: TreeNode[] = [
   { x: 516, y: 1558, w: 234, h: 59, title: ["Bash scripting"], sub: ["Active and passive automation"] },
   { x: 516, y: 1641, w: 234, h: 59, title: ["JavaScript"], sub: ["BugHunt Arsenal, Prime-PenTrix"] },
   { x: 516, y: 1724, w: 234, h: 59, title: ["SQL"], sub: ["SQLite in PenTrix-VulnLab"] },
-  { x: 516, y: 1807, w: 234, h: 59, title: ["Git and GitHub"], sub: ["Public repos on GitHub"] },
+  { x: 516, y: 1807, w: 234, h: 59, title: ["Git and GitHub"], sub: ["Public repos on GitHub"] }, // No repo count: the stale count (80, the audit records 81) was removed, not updated to a live count with a fetch date.
   { x: 516, y: 1890, w: 234, h: 59, title: ["PowerShell"], sub: ["PowerShell Academy"] },
   { x: 516, y: 1973, w: 234, h: 73, title: ["Frida"], sub: ["APK dynamic traces,", "Mobile Security labs"] },
   { x: 516, y: 2070, w: 234, h: 59, title: ["C and C++"], sub: ["KeyGen-X"] },
