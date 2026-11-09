@@ -42,18 +42,17 @@ export default function ContactForm() {
     }
   }
 
-  const inputCls =
-    "w-full rounded-lg border border-[var(--line-soft)] bg-[var(--surface)] px-4 py-3 body-3 text-[var(--ink)] placeholder:text-[var(--faint)] fade focus-visible:border-[var(--periwinkle)]";
+  const inputCls = "input";
 
   if (status === "sent") {
     return (
       <div className="card flex items-start gap-3" role="status">
-        <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[var(--sage)] text-[var(--green)]" aria-hidden="true">
+        <span className="flex h-8 w-8 shrink-0 items-center justify-center" aria-hidden="true" style={{ color: "var(--ink, #1C1A17)" }}>
           <Check size={18} weight="bold" />
         </span>
         <div>
-          <p className="title-2">Message sent. Thank you.</p>
-          <p className="body-6 mt-2 text-[var(--muted)]">I will reply soon.</p>
+          <p className="title-small">Message sent. Thank you.</p>
+          <p className="body-small mt-2" style={{ color: "var(--muted, #6E6A61)" }}>I will reply soon.</p>
         </div>
       </div>
     );
@@ -62,22 +61,22 @@ export default function ContactForm() {
   return (
     <form onSubmit={onSubmit} noValidate className="card space-y-4" aria-label="Contact form">
       <div>
-        <label htmlFor="contact-name" className="title-4 mb-2 block">Name</label>
+        <label htmlFor="contact-name" className="label mb-2 block">Name</label>
         <input id="contact-name" name="name" type="text" autoComplete="name" placeholder="Your name" className={inputCls} aria-invalid={!!errors.name} aria-describedby={errors.name ? "contact-name-error" : undefined} />
-        {errors.name && <p id="contact-name-error" className="caption-2 mt-2 text-[var(--danger)]" role="alert">{errors.name}</p>}
+        {errors.name && <p id="contact-name-error" className="field-error mt-2" role="alert">{errors.name}</p>}
       </div>
       <div>
-        <label htmlFor="contact-email" className="title-4 mb-2 block">Email</label>
+        <label htmlFor="contact-email" className="label mb-2 block">Email</label>
         <input id="contact-email" name="email" type="email" autoComplete="email" placeholder="you@example.com" className={inputCls} aria-invalid={!!errors.email} aria-describedby={errors.email ? "contact-email-error" : undefined} />
-        {errors.email && <p id="contact-email-error" className="caption-2 mt-2 text-[var(--danger)]" role="alert">{errors.email}</p>}
+        {errors.email && <p id="contact-email-error" className="field-error mt-2" role="alert">{errors.email}</p>}
       </div>
       <div>
-        <label htmlFor="contact-message" className="title-4 mb-2 block">Message</label>
+        <label htmlFor="contact-message" className="label mb-2 block">Message</label>
         <textarea id="contact-message" name="message" rows={3} placeholder="What would you like to talk about?" className={inputCls} aria-invalid={!!errors.message} aria-describedby={errors.message ? "contact-message-error" : undefined} />
-        {errors.message && <p id="contact-message-error" className="caption-2 mt-2 text-[var(--danger)]" role="alert">{errors.message}</p>}
+        {errors.message && <p id="contact-message-error" className="field-error mt-2" role="alert">{errors.message}</p>}
       </div>
       {status === "error" && (
-        <p className="body-6 text-[var(--danger)]" role="alert">Sending failed. Check your connection and try again, or email me directly.</p>
+        <p className="field-error" role="alert">Sending failed. Check your connection and try again, or <a href={`mailto:${CONTACT.email}`}>email me directly</a>.</p>
       )}
       <button type="submit" className="btn-primary" disabled={status === "sending"}>
         {status === "sending" ? "Sending" : "Send message"}

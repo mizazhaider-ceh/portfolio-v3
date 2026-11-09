@@ -1,104 +1,283 @@
-import { useState } from "react";
+import { useRef, useState, type FormEvent } from "react";
+import { Link } from "react-router";
+import { Check } from "@phosphor-icons/react";
 import CodeStrip from "./CodeStrip";
 
-/* The real IDOR challenge from PenTrix-VulnLab (modules/idor/challenges/admin.js):
-   the admin panel at GET /admin only checks that a session exists, never the
-   role, so any signed-in user can open it and see all users and all orders.
-   No flag literal is ever shown. */
+/**
+ * The PenTrix-VulnLab challenge in the hero: the admin panel at GET /admin
+ * only checks that a session exists, never the role, so any signed-in user
+ * can open it. The check runs entirely in the browser, no request leaves
+ * the browser, no role is checked. No flag literal is ever shown.
+ *
+ * The panel is a page from the book laid on the dark cover, so it keeps
+ * ink text on paper in both themes (light paper tokens, hardcoded here).
+ */
+const PANEL = {
+  surface: "#FFFEFA",
+  ink: "#1C1A17",
+  body: "#2A2723",
+  muted: "#6E6A61",
+  line: "#DCD5C6",
+  accent: "#7A2E25",
+  accentText: "#6E231C",
+  accentSoft: "#F1E3DE",
+} as const;
 
-type Step = { id: string; label: string; code: string; note: string };
+const FLAG_SENTENCE =
+  "Flags are randomly generated per install at first boot on the student's machine, no flag literal exists in any tracked file, only genuine exploits earn flags.";
 
-const STEPS: Step[] = [
-  {
-    id: "read",
-    label: "Read the request",
-    code: "GET /admin HTTP/1.1\nHost: lab.pentrix.local",
-    note: "An ordinary signed-in user asks for the admin panel. No link ever pointed them there.",
-  },
-  {
-    id: "spot",
-    label: "Spot the flaw",
-    code: "GET /admin HTTP/1.1\nHost: lab.pentrix.local\n# the panel checks that a session exists, never the role",
-    note: "The panel asks 'are you signed in', never 'are you an admin'. Any logged-in user can open it.",
-  },
-  {
-    id: "prove",
-    label: "Prove it",
-    code: "GET /admin HTTP/1.1\nHost: lab.pentrix.local\n\n-> 200 OK: all users and all orders listed\n-> flag captured",
-    note: "The panel lists every user and every order, including orders that belong to other users. Flags are generated per install at first boot.",
-  },
+const STEPS = [
+  { n: 1, title: "Read the request.", note: "An ordinary signed-in user asks for the admin panel." },
+  { n: 2, title: "Spot the flaw.", note: "The panel checks that a session exists, never the role." },
+  { n: 3, title: "Prove it.", note: "Type the path, then check it." },
 ];
 
-const FIX_STEP: Step = {
-  id: "fix",
-  label: "Fix it",
-  code: "# check the role before serving the panel\nif (current_user.role !== \"admin\") {\n  return 403\n}\n# the same request now returns 403 Forbidden",
-  note: "The fix is one check: the requester is an admin, or the server says no.",
-};
+const IDLE_TEXT = "Type a path, then press Check.";
+const ERROR_TEXT = "No admin panel at that path. Try again.";
 
-/** Moment 1: a real PenTrix-VulnLab challenge, solved step by step in code.
-    No flag literal is ever shown. */
-export default function ChallengePanel({ withFix = false }: { withFix?: boolean }) {
-  const steps = withFix ? [...STEPS, FIX_STEP] : STEPS;
-  const [active, setActive] = useState(steps[0].id);
-  const step = steps.find((s) => s.id === active) ?? steps[0];
-  const solved = active === "prove" || active === "fix";
+export default function ChallengePanel() {
+  const [value, setValue] = useState("");
+  const [status, setStatus] = useState<"idle" | "error" | "solved">("idle");
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  const onCheck = (e: FormEvent) => {
+    e.preventDefault();
+    const path = value.trim();
+    if (path === "/admin" || path === "/admin/") {
+      setStatus("solved");
+    } else {
+      setStatus("error");
+      inputRef.current?.focus();
+    }
+  };
+
+  const onReset = () => {
+    setValue("");
+    setStatus("idle");
+    inputRef.current?.focus();
+  };
+
+  const solved = status === "solved";
   return (
-    <div className="card !p-0 overflow-hidden" data-product="pentrix-vulnlab">
-      <div className="flex flex-wrap items-center justify-between gap-3 border-b border-[var(--line-soft)] px-6 py-4">
-        <div>
-          <p className="title-3">PenTrix-VulnLab, IDOR: unprotected admin panel</p>
-          <p className="caption-2 mt-1 text-[var(--muted)]">Any signed-in user can open the admin panel. No role check, all orders listed.</p>
-        </div>
-        {solved ? (
-          <span className="inline-flex items-center gap-2 rounded-lg bg-[var(--sage)] px-3 py-2 caption-3 text-[var(--green)]">
-            Solved
-          </span>
-        ) : (
-          <span className="inline-flex items-center gap-2 rounded-lg border border-[var(--line-soft)] bg-[var(--surface)] px-3 py-2 caption-3 text-[var(--muted)]">
-            Try it
-          </span>
-        )}
+    <div
+      data-product="pentrix-vulnlab"
+      style={{
+        background: PANEL.surface,
+        border: `1px solid ${PANEL.line}`,
+        borderRadius: 2,
+        color: PANEL.ink,
+        padding: 32,
+      }}
+    >
+      <h2
+        style={{
+          fontFamily: "var(--font-display, Archivo, system-ui, sans-serif)",
+          fontWeight: 600,
+          fontSize: "1.375rem",
+          lineHeight: 1.2,
+          color: PANEL.ink,
+        }}
+      >
+        Try it: PenTrix-VulnLab
+      </h2>
+
+      <div className="mt-6">
+        <CodeStrip code={"GET /admin HTTP/1.1\nHost: lab.pentrix.local"} label="Request: GET /admin" />
       </div>
-      <div className="px-6 py-5">
-        <div className="flex flex-wrap gap-2" role="tablist" aria-label="Challenge steps">
-          {steps.map((s) => (
-            <button
-              key={s.id}
-              type="button"
-              role="tab"
-              aria-selected={active === s.id}
-              onClick={() => setActive(s.id)}
-              className={`filter-pill rounded-full border border-[var(--line-soft)] px-3 py-2 caption-3 fade ${active === s.id ? "bg-[var(--btn-bg)] text-[var(--btn-text)] border-[var(--btn-bg)]" : "bg-[var(--surface)] text-[var(--muted)]"}`}
+
+      <ol className="mt-6 space-y-4" style={{ listStyle: "none", margin: 0, padding: 0 }}>
+        {STEPS.map((step) => (
+          <li key={step.n} className="flex gap-3">
+            <span
+              aria-hidden="true"
+              style={{
+                fontFamily: "var(--font-mono, 'JetBrains Mono', ui-monospace, monospace)",
+                fontWeight: 500,
+                fontSize: 13,
+                lineHeight: 1.5,
+                color: PANEL.muted,
+                flexShrink: 0,
+              }}
             >
-              {s.label}
-            </button>
-          ))}
-        </div>
-        <div className="mt-4" role="tabpanel">
-          <CodeStrip code={step.code} label={`Challenge step: ${step.label}`} />
-          <p className="body-6 mt-4 text-[var(--muted)]">{step.note}</p>
-        </div>
-        <p className="title-4 mt-6 text-[var(--muted)]">Also inside PenTrix-VulnLab</p>
-        <ul className="mt-3 space-y-3">
-          {[
-            { name: "SQL injection", module: "Injection" },
-            { name: "Cross-site scripting", module: "Injection" },
-            { name: "Insecure direct object reference", module: "Access control" },
-          ].map((c) => (
-            <li key={c.name} className="flex items-center justify-between gap-3">
-              <span className="flex min-w-0 items-center gap-3">
-                <span className="h-2 w-2 shrink-0 rounded-full bg-[var(--periwinkle)]" aria-hidden="true" />
-                <span className="body-5 min-w-0">{c.name}</span>
+              {step.n}.
+            </span>
+            <span>
+              <span
+                style={{
+                  fontFamily: "var(--font-text, 'Instrument Sans', system-ui, sans-serif)",
+                  fontWeight: 600,
+                  fontSize: "1.0625rem",
+                  lineHeight: 1.65,
+                  color: PANEL.ink,
+                }}
+              >
+                {step.title}
+              </span>{" "}
+              <span
+                style={{
+                  fontFamily: "var(--font-text, 'Instrument Sans', system-ui, sans-serif)",
+                  fontSize: "1.0625rem",
+                  lineHeight: 1.65,
+                  color: PANEL.body,
+                }}
+              >
+                {step.note}
               </span>
-              <span className="shrink-0 caption-4 text-[var(--faint)]">{c.module}</span>
-            </li>
-          ))}
-        </ul>
-        <p className="mt-5 border-t border-[var(--line-soft)] pt-4 caption-2 text-[var(--muted)]">
-          201 challenges, 29 modules, 3 kill chain scenarios
+            </span>
+          </li>
+        ))}
+      </ol>
+
+      <form onSubmit={onCheck} className="mt-6">
+        <label
+          htmlFor="challenge-path"
+          style={{
+            display: "block",
+            fontFamily: "var(--font-text, 'Instrument Sans', system-ui, sans-serif)",
+            fontWeight: 500,
+            fontSize: "0.9375rem",
+            lineHeight: 1.5,
+            color: PANEL.ink,
+            marginBottom: 8,
+          }}
+        >
+          Try a path
+        </label>
+        <div className="flex flex-col gap-2 sm:flex-row">
+          <input
+            ref={inputRef}
+            id="challenge-path"
+            type="text"
+            value={value}
+            onChange={(e) => {
+              setValue(e.target.value);
+              if (status === "error") setStatus("idle");
+            }}
+            placeholder="/admin"
+            autoComplete="off"
+            spellCheck={false}
+            aria-invalid={status === "error"}
+            aria-describedby="challenge-state"
+            disabled={solved}
+            style={{
+              flex: 1,
+              minWidth: 0,
+              fontFamily: "var(--font-mono, 'JetBrains Mono', ui-monospace, monospace)",
+              fontSize: 16,
+              color: PANEL.ink,
+              background: PANEL.surface,
+              border: `1px solid ${status === "error" ? PANEL.accent : PANEL.line}`,
+              borderRadius: 2,
+              padding: 14,
+              minHeight: 44,
+            }}
+          />
+          <button
+            type="submit"
+            disabled={solved}
+            style={{
+              fontFamily: "var(--font-text, 'Instrument Sans', system-ui, sans-serif)",
+              fontWeight: 500,
+              fontSize: 15,
+              color: "#F7F3EA",
+              background: PANEL.ink,
+              border: `1px solid ${PANEL.ink}`,
+              borderRadius: 2,
+              padding: "14px 28px",
+              minHeight: 44,
+              cursor: solved ? "default" : "pointer",
+              opacity: solved ? 0.6 : 1,
+            }}
+          >
+            Check
+          </button>
+        </div>
+        <p
+          id="challenge-state"
+          aria-live="polite"
+          className="mt-3"
+          style={{
+            fontFamily: "var(--font-text, 'Instrument Sans', system-ui, sans-serif)",
+            fontSize: "0.9375rem",
+            lineHeight: 1.6,
+            color: status === "error" ? PANEL.accentText : PANEL.muted,
+            transition: "opacity 200ms ease-out",
+          }}
+        >
+          {status === "idle" && IDLE_TEXT}
+          {status === "error" && ERROR_TEXT}
+          {solved && "Solved. That path opens the admin panel."}
         </p>
-      </div>
+      </form>
+
+      {solved && (
+        <div
+          className="mt-4"
+          style={{
+            background: PANEL.accentSoft,
+            borderRadius: 2,
+            padding: 16,
+            transition: "opacity 200ms ease-out",
+          }}
+        >
+          <p>
+            <span
+              className="inline-flex items-center gap-2"
+              style={{
+                fontFamily: "var(--font-text, 'Instrument Sans', system-ui, sans-serif)",
+                fontWeight: 600,
+                fontSize: "0.9375rem",
+                color: PANEL.accentText,
+              }}
+            >
+              <Check size={16} weight="regular" aria-hidden="true" style={{ color: PANEL.accent }} />
+              Solved
+            </span>
+          </p>
+          <p
+            className="mt-2"
+            style={{
+              fontFamily: "var(--font-text, 'Instrument Sans', system-ui, sans-serif)",
+              fontSize: "0.9375rem",
+              lineHeight: 1.6,
+              color: PANEL.body,
+            }}
+          >
+            {FLAG_SENTENCE}
+          </p>
+          <p className="mt-4 flex flex-wrap items-center gap-x-6 gap-y-2">
+            <Link
+              to="/projects/pentrix-vulnlab"
+              className="inline-flex min-h-11 items-center underline underline-offset-4"
+              style={{
+                fontFamily: "var(--font-text, 'Instrument Sans', system-ui, sans-serif)",
+                fontWeight: 500,
+                fontSize: "0.9375rem",
+                color: PANEL.accentText,
+              }}
+            >
+              Read the PenTrix-VulnLab case study
+            </Link>
+            <button
+              type="button"
+              onClick={onReset}
+              className="inline-flex min-h-11 items-center"
+              style={{
+                fontFamily: "var(--font-text, 'Instrument Sans', system-ui, sans-serif)",
+                fontWeight: 500,
+                fontSize: "0.9375rem",
+                color: PANEL.body,
+                background: "transparent",
+                border: 0,
+                padding: 0,
+                cursor: "pointer",
+              }}
+            >
+              Reset
+            </button>
+          </p>
+        </div>
+      )}
     </div>
   );
 }

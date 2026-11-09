@@ -1,20 +1,57 @@
-import { useEffect, useState } from "react";
-import { Link, NavLink, useLocation } from "react-router";
-import { GithubLogo, LinkedinLogo, List, X } from "@phosphor-icons/react";
-import { CONTACT, NAV_LINKS } from "../data";
+import { lazy, Suspense, useEffect, useRef, useState } from "react";
+import { Link, useLocation } from "react-router";
+import { List, MagnifyingGlass, X } from "@phosphor-icons/react";
 import { useTheme } from "../hooks";
 
+/** The search palette loads lazily on first open, so no page pays for it on first paint. */
+const SearchDialog = lazy(() => import("./SearchDialog"));
+
+/** The five nav items, in order. Home is not a nav item; the name is the home link. */
+export const NAV_ITEMS = [
+  { id: "projects", label: "Projects", to: "/projects" },
+  { id: "about", label: "About", to: "/about" },
+  { id: "expertise", label: "Expertise", to: "/expertise" },
+  { id: "research", label: "Research", to: "/research" },
+  { id: "contact", label: "Contact", to: "/contact" },
+] as const;
+
+const PAPER = "var(--paper, #F7F3EA)";
+const INK = "var(--ink, #1C1A17)";
+const BODY = "var(--body, #2A2723)";
+const MUTED = "var(--muted, #6E6A61)";
+const LINE = "var(--line, #DCD5C6)";
+const ACCENT = "var(--accent, #7A2E25)";
+
+function isActive(pathname: string, to: string): boolean {
+  if (to === "/projects") return pathname === "/projects" || pathname.startsWith("/projects/");
+  return pathname === to;
+}
+
 export default function Nav() {
-  const { theme, setTheme } = useTheme();
+  const { theme, toggle } = useTheme();
   const [open, setOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
+  const [searchOpen, setSearchOpen] = useState(false);
+  const [searchMounted, setSearchMounted] = useState(false);
   const location = useLocation();
+  const menuButtonRef = useRef<HTMLButtonElement>(null);
+  const menuRef = useRef<HTMLDivElement>(null);
+  const firstLinkRef = useRef<HTMLAnchorElement>(null);
+  const wasOpenRef = useRef(false);
+
+  const openSearch = () => {
+    setSearchMounted(true);
+    setSearchOpen(true);
+  };
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 8);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
+    const onKey = (e: KeyboardEvent) => {
+      if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === "k") {
+        e.preventDefault();
+        openSearch();
+      }
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
   }, []);
 
   useEffect(() => {
@@ -22,113 +59,307 @@ export default function Nav() {
   }, [location.pathname]);
 
   useEffect(() => {
-    document.body.style.overflow = open ? "hidden" : "";
-    return () => {
-      document.body.style.overflow = "";
+    if (wasOpenRef.current && !open) menuButtonRef.current?.focus();
+    wasOpenRef.current = open;
+  }, [open ]);
+
+  useEffect(() => {
+    if (!open) return;
+    firstLinkRef.current?.focus();
+    const main = document.querySelector("main");
+    const footer = document.querySelector("footer");
+    main?.setAttribute("inert", "");
+    footer?.setAttribute("inert", "");
+    const prevOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        e.preventDefault();
+        setOpen(false);
+        return;
+      }
+      if (e.key === "Tab" && menuRef.current) {
+        const focusables = Array.from(
+          menuRef.current.querySelectorAll<HTMLElement>("a[href], button:not([disabled])"),
+        ).filter((el) => el.offsetParent !== null);
+        if (focusables.length === 0) return;
+        const first = focusables[0];
+        const last = focusables[focusables.length - 1];
+        if (e.shiftKey && document.activeElement === first) {
+          e.preventDefault();
+          last.focus();
+        } else if (!e.shiftKey && document.activeElement === last) {
+          e.preventDefault();
+          first.focus();
+        }
+      }
     };
-  }, [open]);
+    document.addEventListener("keydown", onKey);
+    return () => {
+      document.removeEventListener("keydown", onKey);
+      main?.removeAttribute("inert");
+      footer?.removeAttribute("inert");
+      document.body.style.overflow = prevOverflow;
+    };
+  }, [open ]);
 
   return (
     <header
       className="fixed inset-x-0 top-0 z-50"
-      style={{
-        background: "var(--nav-bg, rgba(250, 249, 245, 0.92))",
-        backdropFilter: "blur(6px)",
-        borderBottom: scrolled ? "0.1rem solid var(--line)" : "0.1rem solid transparent",
-      }}
+      style={{ background: PAPER, borderBottom: `1px solid ${LINE}` }}
     >
-      <a href="#main" className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:bg-[var(--surface)] focus:px-3 focus:py-2 focus:rounded-lg">
+      <a
+        href="#main"
+        className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[60] focus:px-4 focus:py-3 focus:text-[15px] focus:font-medium"
+        style={{ background: PAPER, color: INK, outline: `2px solid ${ACCENT}`, outlineOffset: 2 }}
+      >
         Skip to content
       </a>
-      <nav className="wrap flex h-16 items-center justify-between gap-4" aria-label="Main">
-        <Link to="/" className="flex min-w-0 items-center gap-3 whitespace-nowrap" aria-label="Muhammad Izaz Haider, home">
-          <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-[var(--periwinkle)] font-[var(--font-display)] text-sm font-semibold text-[var(--surface)]" aria-hidden="true">
-            IH
-          </span>
-          <span className="hidden min-w-0 flex-col leading-5 sm:flex">
-            <span className="truncate font-[var(--font-display)] text-base font-semibold">Muhammad Izaz Haider</span>
-            <span className="truncate caption-5 text-[var(--muted)] hidden min-[1280px]:block">Penetration Tester</span>
-          </span>
-          <span className="truncate font-[var(--font-display)] text-base font-semibold sm:hidden">Izaz Haider</span>
+      <nav
+        className="mx-auto flex h-16 w-full max-w-[1240px] items-center justify-between gap-4 px-5 md:px-8 xl:px-16"
+        aria-label="Main"
+      >
+        <Link
+          to="/"
+          className="min-w-0 shrink-0 whitespace-nowrap hover:underline hover:underline-offset-4"
+          aria-label="Muhammad Izaz Haider, home"
+          style={{
+            fontFamily: "var(--font-display, Archivo, system-ui, sans-serif)",
+            fontWeight: 600,
+            fontSize: 17,
+            color: INK,
+            minHeight: 44,
+            display: "inline-flex",
+            alignItems: "center",
+          }}
+        >
+          <span className="truncate">Muhammad Izaz Haider</span>
         </Link>
 
         <ul className="hidden items-center gap-1 lg:flex">
-          {NAV_LINKS.map((link) => (
-            <li key={link.id}>
-              <NavLink
-                to={link.to}
-                end={link.to === "/"}
-                className={({ isActive }) =>
-                  `rounded-lg px-3 py-2 title-4 fade ${isActive ? "text-[var(--periwinkle-deep)] bg-[var(--lilac)]" : "text-[var(--muted)]"}`
-                }
-              >
-                {link.label}
-              </NavLink>
-            </li>
-          ))}
+          {NAV_ITEMS.slice(0, 4).map((link) => {
+            const active = isActive(location.pathname, link.to);
+            return (
+              <li key={link.id}>
+                <Link
+                  to={link.to}
+                  aria-current={active ? "page" : undefined}
+                  className="inline-flex items-center px-3"
+                  style={{
+                    fontFamily: "var(--font-text, 'Instrument Sans', system-ui, sans-serif)",
+                    fontWeight: 500,
+                    fontSize: 15,
+                    color: active ? INK : BODY,
+                    minHeight: 44,
+                  }}
+                >
+                  <span
+                    style={{
+                      borderBottom: active ? `2px solid ${ACCENT}` : "2px solid transparent",
+                      paddingBottom: 2,
+                    }}
+                  >
+                    {link.label}
+                  </span>
+                </Link>
+              </li>
+            );
+          })}
         </ul>
 
-        <div className="flex items-center gap-2">
-          <a href={CONTACT.github} target="_blank" rel="noreferrer" aria-label="GitHub" className="hidden h-10 w-10 items-center justify-center rounded-lg text-[var(--muted)] fade hover:bg-[var(--lilac)] hover:text-[var(--ink)] sm:flex">
-            <GithubLogo size={20} weight="regular" />
-          </a>
-          <a href={CONTACT.linkedin} target="_blank" rel="noreferrer" aria-label="LinkedIn" className="hidden h-10 w-10 items-center justify-center rounded-lg text-[var(--muted)] fade hover:bg-[var(--lilac)] hover:text-[var(--ink)] sm:flex">
-            <LinkedinLogo size={20} weight="regular" />
-          </a>
-          <div className="theme-switch" role="group" aria-label="Theme">
-            <button type="button" aria-pressed={theme === "light"} onClick={() => setTheme("light")}>
-              Light
-            </button>
-            <button type="button" aria-pressed={theme === "dark"} onClick={() => setTheme("dark")}>
-              Dark
-            </button>
-          </div>
-          <Link to="/contact" className="btn-primary hidden !py-2 !px-3 button-sm whitespace-nowrap shrink-0 md:inline-flex">
-            Get in touch
+        <div className="flex min-w-0 items-center gap-1 sm:gap-2">
+          <button
+            type="button"
+            onClick={openSearch}
+            aria-label="Search, Ctrl K"
+            className="hidden items-center gap-2 px-3 lg:inline-flex"
+            style={{
+              fontFamily: "var(--font-text, 'Instrument Sans', system-ui, sans-serif)",
+              fontWeight: 500,
+              fontSize: 15,
+              color: BODY,
+              minHeight: 44,
+              background: "transparent",
+              border: 0,
+              cursor: "pointer",
+            }}
+          >
+            <MagnifyingGlass size={20} weight="regular" aria-hidden="true" />
+            Search
+            <span
+              style={{
+                fontFamily: "var(--font-mono, 'JetBrains Mono', ui-monospace, monospace)",
+                fontWeight: 500,
+                fontSize: 13,
+                color: MUTED,
+              }}
+            >
+              Ctrl K
+            </span>
+          </button>
+          <button
+            type="button"
+            onClick={toggle}
+            aria-label={theme === "light" ? "Switch to dark theme" : "Switch to light theme"}
+            className="inline-flex items-center px-3"
+            style={{
+              fontFamily: "var(--font-text, 'Instrument Sans', system-ui, sans-serif)",
+              fontWeight: 500,
+              fontSize: 15,
+              color: BODY,
+              minHeight: 44,
+              background: "transparent",
+              border: 0,
+              cursor: "pointer",
+            }}
+          >
+            {theme === "light" ? "Dark" : "Light"}
+          </button>
+          <Link
+            to="/contact"
+            aria-current={isActive(location.pathname, "/contact") ? "page" : undefined}
+            className="hidden items-center justify-center whitespace-nowrap md:inline-flex"
+            style={{
+              fontFamily: "var(--font-text, 'Instrument Sans', system-ui, sans-serif)",
+              fontWeight: 500,
+              fontSize: 15,
+              color: PAPER,
+              background: INK,
+              padding: "12px 24px",
+              borderRadius: 2,
+              minHeight: 44,
+            }}
+          >
+            Contact
           </Link>
           <button
+            ref={menuButtonRef}
             type="button"
             onClick={() => setOpen((v) => !v)}
             aria-expanded={open}
             aria-label={open ? "Close menu" : "Open menu"}
-            className="flex h-10 w-10 items-center justify-center rounded-lg text-[var(--ink)] fade hover:bg-[var(--lilac)] lg:hidden"
+            className="inline-flex items-center justify-center gap-2 px-3 lg:hidden"
+            style={{
+              fontFamily: "var(--font-text, 'Instrument Sans', system-ui, sans-serif)",
+              fontWeight: 500,
+              fontSize: 15,
+              color: INK,
+              minHeight: 44,
+              minWidth: 44,
+              background: "transparent",
+              border: 0,
+              cursor: "pointer",
+            }}
           >
-            {open ? <X size={20} weight="regular" /> : <List size={20} weight="regular" />}
+            {open ? <X size={20} weight="regular" aria-hidden="true" /> : <List size={20} weight="regular" aria-hidden="true" />}
+            Menu
           </button>
         </div>
       </nav>
 
       {open && (
-        <div className="absolute inset-x-0 top-full z-40 min-h-[calc(100dvh-4rem)] overflow-y-auto lg:hidden" style={{ background: "var(--bg)", borderTop: "0.1rem solid var(--line-soft)" }}>
-          <ul className="wrap flex flex-col gap-2 pt-8 pb-8">
-            {NAV_LINKS.map((link, i) => (
-              <li key={link.id} className="enter" style={{ animationDelay: `${Math.min(i * 60, 400)}ms` }}>
-                <NavLink
-                  to={link.to}
-                  end={link.to === "/"}
-                  className={({ isActive }) =>
-                    `heading-4 block rounded-xl px-4 py-3 fade hover:bg-[var(--lilac)] ${isActive ? "text-[var(--periwinkle-deep)]" : ""}`
-                  }
-                >
-                  {link.label}
-                </NavLink>
-              </li>
-            ))}
-            <li className="enter pt-4" style={{ animationDelay: "300ms" }}>
-              <Link to="/contact" className="btn-primary w-full justify-center">
-                Get in touch
+        <div
+          ref={menuRef}
+          role="dialog"
+          aria-modal="true"
+          aria-label="Menu"
+          className="fixed inset-x-0 bottom-0 top-16 z-40 overflow-y-auto lg:hidden"
+          style={{ background: PAPER, borderTop: `1px solid ${LINE}` }}
+        >
+          <div className="mx-auto flex min-h-full w-full max-w-[1240px] flex-col px-5 pb-6 pt-4 md:px-8">
+            <button
+              type="button"
+              onClick={() => {
+                setOpen(false);
+                openSearch();
+              }}
+              aria-label="Search, Ctrl K"
+              className="inline-flex w-full items-center gap-2 px-3"
+              style={{
+                fontFamily: "var(--font-text, 'Instrument Sans', system-ui, sans-serif)",
+                fontWeight: 500,
+                fontSize: 15,
+                color: BODY,
+                minHeight: 44,
+                background: "transparent",
+                border: `1px solid ${LINE}`,
+                borderRadius: 2,
+                cursor: "pointer",
+              }}
+            >
+              <MagnifyingGlass size={20} weight="regular" aria-hidden="true" />
+              Search
+              <span
+                style={{
+                  fontFamily: "var(--font-mono, 'JetBrains Mono', ui-monospace, monospace)",
+                  fontWeight: 500,
+                  fontSize: 13,
+                  color: MUTED,
+                }}
+              >
+                Ctrl K
+              </span>
+            </button>
+            <ul className="mt-4">
+              {NAV_ITEMS.slice(0, 4).map((link, i) => {
+                const active = isActive(location.pathname, link.to);
+                return (
+                  <li key={link.id} style={{ borderBottom: `1px solid ${LINE}` }}>
+                    <Link
+                      ref={i === 0 ? firstLinkRef : undefined}
+                      to={link.to}
+                      aria-current={active ? "page" : undefined}
+                      className="flex items-center"
+                      style={{
+                        fontFamily: "var(--font-display, Archivo, system-ui, sans-serif)",
+                        fontWeight: 600,
+                        fontSize: 22,
+                        color: INK,
+                        minHeight: 44,
+                        paddingTop: 12,
+                        paddingBottom: 12,
+                      }}
+                    >
+                      <span
+                        style={{
+                          borderBottom: active ? `2px solid ${ACCENT}` : "2px solid transparent",
+                          paddingBottom: 2,
+                        }}
+                      >
+                        {link.label}
+                      </span>
+                    </Link>
+                  </li>
+                );
+              })}
+            </ul>
+            <div className="mt-auto pt-8" style={{ paddingBottom: "max(8px, env(safe-area-inset-bottom))" }}>
+              <Link
+                to="/contact"
+                aria-current={isActive(location.pathname, "/contact") ? "page" : undefined}
+                className="flex w-full items-center justify-center"
+                style={{
+                  fontFamily: "var(--font-text, 'Instrument Sans', system-ui, sans-serif)",
+                  fontWeight: 500,
+                  fontSize: 15,
+                  color: PAPER,
+                  background: INK,
+                  padding: "14px 28px",
+                  borderRadius: 2,
+                  minHeight: 44,
+                }}
+              >
+                Contact
               </Link>
-            </li>
-            <li className="enter flex gap-2 pt-2" style={{ animationDelay: "360ms" }}>
-              <a href={CONTACT.github} target="_blank" rel="noreferrer" className="btn-secondary flex-1 justify-center">
-                GitHub
-              </a>
-              <a href={CONTACT.linkedin} target="_blank" rel="noreferrer" className="btn-secondary flex-1 justify-center">
-                LinkedIn
-              </a>
-            </li>
-          </ul>
+            </div>
+          </div>
         </div>
+      )}
+
+      {searchMounted && (
+        <Suspense fallback={null}>
+          <SearchDialog open={searchOpen} onOpenChange={setSearchOpen} />
+        </Suspense>
       )}
     </header>
   );

@@ -29,7 +29,7 @@ export function useTheme(): { theme: Theme; setTheme: (t: Theme) => void; toggle
     document.documentElement.setAttribute("data-theme", t);
     document
       .querySelector('meta[name="theme-color"]')
-      ?.setAttribute("content", t === "dark" ? "#121316" : "#FAF9F5");
+      ?.setAttribute("content", t === "dark" ? "#191817" : "#F7F3EA");
     try {
       localStorage.setItem(THEME_KEY, t);
     } catch {
@@ -44,8 +44,10 @@ export function useTheme(): { theme: Theme; setTheme: (t: Theme) => void; toggle
     Title/description only used to be per-page; OG tags, canonical, and
     JSON-LD stayed home-specific on every route. Pass the route path
     (e.g. "/projects") to update canonical and og:url, and optional
-    JSON-LD (e.g. the FAQ schema on /contact). */
-export function usePageMeta(title: string, description: string, path?: string, jsonLd?: unknown) {
+    JSON-LD (e.g. the FAQ schema on /contact). The robots param defaults
+    to "index, follow"; the 404 page passes "noindex" so the noindex
+    never leaks to another page on navigation. */
+export function usePageMeta(title: string, description: string, path?: string, jsonLd?: unknown, robots?: string) {
   useEffect(() => {
     document.title = title;
     const setMeta = (selector: string, value: string) => {
@@ -57,6 +59,7 @@ export function usePageMeta(title: string, description: string, path?: string, j
     setMeta('meta[property="og:description"]', description);
     setMeta('meta[name="twitter:title"]', title);
     setMeta('meta[name="twitter:description"]', description);
+    setMeta('meta[name="robots"]', robots ?? "index, follow");
     if (path) {
       const url = `https://mizazhaider-ceh.dev${path === "/" ? "/" : path}`;
       const canonical = document.querySelector('link[rel="canonical"]');
@@ -73,7 +76,7 @@ export function usePageMeta(title: string, description: string, path?: string, j
     } else if (existing) {
       existing.remove();
     }
-  }, [title, description, path, jsonLd]);
+  }, [title, description, path, jsonLd, robots]);
 }
 
 /** Copy text to the clipboard, show "Copied" for 2 seconds. */

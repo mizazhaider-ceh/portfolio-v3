@@ -1,40 +1,119 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="light">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Page not found | Muhammad Izaz Haider</title>
     <meta name="description" content="This page does not exist. Back to the portfolio of Muhammad Izaz Haider, penetration tester and cybersecurity student." />
+    <meta name="robots" content="noindex" />
+    <meta name="theme-color" content="#F7F3EA" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
     <style>
-      /* Hallmark v2.0.0 · theme: Arsenal (custom, by brief) · genre: editorial · job: hire */
       :root {
-        --bg: #faf9f5;
-        --ink: #17191c;
-        --muted: #5c6068;
-        --periwinkle: #5a45d6;
-        --btn-bg: #4633b8;
-        --btn-bg-hover: #3a2a9e;
-        --btn-text: #fdfcff;
-        --font-body: Inter, system-ui, sans-serif;
-        --font-display: Sora, Inter, system-ui, sans-serif;
+        --paper: #f7f3ea;
+        --surface: #fffefa;
+        --ink: #1c1a17;
+        --body: #2a2723;
+        --muted: #6e6a61;
+        --line: #dcd5c6;
+        --accent: #7a2e25;
+        --accent-text: #6e231c;
+        --focus: #7a2e25;
+        --font-display: "Archivo", "Instrument Sans", system-ui, sans-serif;
+        --font-text: "Instrument Sans", system-ui, sans-serif;
+        --font-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --paper: #191817;
+          --surface: #221f1c;
+          --ink: #f3efe5;
+          --body: #d5cfc2;
+          --muted: #9c968b;
+          --line: #37332c;
+          --accent: #d18a74;
+          --accent-text: #e0a58f;
+          --focus: #d18a74;
+        }
       }
       html, body { overflow-x: clip; }
-      body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--font-body); display: grid; place-items: center; min-height: 100vh; }
-      main { text-align: center; padding: 24px; }
-      h1 { font-family: var(--font-display); font-size: 48px; margin: 0 0 16px; text-wrap: balance; }
-      p { color: var(--muted); margin: 0 0 24px; }
-      a { display: inline-block; background: var(--btn-bg); color: var(--btn-text); text-decoration: none; font-weight: 600; padding: 12px 20px; border-radius: 10px; }
-      a:hover { background: var(--btn-bg-hover); }
-      a:active { transform: scale(0.98); }
-      a:focus-visible { outline: 2px solid var(--periwinkle); outline-offset: 2px; border-radius: 4px; }
+      body {
+        margin: 0;
+        background: var(--paper);
+        color: var(--body);
+        font-family: var(--font-text);
+        font-size: 1.0625rem;
+        line-height: 1.65;
+        display: grid;
+        place-items: center;
+        min-height: 100svh;
+        -webkit-font-smoothing: antialiased;
+      }
+      main { text-align: center; padding: 1.25rem; max-width: 68ch; }
+      .plate-number {
+        font-family: var(--font-mono);
+        font-weight: 500;
+        font-size: 0.8125rem;
+        line-height: 1.5;
+        color: var(--muted);
+        margin: 0 0 1rem;
+      }
+      .rule-accent {
+        width: 3rem;
+        height: 2px;
+        background: var(--accent);
+        border: 0;
+        margin: 0 auto 1.5rem;
+      }
+      h1 {
+        font-family: var(--font-display);
+        font-weight: 700;
+        font-size: clamp(2.25rem, 4.5vw, 3.5rem);
+        line-height: 1.02;
+        letter-spacing: -0.02em;
+        color: var(--ink);
+        margin: 0 0 1rem;
+        text-wrap: balance;
+      }
+      p { color: var(--muted); margin: 0 0 2rem; }
+      .actions { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; }
+      a {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 44px;
+        font-family: var(--font-text);
+        font-size: 0.9375rem;
+        font-weight: 500;
+        line-height: 1.5;
+        padding: 0.875rem 1.75rem;
+        border-radius: 2px;
+        text-decoration: none;
+        transition: background-color 200ms ease-out, border-color 200ms ease-out, transform 200ms ease-out;
+      }
+      a.primary { background: var(--ink); color: var(--paper); }
+      a.primary:hover { transform: translateY(-1px); text-decoration: none; }
+      a.secondary { background: transparent; color: var(--ink); border: 1px solid var(--ink); }
+      a.secondary:hover { border-color: var(--accent-text); color: var(--accent-text); transform: translateY(-1px); text-decoration: none; }
+      a:active { transform: translateY(0); }
+      a:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+      ::selection { background: var(--accent); color: var(--paper); }
+      @media (prefers-reduced-motion: reduce) {
+        *, *::before, *::after { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
+      }
     </style>
   </head>
   <body>
     <main>
-      <h1>Page not found</h1>
-      <p>This page does not exist. The portfolio is one click back.</p>
-      <a href="/">Back home</a>
+      <p class="plate-number">404</p>
+      <hr class="rule-accent" />
+      <h1>This page does not exist</h1>
+      <p>The link may be old, or the page may have moved. The portfolio is one click back.</p>
+      <div class="actions">
+        <a class="primary" href="/">Back home</a>
+        <a class="secondary" href="/projects">See my work</a>
+      </div>
     </main>
   </body>
 </html>
