@@ -5,6 +5,7 @@ import { AGENT_DOMAINS } from "../../data";
 import { usePageMeta } from "../../hooks";
 import PageHero from "../../components/PageHero";
 import DiagramFigure from "../../components/DiagramFigure";
+import SkillsTree from "../../components/diagrams/SkillsTree";
 
 export default function AgentArsenal() {
   usePageMeta(
@@ -46,11 +47,17 @@ export default function AgentArsenal() {
           <h2 className="heading-2">The skills tree</h2>
           <p className="body-2 mt-4 max-w-[680px] text-[var(--muted)]">One person, three branches, every leaf tied to evidence. The same tree as the Skills page.</p>
           <DiagramFigure
-            src="/diagrams/skills-tree.html"
             title="Skills and career tree of Muhammad Izaz Haider"
             caption="Technical identity, skills and career tree: offensive security, defensive security, and AI security and automation, each leaf tied to evidence."
-            tall
-          />
+          >
+            <SkillsTree />
+          </DiagramFigure>
+          <p className="body-6 mt-4 text-[var(--muted)]">Text equivalent, in order:</p>
+          <ul className="body-6 mt-2 max-w-[680px] list-disc pl-5 text-[var(--muted)]">
+            <li>Offensive security, 8 leaves: penetration testing, web application security, Burp Suite, OWASP ZAP, vulnerability assessment, API security, mobile security, digital forensics</li>
+            <li>Defensive security, 7 leaves: Linux, Windows Server security, secure code review, CI/CD security, malware analysis (course work in progress), network security, cryptography</li>
+            <li>AI security and automation, 11 leaves: Python, LLM integration and RAG, prompt engineering, Bash scripting, JavaScript, SQL, Git and GitHub, PowerShell, Frida, C and C++, testing and QA</li>
+          </ul>
         </div>
       </section>
       <section aria-label="Browse the domains" style={{ "--h": 1 } as React.CSSProperties}>

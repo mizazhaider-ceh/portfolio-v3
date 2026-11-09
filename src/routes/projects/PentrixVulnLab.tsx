@@ -4,6 +4,7 @@ import { usePageMeta } from "../../hooks";
 import PageHero from "../../components/PageHero";
 import ChallengePanel from "../../components/ChallengePanel";
 import DiagramFigure from "../../components/DiagramFigure";
+import PentrixArchitecture from "../../components/diagrams/PentrixArchitecture";
 
 export default function PentrixVulnLab() {
   usePageMeta(
@@ -56,10 +57,18 @@ export default function PentrixVulnLab() {
           <h2 className="heading-2">Architecture</h2>
           <p className="body-2 mt-4 max-w-[680px] text-[var(--muted)]">The student&apos;s browser, the Express app, and the SQLite database. Deliberately vulnerable by design, and only on the student&apos;s own machine.</p>
           <DiagramFigure
-            src="/diagrams/pentrix-architecture.html"
             title="PenTrix-VulnLab architecture"
             caption="PenTrix-VulnLab architecture: browser, Express app, SQLite database, 29 challenge modules, 3 kill chain scenarios, and 3 career paths with verifiable certificates."
-          />
+          >
+            <PentrixArchitecture />
+          </DiagramFigure>
+          <p className="body-6 mt-4 text-[var(--muted)]">Text equivalent, in order:</p>
+          <ul className="body-6 mt-2 max-w-[680px] list-disc pl-5 text-[var(--muted)]">
+            <li>Student browser sends an HTTP request to the PenTrix-VulnLab app</li>
+            <li>The Express app serves a challenge from 29 challenge modules, grouped by vulnerability class</li>
+            <li>Modules chain into 3 kill chain scenarios, full attack paths</li>
+            <li>The app records challenges, progress, and certificates in SQLite, and completed paths issue progress and certificates across 3 career paths</li>
+          </ul>
         </div>
       </section>
       <section aria-label="What this project proves" style={{ "--h": 1 } as React.CSSProperties}>

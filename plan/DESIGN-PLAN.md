@@ -1,5 +1,7 @@
 # Portfolio v2, Design and Architecture Plan
 
+**Note, 9 November 2026 (izaz's decision, applied the same day): the section 5 Archify diagram plan in this file is superseded. Archify is not used for the three diagrams in the rebuild. The PenTrix architecture, APK pipeline, and skills tree diagrams are hand-built inline SVGs in Monograph tokens, as React components in `src/components/diagrams/`, rendered inside `DiagramFigure` plates with no iframe and no external diagram file. The Archify standalone HTML files and the `.archify/` working folder were removed from the rebuild copy. This plan is a v2 carryover and is otherwise left as written.**
+
 **Owner:** Muhammad Izaz Haider (izaz), 19, BSc Cybersecurity student at Howest, Belgium
 **Date:** 2026-11-08
 **Status:** Design and architecture only. Nothing built, nothing published, nothing deployed.

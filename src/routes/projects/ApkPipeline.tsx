@@ -4,6 +4,7 @@ import { APK_STAGES } from "../../data";
 import { usePageMeta } from "../../hooks";
 import PageHero from "../../components/PageHero";
 import DiagramFigure from "../../components/DiagramFigure";
+import ApkPipelineDiagram from "../../components/diagrams/ApkPipeline";
 
 export default function ApkPipeline() {
   usePageMeta(
@@ -43,10 +44,19 @@ export default function ApkPipeline() {
           <h2 className="heading-2">The pipeline</h2>
           <p className="body-2 mt-4 max-w-[680px] text-[var(--muted)]">One command in, HTML and JSON reports out.</p>
           <DiagramFigure
-            src="/diagrams/apk-pipeline.html"
             title="APK Security Pipeline workflow"
             caption="APK Security Pipeline workflow: static manifest rules, strings and code rules, Frida dynamic traces, scoring, report generation, and baseline and CI modes."
-          />
+          >
+            <ApkPipelineDiagram />
+          </DiagramFigure>
+          <p className="body-6 mt-4 text-[var(--muted)]">Text equivalent, in order:</p>
+          <ul className="body-6 mt-2 max-w-[680px] list-disc pl-5 text-[var(--muted)]">
+            <li>One command takes an APK file in</li>
+            <li>Static analysis checks the manifest rules, then strings and code rules</li>
+            <li>Frida dynamic traces show what the app does live</li>
+            <li>Scoring gives one score out of 100 and a grade from A to F</li>
+            <li>Reports are generated as HTML and JSON, with baseline and CI modes</li>
+          </ul>
           <table className="mt-8 w-full border-collapse text-[0.95rem]">
             <thead>
               <tr>

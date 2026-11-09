@@ -1,44 +1,30 @@
-import { useEffect, useState } from "react";
+import type { ReactNode } from "react";
 
-/** Archify diagram embedded in a captioned figure, with a fallback link.
-    The embed uses the viewer's own gallery/embed mode (?embed=1), which
-    hides the diagram's internal header, toolbar, and cards, so the page
-    h2 and caption are the only headings. The theme query param keeps the
-    diagram in the same theme as the page; it is synced live, because the
-    toolbar toggle is hidden in embed mode. The "Open the diagram" link
-    points at the plain file, so the standalone viewer keeps its chrome. */
+/** Hand-built inline SVG diagram in a captioned Monograph plate.
+    The diagram is rendered as a child SVG component (no iframe, no
+    external file), so it follows the page theme through the Monograph
+    CSS variables and needs no theme sync, no fallback link, and no
+    separate viewer. The figure note sits beside the plate on desktop
+    and above it on phones, in mono, matching every other plate on the
+    case study pages. The caption carries the note text, in the
+    "What is shown: ... What happened: ..." form. */
 export default function DiagramFigure({
-  src,
-  caption,
   title,
-  tall = false,
+  caption,
+  children,
 }: {
-  src: string;
-  caption: string;
   title: string;
-  tall?: boolean;
+  caption: string;
+  children: ReactNode;
 }) {
-  const [theme, setTheme] = useState<"light" | "dark">(() =>
-    document.documentElement.getAttribute("data-theme") === "dark" ? "dark" : "light",
-  );
-  useEffect(() => {
-    const read = () =>
-      setTheme(document.documentElement.getAttribute("data-theme") === "dark" ? "dark" : "light");
-    read();
-    const mo = new MutationObserver(read);
-    mo.observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme"] });
-    return () => mo.disconnect();
-  }, []);
-  const embedSrc = `${src}?embed=1&theme=${theme}`;
   return (
-    <figure className={`diagram${tall ? " diagram--tall" : ""}`}>
-      <iframe src={embedSrc} title={title} loading="lazy" />
-      <figcaption>
-        {caption}{" "}
-        <a href={src} target="_blank" rel="noreferrer" className="text-[var(--periwinkle-deep)]">
-          Open the diagram in a new tab
-        </a>
-      </figcaption>
+    <figure aria-label={title}>
+      <div className="flex flex-col gap-4 lg:flex-row lg:items-start">
+        <p className="figure-note order-first lg:order-2 lg:w-60 lg:shrink-0 lg:pt-2">
+          {caption}
+        </p>
+        <div className="plate order-2 lg:order-1 lg:min-w-0 lg:flex-1">{children}</div>
+      </div>
     </figure>
   );
 }

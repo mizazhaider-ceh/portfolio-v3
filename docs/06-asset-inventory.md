@@ -74,7 +74,9 @@ Notes on the results:
 4. The `apk-report-preview.webp` saving is the smallest (43.7%) because the report image is mostly white ground with fine text; WebP at quality 82 keeps the text readable. Do not lower the quality to chase a bigger saving: the figure note rule requires the text to stay readable without pinching on a phone.
 5. No AVIF copies were produced: no AVIF encoder is available in this environment (Pillow has no AVIF support here, no `avifenc` binary). WebP is the optimised format delivered, which the specs accept ("WebP or AVIF with PNG fallback").
 
-## 3. Per-diagram retheme checklist (Phase 7 to apply, not applied here)
+## 3. Per-diagram retheme checklist (SUPERSEDED 9 November 2026, izaz's no-Archify decision)
+
+**This section is superseded in full.** The Archify files it describes were removed the same day and replaced by hand-built inline SVGs in `src/components/diagrams/` (see section 12). Do not apply this checklist. It is kept only as a record of what the Archify files contained.
 
 ### 3.1 What is true of all three diagrams
 
@@ -292,3 +294,53 @@ Every plate on every page carries a figure note. This is a standing rule from th
 **Files actually downloaded in the Pinterest pass:** none. No Pinterest media was downloaded, no Pexels file was re-downloaded, no file was added to `public/`, `docs/06-clip-candidates/`, or any other project folder. The only file written in that pass is `docs/06-hero-clip.md` itself.
 
 **Effect on gaps:** gaps G2 and G14 in section 5 above are now closed by the Phase 6 shipping, not by the Pinterest pass. G2 (no clip selected, no poster, no licence record) is closed because `public/video/hero-loop.mp4`, `public/video/hero-loop.webm`, and `public/images/hero-poster.webp` are shipped, with the licence record at `public/video/LICENSE.md` and the shortlist at `docs/06-clip-candidates/CLIP_SHORTLIST.md`. G14 (no licence record beside any video file) is closed by the same licence record. The gap table in section 5 is left as written for the audit trail; this section is the update. Open items carried forward: correct MEMORY.md and the parent brief (see above); a logged-in browser check is needed before any Pinterest candidate can be pursued, because pin pages returned 403 in this pass; the bright mood and the dark hero scrim are in tension, and that is a design decision for izaz, not a clip search problem.
+
+---
+
+## 12. Archify removal, 9 November 2026 (izaz's decision)
+
+### What was removed
+
+- `public/diagrams/pentrix-architecture.html` (839,637 bytes), `public/diagrams/apk-pipeline.html` (838,899 bytes), `public/diagrams/skills-tree.html` (872,240 bytes): the three Archify standalone HTML diagrams, about 840 KB each, embedded by iframe.
+- `.archify/` working folder (receipts only, about 80 KB): `architecture-pentrix-20261108/`, `tree-skills-20261108/`, `workflow-apk-20261108/`.
+- The `src/components/DiagramFigure.tsx` iframe mechanism (props `src`, `tall`, MutationObserver theme sync, "Open the diagram in a new tab" fallback link). The installed Archify skill at `~/workspace/custom-skills/archify/` was not touched and stays for other work. Nothing was touched in `~/workspace/portfolio-v2/`.
+
+### What replaced it
+
+- Three hand-built inline SVGs as React components in `src/components/diagrams/`, Monograph tokens only (CSS variables from `src/index.css`, so the existing `data-theme` mechanism switches light and dark, no second hardcoded palette):
+  - `PentrixArchitecture.tsx`: viewBox 1150 by 296, 6 nodes, 6 edges, oxblood highlight only on the student to app and app to database path.
+  - `ApkPipeline.tsx`: viewBox 1013 by 668, 5 stage lanes, 4 phase chips, 7 nodes, 7 edges, oxblood highlight only on the main intake to report flow.
+  - `SkillsTree.tsx`: viewBox 794 by 2244, 32 nodes (root, 3 branches, 26 leaves), 29 edges, count badges on the root (29) and the three branches (8, 7, 11), oxblood highlight only on the offensive spine.
+- `DiagramFigure.tsx` rewritten: props `title`, `caption`, `children`, renders a `figure.plate` with the inline SVG component and a `figcaption.figure-note`, no iframe, no theme sync, no fallback link.
+- Route files updated to the new API, each with a text equivalent list beside the figure: `src/routes/projects/PentrixVulnLab.tsx`, `src/routes/projects/ApkPipeline.tsx`, `src/routes/projects/AgentArsenal.tsx`, and `src/routes/Skills.tsx` (the Skills page intro sentence was also changed to drop the Archify click-to-focus wording).
+- Note on the Skills page: after this swap was built, parallel work in the rebuild deleted `src/routes/Skills.tsx` and added an untracked `src/routes/Expertise.tsx`, which does not currently use `SkillsTree` or `DiagramFigure`. The tree is still used by `AgentArsenal.tsx`, so it is not orphaned, but the coordinator should confirm where the tree belongs on the renamed page.
+
+### Render verification status
+
+- Every diagram was rendered with cairosvg to PNG and viewed, in both light and dark, and in a real Chromium browser (Playwright, vendored fonts, `data-theme` light and dark), with 0 console errors in both themes.
+- PenTrix: verified light and dark, cairosvg and browser, no defects found. All labels fit, highlighted path clear.
+- APK pipeline: verified light and dark, cairosvg and browser. Two real defects were found in the browser render (cairosvg's fallback fonts hid both) and fixed:
+  1. The "diff feeds the report" edge label was painted before the node rects, so the Baseline and CI and Reports node rects covered its first and last letters. Fixed by rendering the edge labels after the nodes, with a comment in the code explaining the order.
+  2. The phase chips were sized to Archify's narrower mono metrics, so "Static checks", "Dynamic traces", and "Score and report" spilled past their chips and the rule line showed through the text like a strikethrough. Fixed by widening the chips to 56, 102, 115, and 122 px at the same centres.
+  After both fixes the label and the chips were re-rendered in the browser at 3x and viewed: the label reads in full, the chips are clean.
+- Skills tree: verified light and dark, cairosvg (full render plus top, middle, and bottom crops) and browser (root and AI branch areas at 2x). No defects found. All labels fit, count badges legible.
+- The "Scoring" sublabel ("one score out of 100, grade A to F") measures 159.6 px in the real browser against a 150 px node, so about 5 px spills past each node edge. It is fully legible and matches the Archify source, which had the same text at the same node width, so it was left as written.
+- One cairosvg quirk was found during verification and is not a file defect: a root `style="display:block;width:100%;height:auto"` on the `svg` makes cairosvg render a transparent image. Only the verification copies had that style replaced with width and height attributes. The shipped TSX is correct for browsers.
+
+### Content differences found between the Archify files and the audit
+
+Every node label, number, and edge was taken from the Archify files. Where the Archify file and `docs/01-profile-audit.md` disagreed, the audit won. The differences:
+
+1. Skills tree root subtitle: Archify said "BSc Cybersecurity, Howest". The audit says v3 public copy must not carry an institution name. The subtitle is now "BSc Cybersecurity" only.
+2. Skills tree leaf "Git and GitHub": Archify said "80 public repos". The audit records 81 public repos at the audit date (9 November 2026) and says to update to the live count with a fetch date or remove the count. The sublabel is now "Public repos on GitHub", no count, matching the wording in `src/data.ts`.
+3. Malware analysis leaf: kept, with the sublabel "Course work in progress", so it reads as coursework in progress and not as a claimed expertise group.
+4. Typo repairs from the Archify files: "AI security andautomation" is now two lines, "AI security and" and "automation"; the Frida sublabel "APK dynamic traces,Mobile Security labs" now has the space after the comma.
+5. PenTrix flag note: Archify's frame label matches the approved sentence ("flags generated per install at first boot"), kept as the frame label, nothing added.
+6. Legends dropped in all three diagrams (PenTrix: Backend, Database, Security, External; APK: User UI, Agent logic, Context / trace, External system), because the rethemed nodes carry no per-category colours for a legend to name. Deliberate change.
+7. Archify expand and collapse toggles and "Expand all" are gone: a static diagram has nothing hidden, so the whole tree is always visible. The branch counts (29, 8, 7, 11) are preserved as count badges on the root and branch nodes.
+
+### Docs updated with this swap
+
+- `docs/DESIGN_SYSTEM.md`: the diagram paragraph in the project presentation section and the "Diagrams" paragraph in the image and diagram treatment section now say hand-built inline SVGs, no Archify, no iframe, no "Open the diagram in a new tab" fallback.
+- `plan/DESIGN-PLAN.md`: a dated note at the top states its section 5 Archify plan is superseded. The plan is a v2 carryover and was otherwise left as written.
+- Other docs still mention Archify as a record of what was built before this swap (`docs/01-skills-integrations.md`, `docs/01-repo-audit.md`, `docs/03-project-selection.md`, `docs/04-direction-monograph.md`, `docs/04-direction-workbench.md`, `docs/05-experience-case-studies.md` section 3.4, `docs/05-experience-home-projects.md`). Section 3.4 of `docs/05-experience-case-studies.md` still describes the old iframe DiagramFigure mechanism; it needs a correction by the coordinator, it was not rewritten here.
